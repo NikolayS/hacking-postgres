@@ -28,6 +28,8 @@ export const people: Person[] = [
       github: 'https://github.com/x4m',
       twitter: 'https://x.com/x4mmmmmm',
       linkedin: 'https://www.linkedin.com/in/andrew-borodin-79411b47/',
+      scholar: 'https://scholar.google.com/citations?user=aISBHeUAAAAJ&hl=en',
+      researchgate: 'https://www.researchgate.net/scientific-contributions/Andrey-Borodin-2082945809',
     },
     note: 'Postgres hacker and recurring session participant.',
   },

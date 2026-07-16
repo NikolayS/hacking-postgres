@@ -27,6 +27,8 @@ export type Person = {
     gitlab?: string;
     twitter?: string;
     linkedin?: string;
+    scholar?: string;
+    researchgate?: string;
     website?: string;
   };
   note: string;
