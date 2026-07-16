@@ -12,7 +12,7 @@ const { item } = Astro.props as { item: WorkItem };
   {item.blocker && <p class="meta"><span class="danger">blocker:</span> {item.blocker}</p>}
   <div class={`progress ${item.state}`} aria-label={`${item.progress}% progress`}><span style={`width:${item.progress}%`}></span></div>
   <div class="artifact-list">
-    {item.issue > 0 && <a href={`https://github.com/postgres-ai/hacking-postgres/issues/${item.issue}`}>tracker #{item.issue}</a>}
+    {item.issue > 0 && <a href={`https://github.com/NikolayS/hacking-postgres/issues/${item.issue}`}>tracker #{item.issue}</a>}
     {item.artifacts.slice(0, 3).map((artifact) => <a href={artifact.url}>{artifact.label}</a>)}
   </div>
 </article>

@@ -8,7 +8,7 @@ const total = issues.reduce((count, issue) => count + issue.tasks.length, 0);
 ---
 
 <Layout title="TODO">
-  <section class="page-head"><div class="shell"><p class="eyebrow">/todo</p><h1>The queue.</h1><p class="lede">Live from GitHub Issues at build time: {open.length} open trackers, {complete}/{total} checklist items complete.</p><div class="actions"><a class="button primary" href="https://github.com/postgres-ai/hacking-postgres/issues">open issue tracker</a><a class="button" href="https://github.com/postgres-ai/hacking-postgres/issues/new/choose">add a task</a></div></div></section>
+  <section class="page-head"><div class="shell"><p class="eyebrow">/todo</p><h1>The queue.</h1><p class="lede">Live from GitHub Issues at build time: {open.length} open trackers, {complete}/{total} checklist items complete.</p><div class="actions"><a class="button primary" href="https://github.com/NikolayS/hacking-postgres/issues">open issue tracker</a><a class="button" href="https://github.com/NikolayS/hacking-postgres/issues/new/choose">add a task</a></div></div></section>
   <section class="section"><div class="shell">
     {open.map((issue) => <section class="todo-group"><div class="section-head"><h2><a href={issue.url}>{issue.title}</a></h2><span class="meta">#{issue.number} · {issue.labels.join(' · ')}</span></div><ul class="todo-list">{issue.tasks.map((task) => <li class:list={['todo', { done: task.done }]}><span>{task.text}</span><small>{task.done ? 'done' : 'open'}</small></li>)}</ul></section>)}
   </div></section>

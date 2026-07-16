@@ -39,7 +39,7 @@ function parseIssue(issue: GitHubIssue): TrackerIssue {
 
 export async function getTrackerIssues(): Promise<TrackerIssue[]> {
   try {
-    const response = await fetch('https://api.github.com/repos/postgres-ai/hacking-postgres/issues?state=all&per_page=100', {
+    const response = await fetch('https://api.github.com/repos/NikolayS/hacking-postgres/issues?state=all&per_page=100', {
       headers: {
         Accept: 'application/vnd.github+json',
         ...(process.env.GITHUB_TOKEN ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` } : {}),
@@ -52,7 +52,7 @@ export async function getTrackerIssues(): Promise<TrackerIssue[]> {
     return workItems.filter((item) => item.issue > 0).map((item) => ({
       number: item.issue,
       title: item.title,
-      url: `https://github.com/postgres-ai/hacking-postgres/issues/${item.issue}`,
+      url: `https://github.com/NikolayS/hacking-postgres/issues/${item.issue}`,
       state: 'open',
       labels: [item.state],
       tasks: item.next.map((text) => ({ text, done: false })),
