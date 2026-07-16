@@ -25,6 +25,21 @@ const latest = sessions[0];
   </section>
 
   <section class="section">
+    <div class="shell split">
+      <div>
+        <div class="section-head"><h2>latest session</h2><a href="/sessions">archive →</a></div>
+        <div class="video"><iframe src={youtubeEmbed(latest.video)} title={latest.title} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+      </div>
+      <div>
+        <p class="eyebrow">{latest.date} · {latest.duration}</p>
+        <h2>{latest.title}</h2>
+        <p class="lede">{latest.topic}</p>
+        <div class="artifact-list">{latest.artifacts.map((artifact) => <a href={artifact.url}>{artifact.label}</a>)}</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="shell">
       <div class="stats">
         <a class="stat" href="/sessions"><strong>{sessions.length}</strong><span>sessions indexed</span></a>
@@ -39,21 +54,6 @@ const latest = sessions[0];
     <div class="shell">
       <div class="section-head"><h2>active work</h2><a href="/work">view all →</a></div>
       <div class="grid">{active.slice(0, 6).map((item) => <WorkCard item={item} />)}</div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="shell split">
-      <div>
-        <div class="section-head"><h2>latest session</h2><a href="/sessions">archive →</a></div>
-        <div class="video"><iframe src={youtubeEmbed(latest.video)} title={latest.title} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-      </div>
-      <div>
-        <p class="eyebrow">{latest.date} · {latest.duration}</p>
-        <h2>{latest.title}</h2>
-        <p class="lede">{latest.topic}</p>
-        <div class="artifact-list">{latest.artifacts.map((artifact) => <a href={artifact.url}>{artifact.label}</a>)}</div>
-      </div>
     </div>
   </section>
 
