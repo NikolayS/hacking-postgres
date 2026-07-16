@@ -56,12 +56,27 @@ Recovery and replication
 	https://github.com/NikolayS/postgres/pull/40
 
 
-SQL and storage
-===============
+SQL features
+============
 
 * Review partial materialized-view refresh
 
 	https://commitfest.postgresql.org/patch/6305/
+
+
+Client/server protocol
+======================
+
+* Resolve custom command-tag protocol design
+
+	o Resolve capability-negotiation questions
+	o Decide whether to submit it to CommitFest
+
+	https://github.com/NikolayS/postgres/pull/16
+
+
+Storage internals
+=================
 
 * Decide whether to continue whole-WAL-record compression
 
@@ -70,13 +85,6 @@ SQL and storage
 	o Produce current benchmarks
 
 	https://commitfest.postgresql.org/patch/5621/
-
-* Resolve custom command-tag protocol design
-
-	o Resolve capability-negotiation questions
-	o Decide whether to submit it to CommitFest
-
-	https://github.com/NikolayS/postgres/pull/16
 
 * Review the active B-tree page-merge implementation
 
