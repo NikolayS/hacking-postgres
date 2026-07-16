@@ -111,13 +111,8 @@ h3 { font-size: 1rem; }
 .warn { color: var(--warn); }
 .danger { color: var(--danger); }
 
-.todo-group { margin-top: 2rem; }
-.todo-list { margin: .8rem 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
-.todo { display: grid; grid-template-columns: 28px 1fr auto; gap: .7rem; padding: .8rem 0; border-bottom: 1px solid var(--line); }
-.todo::before { content: "[ ]"; color: var(--faint); font-family: var(--mono); }
-.todo.done::before { content: "[x]"; color: var(--accent); }
-.todo.done span { color: var(--muted); text-decoration: line-through; }
-.todo small { color: var(--muted); font-family: var(--mono); }
+.todo-file { margin: 0; padding: 1.25rem; overflow-x: auto; border: 1px solid var(--line); background: var(--panel); color: var(--text); font: 13px/1.65 var(--mono); white-space: pre-wrap; overflow-wrap: anywhere; }
+.todo-file a { color: var(--accent); }
 .detail-list { margin: 1rem 0 0; padding-left: 1.2rem; }
 .detail-list li { margin: .4rem 0; color: var(--muted); }
 

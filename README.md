@@ -19,7 +19,7 @@ npm run build
 
 - `src/data/sessions.ts` — session and artifact index
 - `src/data/work.ts` — active work lines, progress, blockers, and next steps
-- GitHub Issues — actionable TODO source of truth
+- `TODO` — the entire TODO list, deliberately kept as plain text
 
 ## Deployment
 

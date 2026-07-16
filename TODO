@@ -1,0 +1,79 @@
+Postgres Hacking TODO List
+==========================
+Last updated: 2026-07-16
+
+This file is the list.  When an item is finished, remove it.  Add links
+under the item when there is a patch, discussion, or useful background.
+
+
+Observability
+=============
+
+* Finish precise wait-event timing and tracing
+
+	o Publish reproducible observer-effect benchmarks
+	o Close instrumentation coverage gaps
+	o Address CommitFest review
+
+	https://github.com/DmitryNFomin/postgres/pull/2
+	https://commitfest.postgresql.org/patch/6984/
+	https://nikolays.github.io/wet-timing-bench-brief/
+
+
+Recovery and replication
+========================
+
+* Submit corrected recovery landmarks for destructive DDL
+
+	o Finish review
+	o Send a new patch version to pgsql-hackers
+	o Update the CommitFest entry
+
+	https://github.com/NikolayS/postgres/pull/55
+	https://commitfest.postgresql.org/patch/6272/
+
+* Complete archive-fed logical-decoding test coverage
+
+	o Test crash and restart paths
+	o Test promotion and rewind paths
+	o Prepare the pgsql-hackers submission
+
+	https://github.com/NikolayS/postgres/pull/40
+
+
+SQL and storage
+===============
+
+* Review partial materialized-view refresh
+
+	https://commitfest.postgresql.org/patch/6305/
+
+* Decide whether to continue whole-WAL-record compression
+
+	o Confirm the author's intent
+	o Rebase the series
+	o Produce current benchmarks
+
+	https://commitfest.postgresql.org/patch/5621/
+
+* Resolve custom command-tag protocol design
+
+	o Resolve capability-negotiation questions
+	o Decide whether to submit it to CommitFest
+
+	https://github.com/NikolayS/postgres/pull/16
+
+* Scope a reviewable B-tree page-merge patch
+
+	o Define invariants and locking
+	o Build a minimal correctness test suite
+
+	https://wiki.postgresql.org/wiki/GSoC_2026#B-tree_Index_Bloat_Reduction_(Page_Merge)
+
+
+Sessions and site
+=================
+
+* Recover topics and links for generic-title sessions
+* Point hacking.postgres.tv to GitHub Pages
+* Add the AI assistant when there is a concrete design worth shipping

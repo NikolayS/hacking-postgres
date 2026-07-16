@@ -1,15 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getTrackerIssues } from '../data/github';
-const issues = await getTrackerIssues();
-const open = issues.filter((issue) => issue.state === 'open');
-const complete = issues.reduce((count, issue) => count + issue.tasks.filter((task) => task.done).length, 0);
-const total = issues.reduce((count, issue) => count + issue.tasks.length, 0);
+import todo from '../../TODO?raw';
+
+const escaped = todo.trimEnd()
+  .replaceAll('&', '&amp;')
+  .replaceAll('<', '&lt;')
+  .replaceAll('>', '&gt;');
+const todoHtml = escaped.replace(/https:\/\/[^\s]+/g, (url) => `<a href="${url}">${url}</a>`);
 ---
 
 <Layout title="TODO">
-  <section class="page-head"><div class="shell"><p class="eyebrow">/todo</p><h1>The queue.</h1><p class="lede">Live from GitHub Issues at build time: {open.length} open trackers, {complete}/{total} checklist items complete.</p><div class="actions"><a class="button primary" href="https://github.com/NikolayS/hacking-postgres/issues">open issue tracker</a><a class="button" href="https://github.com/NikolayS/hacking-postgres/issues/new/choose">add a task</a></div></div></section>
-  <section class="section"><div class="shell">
-    {open.map((issue) => <section class="todo-group"><div class="section-head"><h2><a href={issue.url}>{issue.title}</a></h2><span class="meta">#{issue.number} · {issue.labels.join(' · ')}</span></div><ul class="todo-list">{issue.tasks.map((task) => <li class:list={['todo', { done: task.done }]}><span>{task.text}</span><small>{task.done ? 'done' : 'open'}</small></li>)}</ul></section>)}
-  </div></section>
+  <section class="page-head"><div class="shell"><p class="eyebrow">/todo</p><h1>TODO.</h1><p class="lede">One file. No tickets, statuses, assignees, ceremonies, or other project-management furniture.</p><div class="actions"><a class="button primary" href="https://github.com/NikolayS/hacking-postgres/blob/main/TODO">view source</a></div></div></section>
+  <section class="section"><div class="shell"><pre class="todo-file" set:html={todoHtml}></pre></div></section>
 </Layout>
