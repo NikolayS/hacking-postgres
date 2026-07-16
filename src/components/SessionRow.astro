@@ -28,7 +28,17 @@ const sessionPeople = peopleForSession(session);
         <summary>[timecodes · {detail.chapters.length}]</summary>
         <ol>
           {detail.chapters.map((chapter) => (
-            <li><a href={youtubeUrlAt(session.video, timestampSeconds(chapter.at))}><time>{chapter.at}</time> {chapter.title}</a></li>
+            <li>
+              <a
+                class="session-chapter"
+                href={youtubeUrlAt(session.video, timestampSeconds(chapter.at))}
+                target="_blank"
+                rel="noreferrer"
+                data-video={session.video}
+                data-start={timestampSeconds(chapter.at)}
+                data-session-title={session.title}
+              ><time>{chapter.at}</time> {chapter.title}</a>
+            </li>
           ))}
         </ol>
       </details>
@@ -80,25 +90,43 @@ const sessionPeople = peopleForSession(session);
     return dialog;
   };
 
+  const openVideoDialog = (video: string, title: string, start = 0) => {
+    const dialog = getVideoDialog();
+    const iframe = document.createElement('iframe');
+    const startParam = start > 0 ? `&start=${start}` : '';
+    iframe.src = `https://www.youtube-nocookie.com/embed/${video}?autoplay=1${startParam}`;
+    iframe.title = title;
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    iframe.allowFullscreen = true;
+    dialog.querySelector('.video-dialog-player')?.replaceChildren(iframe);
+    const heading = dialog.querySelector<HTMLElement>('#video-dialog-title');
+    if (heading) heading.textContent = title;
+    const youtube = dialog.querySelector<HTMLAnchorElement>('.video-dialog-youtube');
+    if (youtube) youtube.href = `https://www.youtube.com/watch?v=${video}${start > 0 ? `&t=${start}s` : ''}`;
+    document.body.classList.add('video-dialog-open');
+    dialog.showModal();
+  };
+
   document.querySelectorAll<HTMLButtonElement>('.session-video:not([data-wired])').forEach((button) => {
     button.dataset.wired = 'true';
     button.addEventListener('click', () => {
       const video = button.dataset.video;
       if (!video) return;
-      const dialog = getVideoDialog();
       const title = button.getAttribute('aria-label')?.replace(/^Play /, '') ?? 'YouTube video';
-      const iframe = document.createElement('iframe');
-      iframe.src = `https://www.youtube-nocookie.com/embed/${video}?autoplay=1`;
-      iframe.title = title;
-      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-      iframe.allowFullscreen = true;
-      dialog.querySelector('.video-dialog-player')?.replaceChildren(iframe);
-      const heading = dialog.querySelector<HTMLElement>('#video-dialog-title');
-      if (heading) heading.textContent = title;
-      const youtube = dialog.querySelector<HTMLAnchorElement>('.video-dialog-youtube');
-      if (youtube) youtube.href = `https://www.youtube.com/watch?v=${video}`;
-      document.body.classList.add('video-dialog-open');
-      dialog.showModal();
+      openVideoDialog(video, title);
+    });
+  });
+
+  document.querySelectorAll<HTMLAnchorElement>('.session-chapter:not([data-wired])').forEach((link) => {
+    link.dataset.wired = 'true';
+    link.addEventListener('click', (event) => {
+      const video = link.dataset.video;
+      if (!video) return;
+      event.preventDefault();
+      const start = Number(link.dataset.start ?? 0);
+      const chapter = link.textContent?.trim() ?? 'Chapter';
+      const sessionTitle = link.dataset.sessionTitle ?? 'YouTube video';
+      openVideoDialog(video, `${sessionTitle} — ${chapter}`, start);
     });
   });
 </script>
