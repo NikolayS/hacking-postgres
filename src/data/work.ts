@@ -58,8 +58,8 @@ export const publicOutcomes = [
   {
     title: 'B-tree bloat removal (page merge)',
     stage: 'patch proposed',
-    summary: 'Merge sparse sibling pages to reduce index bloat without a full rebuild.',
-    url: 'https://www.postgresql.org/message-id/CACLU5mRude0L5psEj5WS0DVDv%3DAHN0McfZBKV5eBoW0JqwwZDA%40mail.gmail.com',
+    summary: 'Salma El-Sayed’s mentored implementation now covers page merge plus cleanup of merged-away tombstone pages.',
+    url: 'https://www.postgresql.org/message-id/flat/CANBEAPFq3YAOydjUS3xwcUG9L6e3WE5Z4nGPk_Q3RsjSFWTJNA%40mail.gmail.com',
   },
   {
     title: 'partial materialized-view refresh',
@@ -112,9 +112,19 @@ export const supportedProjects: SupportedProject[] = [
     ],
   },
   {
+    title: 'wait-event coverage gaps',
+    owner: 'Seongjun Shin',
+    summary: 'A proposed GSoC project that continued independently: systematically identify invisible waits and add coverage, starting with blocking writes to server logging destinations.',
+    artifacts: [
+      { label: 'coverage map', url: 'https://gaps.wait.events/' },
+      { label: 'logging waits patch', url: 'https://www.postgresql.org/message-id/flat/CACdN0M78U%2BGvpqA7oey-GA7fFSYM636aDp6H9FVvCztv9zXxSA%40mail.gmail.com' },
+      { label: 'related WET sessions', url: '/projects/wait-event-tracing/' },
+    ],
+  },
+  {
     title: 'pg_stat_statements scalability',
-    owner: 'GSoC 2026 + AWS',
-    summary: 'Kirk and Nik mentor Quan Hoang Truong’s GSoC project. A related AWS-led patch series now implements a broader pgstat-based redesign for the same contention problem.',
+    owner: 'Quan Hoang Truong + AWS contributors',
+    summary: 'Quan continued the proposed GSoC work on LWLock contention. In parallel, an AWS-led patch series implements a broader pgstat-based redesign for the same scalability problem.',
     artifacts: [
       { label: 'GSoC project', url: 'https://wiki.postgresql.org/wiki/GSoC_2026#Monitoring_Tools_Performance:_pg_stat_statements_and_LWLock_Contention' },
       { label: 'student introduction', url: 'https://www.postgresql.org/message-id/CAGJgb9vmBZRWi-8%2B%3D62U-BoPvGrUS4uMk%3DgjGbAfp3Rro2CAJg%40mail.gmail.com' },
@@ -126,10 +136,10 @@ export const supportedProjects: SupportedProject[] = [
 export const workItems: WorkItem[] = [
   {
     slug: 'wait-event-tracing', title: 'Precise wait-event timing and tracing', state: 'needs-review', progress: 72,
-    summary: 'Low-overhead core timing, trace capture, coverage analysis, and independent observer-effect benchmarks.',
+    summary: 'Low-overhead core timing, trace capture, coverage analysis, independent observer-effect benchmarks, and related work to expose currently invisible waits.',
     blocker: 'Needs more reviewer cycles and benchmark scrutiny in CommitFest.',
     sessions: ['bfPdLjdQvwU', '3Gtuc2lnnsE', '6kqpjnpl5Gc', 'RLeB6rP5CA8', 'Q7QEvTbGlWs'],
-    artifacts: [{ label: 'patch PR', url: 'https://github.com/DmitryNFomin/postgres/pull/2' }, { label: 'CF #6984', url: 'https://commitfest.postgresql.org/patch/6984/' }, { label: 'WET timing benchmark', url: 'https://nikolays.github.io/wet-timing-bench-brief/' }],
+    artifacts: [{ label: 'patch PR', url: 'https://github.com/DmitryNFomin/postgres/pull/2' }, { label: 'CF #6984', url: 'https://commitfest.postgresql.org/patch/6984/' }, { label: 'WET timing benchmark', url: 'https://nikolays.github.io/wet-timing-bench-brief/' }, { label: 'coverage gaps', url: 'https://gaps.wait.events/' }, { label: 'logging waits patch', url: 'https://www.postgresql.org/message-id/flat/CACdN0M78U%2BGvpqA7oey-GA7fFSYM636aDp6H9FVvCztv9zXxSA%40mail.gmail.com' }],
     next: ['Run and publish reproducible benchmarks', 'Close instrumentation coverage gaps', 'Address CommitFest review'],
   },
   {
@@ -176,11 +186,11 @@ export const workItems: WorkItem[] = [
     next: ['Resolve capability negotiation questions', 'Decide whether to pursue a CF entry'],
   },
   {
-    slug: 'btree-page-merge', title: 'B-tree bloat removal (page merge)', state: 'active', progress: 31,
-    summary: 'Merge sparse sibling pages to reduce index bloat without rebuilding the entire index.',
-    blocker: 'Prototype correctness and concurrency design are not ready for CommitFest.',
-    sessions: ['D1PEdDcvZTw', 'Ib3SXSFt8mE', '3MleDtXZUlM'], artifacts: [{ label: '-hackers WIP', url: 'https://www.postgresql.org/message-id/CACLU5mRude0L5psEj5WS0DVDv%3DAHN0McfZBKV5eBoW0JqwwZDA%40mail.gmail.com' }, { label: 'GSoC idea', url: 'https://wiki.postgresql.org/wiki/GSoC_2026#B-tree_Index_Bloat_Reduction_(Page_Merge)' }],
-    next: ['Define invariants and locking', 'Build a minimal correctness test suite', 'Scope a reviewable first patch'],
+    slug: 'btree-page-merge', title: 'B-tree bloat removal (page merge)', state: 'active', progress: 46,
+    summary: 'Salma El-Sayed’s implementation, mentored by Kirk Wolak, merges sparse siblings and reclaims merged-away tombstone pages without rebuilding the entire index.',
+    blocker: 'The active prototype still needs concurrency, backward-scan, VACUUM, WAL/recovery, and crash-safety review before CommitFest.',
+    sessions: ['D1PEdDcvZTw', 'Ib3SXSFt8mE', '3MleDtXZUlM'], artifacts: [{ label: 'current -hackers thread', url: 'https://www.postgresql.org/message-id/flat/CANBEAPFq3YAOydjUS3xwcUG9L6e3WE5Z4nGPk_Q3RsjSFWTJNA%40mail.gmail.com' }, { label: 'working branch', url: 'https://github.com/salmaaliia/postgres/tree/merge' }, { label: 'tombstone cleanup commit', url: 'https://github.com/salmaaliia/postgres/commit/3cabf7b3cec90bffb427e8fa2ca9faf1a85213bf' }, { label: 'GSoC idea', url: 'https://wiki.postgresql.org/wiki/GSoC_2026#B-tree_Index_Bloat_Reduction_(Page_Merge)' }],
+    next: ['Review invariants and locking with the current prototype', 'Expand correctness, concurrency, and recovery tests', 'Shape the branch into a reviewable patch series'],
   },
   {
     slug: 'pg-dump-table-data-placeholders', title: 'pg_dump table-data placeholders', state: 'needs-review', progress: 48,

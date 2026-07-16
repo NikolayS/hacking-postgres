@@ -19,6 +19,21 @@ Observability
 	https://commitfest.postgresql.org/patch/6984/
 	https://nikolays.github.io/wet-timing-bench-brief/
 
+* Review and extend wait-event coverage gaps
+
+	o Review server logging destination wait events
+	o Continue auditing blocking paths currently reported as CPU
+
+	https://gaps.wait.events/
+	https://www.postgresql.org/message-id/flat/CACdN0M78U%2BGvpqA7oey-GA7fFSYM636aDp6H9FVvCztv9zXxSA%40mail.gmail.com
+
+* Follow pg_stat_statements scalability work
+
+	o Compare the student’s LWLock-contention work with the AWS-led series
+	o Review the pgstat redesign, eviction, and query-text storage trade-offs
+
+	https://www.postgresql.org/message-id/flat/CAA5RZ0vZwR_dSK6fo0P2-EnskUVN0NjLHnGnJMFDPC8-kEW3sQ%40mail.gmail.com
+
 
 Recovery and replication
 ========================
@@ -63,12 +78,16 @@ SQL and storage
 
 	https://github.com/NikolayS/postgres/pull/16
 
-* Scope a reviewable B-tree bloat-removal patch
+* Review the active B-tree page-merge implementation
 
-	o Define invariants and locking
-	o Build a minimal correctness test suite
+	o Review merge, tombstone cleanup, and page-deletion invariants
+	o Expand concurrency, backward-scan, VACUUM, WAL, and recovery tests
+	o Shape the branch into a reviewable patch series
 
 	https://wiki.postgresql.org/wiki/GSoC_2026#B-tree_Index_Bloat_Reduction_(Page_Merge)
+	https://www.postgresql.org/message-id/flat/CANBEAPFq3YAOydjUS3xwcUG9L6e3WE5Z4nGPk_Q3RsjSFWTJNA%40mail.gmail.com
+	https://github.com/salmaaliia/postgres/tree/merge
+	https://github.com/salmaaliia/postgres/commit/3cabf7b3cec90bffb427e8fa2ca9faf1a85213bf
 
 
 Client tools
