@@ -1,20 +1,89 @@
 import type { WorkItem } from './types';
 
-export const coreOutcomes = [
+export const publicOutcomes = [
   {
     title: 'transaction_timeout',
+    stage: 'committed upstream',
     summary: 'Stop transactions that remain open longer than the configured limit.',
-    commit: 'https://git.postgresql.org/gitweb/?p=postgresql.git;a=commit;h=51efe38cb92f4b15b68811bcce9ab878fbc71ea5',
+    url: 'https://git.postgresql.org/gitweb/?p=postgresql.git;a=commit;h=51efe38cb92f4b15b68811bcce9ab878fbc71ea5',
   },
   {
     title: 'bounded psql \\watch',
+    stage: 'committed upstream',
     summary: 'Let psql users stop \\watch automatically after a fixed number of executions.',
-    commit: 'https://git.postgresql.org/gitweb/?p=postgresql.git;a=commit;h=00beecfe839c878abb366b68272426ed5296bc2b',
+    url: 'https://git.postgresql.org/gitweb/?p=postgresql.git;a=commit;h=00beecfe839c878abb366b68272426ed5296bc2b',
   },
   {
     title: 'MultiXact standby deadlock fix',
+    stage: 'committed upstream',
     summary: 'Fix MultiXact creation, deadlock, and corruption edge cases on standbys.',
-    commit: 'https://commitfest.postgresql.org/patch/6070/',
+    url: 'https://git.postgresql.org/gitweb/?p=postgresql.git;a=commit;h=789d65364cdecd81e4bf822eec468ea3d34d28af',
+  },
+  {
+    title: 'unqualified DML guards',
+    stage: 'patch proposed',
+    summary: 'Prototype server-side protection against UPDATE or DELETE without qualification.',
+    url: 'https://www.postgresql.org/message-id/CANNMO%2B%2Bs0ayutEaM8qu%2BMDzPOAvWnc8uJSfBSWCRh%2BMKZoBjNw%40mail.gmail.com',
+  },
+  {
+    title: 'pg_stat_kcache observer-effect fix',
+    stage: 'patch proposed',
+    summary: 'Reduce self-hidden I/O accounting caused by extension locking.',
+    url: 'https://github.com/powa-team/pg_stat_kcache/pull/39',
+  },
+  {
+    title: 'whole-WAL-record compression',
+    stage: 'CommitFest patch',
+    summary: 'Compress or batch large WAL records, originating in B-tree build work.',
+    url: 'https://commitfest.postgresql.org/patch/5621/',
+  },
+  {
+    title: 'recovery landmarks for destructive DDL',
+    stage: 'CommitFest patch',
+    summary: 'Record a useful commit LSN for recovering from DROP TABLE and related operations.',
+    url: 'https://commitfest.postgresql.org/patch/6272/',
+  },
+  {
+    title: 'ANALYZE steps in dump output',
+    stage: 'patch proposed',
+    summary: 'Preserve or trigger statistics collection during dump and restore workflows.',
+    url: 'https://www.postgresql.org/message-id/CACJufxGx_YLLxmnZVMuUApiVYqjKrydvEQqD3qxhwM6e0_8jrQ%40mail.gmail.com',
+  },
+  {
+    title: 'B-tree page merge',
+    stage: 'patch proposed',
+    summary: 'Merge sparse sibling pages to reduce index bloat without a full rebuild.',
+    url: 'https://www.postgresql.org/message-id/CACLU5mRude0L5psEj5WS0DVDv%3DAHN0McfZBKV5eBoW0JqwwZDA%40mail.gmail.com',
+  },
+  {
+    title: 'partial materialized-view refresh',
+    stage: 'CommitFest patch',
+    summary: 'Add WHERE support to REFRESH MATERIALIZED VIEW.',
+    url: 'https://commitfest.postgresql.org/patch/6305/',
+  },
+  {
+    title: 'precise wait-event timing and tracing',
+    stage: 'CommitFest patch',
+    summary: 'Publish low-overhead timing, trace capture, coverage analysis, and benchmarks.',
+    url: 'https://commitfest.postgresql.org/patch/6984/',
+  },
+  {
+    title: 'custom protocol command tags',
+    stage: 'patch proposed',
+    summary: 'Negotiate command-completion formats through the _pq_ protocol capability.',
+    url: 'https://www.postgresql.org/message-id/CAM527d_y5MOGRgqFhgDOD3DOCyB8N0ExDBnu-xPjMqCmdm4%2B%3Dg%40mail.gmail.com',
+  },
+  {
+    title: 'pglz compression experiment',
+    stage: 'public experiment',
+    summary: 'Build and publish an agent-assisted testbed for improving pglz compression.',
+    url: 'https://github.com/NikolayS/pglz-compression',
+  },
+  {
+    title: 'logical decoding from archive-fed standbys',
+    stage: 'patch series',
+    summary: 'Pause and safely resume recovery instead of invalidating conflicting logical slots.',
+    url: 'https://github.com/NikolayS/postgres/pull/40',
   },
 ];
 

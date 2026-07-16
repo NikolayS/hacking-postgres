@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import WorkCard from '../components/WorkCard.astro';
 import SessionRow from '../components/SessionRow.astro';
 import { sessions, youtubeEmbed } from '../data/sessions';
-import { coreOutcomes, workItems } from '../data/work';
+import { publicOutcomes, workItems } from '../data/work';
 
 const active = workItems.filter((item) => item.state !== 'shipped');
 const blockers = workItems.filter((item) => item.blocker);
@@ -30,7 +30,7 @@ const latest = sessions[0];
         <a class="stat" href="/sessions"><strong>{sessions.length}</strong><span>sessions indexed</span></a>
         <a class="stat" href="/work#open"><strong>{active.length}</strong><span>open work lines</span></a>
         <a class="stat" href="/work#blockers"><strong>{blockers.length}</strong><span>known blockers</span></a>
-        <a class="stat" href="/work#outcomes"><strong>{coreOutcomes.length}</strong><span>core outcomes</span></a>
+        <a class="stat" href="/work#outcomes"><strong>{publicOutcomes.length}</strong><span>public outcomes</span></a>
       </div>
     </div>
   </section>
