@@ -16,6 +16,7 @@ export type Session = {
 };
 
 export type WorkItem = {
+  issue: number;
   slug: string;
   title: string;
   state: 'active' | 'needs-review' | 'blocked' | 'shipped' | 'exploration';
