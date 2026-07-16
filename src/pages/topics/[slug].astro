@@ -13,6 +13,6 @@ const related = sessionsForTopic(sessions, topic.slug);
 ---
 
 <Layout title={`#${topic.name}`}>
-  <section class="page-head"><div class="shell"><p class="eyebrow">postgres@hacking:~$ grep -R '#{topic.name}' sessions/</p><h1>#{topic.name}</h1><p class="lede">{related.length} related sessions.</p></div></section>
+  <section class="page-head"><div class="shell"><p class="eyebrow">postgres=# select * from sessions where topic = '{topic.slug}';</p><h1>#{topic.name}</h1><p class="lede">{related.length} related sessions.</p></div></section>
   <section class="section"><div class="shell"><div class="session-list">{related.map((session) => <SessionRow session={session} />)}</div></div></section>
 </Layout>
