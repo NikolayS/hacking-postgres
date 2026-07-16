@@ -18,7 +18,13 @@ export type Session = {
 export type Person = {
   slug: string;
   name: string;
-  url?: string;
+  links: {
+    github?: string;
+    gitlab?: string;
+    twitter?: string;
+    linkedin?: string;
+    website?: string;
+  };
   note: string;
 };
 

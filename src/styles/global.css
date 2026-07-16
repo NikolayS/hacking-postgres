@@ -113,7 +113,11 @@ h3 { font-size: 1rem; }
 .person-row p { margin: .35rem 0 0; color: var(--muted); }
 .person-row > :last-child { text-align: right; }
 .person-row > :last-child strong { color: var(--accent); }
-.external-profile { color: var(--muted); font-size: 11px; }
+.person-links { display: flex; flex-wrap: wrap; gap: .35rem .8rem; margin-top: .65rem; }
+.person-links a { color: var(--muted); font-size: 11px; text-decoration: none; }
+.person-links a::before { content: "["; color: var(--faint); }
+.person-links a::after { content: "]"; color: var(--faint); }
+.person-links a:hover { color: var(--accent); }
 .callout { padding: 1.2rem; border-left: 3px solid var(--accent); background: var(--panel); }
 .callout p { margin: 0; }
 .callout p + p { margin-top: .6rem; }

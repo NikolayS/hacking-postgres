@@ -1,10 +1,46 @@
 import type { Person, Session, Topic } from './types';
 
 export const people: Person[] = [
-  { slug: 'nikolay-samokhvalov', name: 'Nikolay Samokhvalov', url: 'https://github.com/NikolayS', note: 'Host and Postgres hacker.' },
-  { slug: 'andrey-borodin', name: 'Andrey Borodin', url: 'https://github.com/x4m', note: 'Postgres hacker and recurring session participant.' },
-  { slug: 'kirk-roybal', name: 'Kirk Roybal', url: 'https://www.postgresql.org/community/contributors/', note: 'Postgres community hacker and recurring session participant.' },
-  { slug: 'dmitry-fomin', name: 'Dmitry Fomin', url: 'https://github.com/DmitryNFomin', note: 'Author of pg_wait_tracer and wait-event timing patches.' },
+  {
+    slug: 'nikolay-samokhvalov',
+    name: 'Nikolay Samokhvalov',
+    links: {
+      github: 'https://github.com/NikolayS',
+      gitlab: 'https://gitlab.com/NikolayS',
+      twitter: 'https://x.com/samokhvalov',
+      linkedin: 'https://www.linkedin.com/in/samokhvalov',
+      website: 'https://postgres.ai',
+    },
+    note: 'Host and Postgres hacker.',
+  },
+  {
+    slug: 'andrey-borodin',
+    name: 'Andrey Borodin',
+    links: {
+      github: 'https://github.com/x4m',
+      twitter: 'https://x.com/x4mmmmmm',
+      linkedin: 'https://www.linkedin.com/in/aborodin',
+    },
+    note: 'Postgres hacker and recurring session participant.',
+  },
+  {
+    slug: 'kirk-roybal',
+    name: 'Kirk Roybal',
+    links: {
+      github: 'https://github.com/bithead2k',
+      linkedin: 'https://www.linkedin.com/in/kroybal',
+    },
+    note: 'Postgres community hacker and recurring session participant.',
+  },
+  {
+    slug: 'dmitry-fomin',
+    name: 'Dmitry Fomin',
+    links: {
+      github: 'https://github.com/DmitryNFomin',
+      linkedin: 'https://www.linkedin.com/in/dmitry-fomin-a88b7b45',
+    },
+    note: 'Author of pg_wait_tracer and wait-event timing patches.',
+  },
 ];
 
 const namedAppearances: Record<string, string[]> = {

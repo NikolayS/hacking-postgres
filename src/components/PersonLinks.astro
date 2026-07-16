@@ -1,0 +1,10 @@
+---
+import type { Person } from '../data/types';
+
+const { links } = Astro.props as Pick<Person, 'links'>;
+const entries = Object.entries(links) as [keyof Person['links'], string][];
+---
+
+<nav class="person-links" aria-label="External profiles">
+  {entries.map(([service, url]) => <a href={url}>{service} ↗</a>)}
+</nav>
