@@ -13,11 +13,11 @@ const {
 const pageTitle = title ? `${title} — Postgres Hacking` : 'Postgres Hacking';
 const path = Astro.url.pathname;
 const links = [
-  ['/', 'home'],
-  ['/work', 'work'],
-  ['/todo', 'todo'],
-  ['/sessions', 'sessions'],
-  ['/about', 'about'],
+  ['/', './home'],
+  ['/work', './work'],
+  ['/todo', './TODO'],
+  ['/sessions', './sessions'],
+  ['/about', './about'],
 ];
 ---
 
@@ -36,20 +36,20 @@ const links = [
     <a class="skip-link" href="#content">skip to content</a>
     <header class="site-header">
       <div class="shell">
-        <a class="brand" href="/">postgres hacking</a>
+        <a class="brand" href="/">hacking.postgres.tv</a>
         <nav class="nav" aria-label="Primary navigation">
           {links.map(([href, label]) => (
             <a href={href} aria-current={path === href || (href !== '/' && path.startsWith(`${href}/`)) ? 'page' : undefined}>{label}</a>
           ))}
-          <a class="join" href="https://t.me/postgres_hacking">join telegram</a>
+          <a class="join" href="https://t.me/postgres_hacking">[join telegram]</a>
         </nav>
       </div>
     </header>
     <main id="content"><slot /></main>
     <footer class="site-footer">
       <div class="shell">
-        <span>built in public · patches over promises</span>
-        <span><a href="https://github.com/NikolayS/hacking-postgres">source</a> · <a href="https://www.youtube.com/@PostgresTV">PostgresTV</a></span>
+        <span>/* built in public — patches over promises */</span>
+        <span>[<a href="https://github.com/NikolayS/hacking-postgres">source</a>] [<a href="https://www.youtube.com/@PostgresTV">PostgresTV</a>]</span>
       </div>
     </footer>
   </body>

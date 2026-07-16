@@ -7,7 +7,7 @@ const shipped = workItems.filter((item) => item.state === 'shipped');
 ---
 
 <Layout title="Work">
-  <section class="page-head"><div class="shell"><p class="eyebrow">/work</p><h1>Patch lines, with the bullshit removed.</h1><p class="lede">What is moving, what needs review, what is blocked, and where the durable artifacts live.</p></div></section>
+  <section class="page-head"><div class="shell"><p class="eyebrow">postgres@hacking:~$ cat WORK</p><h1>Patch lines.</h1><p class="lede">What is moving, what needs review, what is blocked, and where the durable artifacts live.</p></div></section>
   <section class="section"><div class="shell"><div class="section-head"><h2>open</h2><span class="meta">{open.length} work lines</span></div><div class="grid">{open.map((item) => <WorkCard item={item} />)}</div></div></section>
   <section class="section"><div class="shell"><div class="section-head"><h2>shipped</h2><span class="meta">in core</span></div><div class="grid">{shipped.map((item) => <WorkCard item={item} />)}</div><div class="callout" style="margin-top:1.2rem"><p><strong>Also shipped from early sessions:</strong> <code>transaction_timeout</code> and bounded psql <code>\watch</code>.</p></div></div></section>
 </Layout>
