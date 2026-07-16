@@ -14,6 +14,12 @@ export const publicOutcomes = [
     url: 'https://git.postgresql.org/gitweb/?p=postgresql.git;a=commit;h=00beecfe839c878abb366b68272426ed5296bc2b',
   },
   {
+    title: 'UUIDv7 generation',
+    stage: 'committed upstream',
+    summary: 'Turn the original ULID exercise into PostgreSQL\'s sortable uuidv7() implementation.',
+    url: 'https://git.postgresql.org/gitweb/?p=postgresql.git;a=commit;h=78c5e141e9c139fc2ff36a220334e4aa25e1b0eb',
+  },
+  {
     title: 'MultiXact standby deadlock fix',
     stage: 'committed upstream',
     summary: 'Fix MultiXact creation, deadlock, and corruption edge cases on standbys.',

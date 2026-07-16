@@ -5,7 +5,13 @@ const { session } = Astro.props as { session: Session };
 ---
 
 <article class="session" data-session data-line={session.line} data-search={`${session.title} ${session.topic} ${session.line}`.toLowerCase()}>
-  <div class="session-date"><time datetime={session.date}>{session.date}</time><br />{session.duration}</div>
+  <div>
+    <button class="session-video" type="button" data-video={session.video} aria-label={`Play ${session.title}`}>
+      <img src={`https://i.ytimg.com/vi/${session.video}/mqdefault.jpg`} alt="" width="320" height="180" loading="lazy" />
+      <span>[play]</span>
+    </button>
+    <div class="session-date"><time datetime={session.date}>{session.date}</time> · {session.duration} · <a href={youtubeUrl(session.video)}>youtube ↗</a></div>
+  </div>
   <div>
     <h2><a href={youtubeUrl(session.video)}>{session.title}</a></h2>
     <p>{session.topic}</p>
@@ -19,3 +25,19 @@ const { session } = Astro.props as { session: Session };
     <span class="confidence">{session.confidence} mapping</span>
   </div>
 </article>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.session-video:not([data-wired])').forEach((button) => {
+    button.dataset.wired = 'true';
+    button.addEventListener('click', () => {
+      const video = button.dataset.video;
+      if (!video) return;
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${video}?autoplay=1`;
+      iframe.title = button.getAttribute('aria-label')?.replace(/^Play /, '') ?? 'YouTube video';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+      button.replaceWith(iframe);
+    });
+  });
+</script>
