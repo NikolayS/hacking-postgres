@@ -1,0 +1,39 @@
+---
+interface Props {
+  target: string;
+  label?: string;
+}
+
+const { target, label = 'copy' } = Astro.props;
+---
+
+<button class="copy-button" type="button" data-copy-target={target} aria-label={`Copy ${label}`} title={`Copy ${label}`}>
+  <svg aria-hidden="true" viewBox="0 0 16 16">
+    <rect x="5.5" y="5.5" width="8" height="8" rx="1"></rect>
+    <path d="M10.5 5.5v-3a1 1 0 0 0-1-1h-7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h3"></path>
+  </svg>
+  <span data-copy-label>[copy]</span>
+</button>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-copy-target]').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const selector = button.dataset.copyTarget;
+      const target = selector ? document.querySelector<HTMLElement>(selector) : null;
+      const label = button.querySelector<HTMLElement>('[data-copy-label]');
+      if (!target || !label) return;
+
+      try {
+        await navigator.clipboard.writeText(target.innerText);
+        label.textContent = '[copied]';
+        button.classList.add('copied');
+        window.setTimeout(() => {
+          label.textContent = '[copy]';
+          button.classList.remove('copied');
+        }, 1600);
+      } catch {
+        label.textContent = '[failed]';
+      }
+    });
+  });
+</script>
