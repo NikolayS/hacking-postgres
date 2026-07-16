@@ -55,8 +55,24 @@ export const people: Person[] = [
 ];
 
 const namedAppearances: Record<string, string[]> = {
-  'andrey-borodin': ['KK6PSdiy-9s', '74NFSqTrD0s', 'EqqByzGHIBk', '0nFGVCpQDec', 'ggXAxBhRvoc', 'hGXPgFK8Eh8'],
-  'kirk-wolak': ['KK6PSdiy-9s', '74NFSqTrD0s', 'ggXAxBhRvoc'],
+  'andrey-borodin': [
+    'x9Ahk5L2SwA', 'Q7QEvTbGlWs', 'Nu6RdU3aemk', 'KK6PSdiy-9s', 'LjiU6kB6izw',
+    '74NFSqTrD0s', 'VKuxQZlvd8E', 'woTqRL0Zh3A', 'EqqByzGHIBk', 'c0wKWcPZnH0',
+    'wLPDt7CufEU', '6cZvHjDrmlQ', '5lN775a5geI', 'mVYl2RHlpoE', '3MleDtXZUlM',
+    'Ib3SXSFt8mE', 'D1PEdDcvZTw', 'Szpqbb89YSA', 'bfPdLjdQvwU', 'g9yl3zE9MlI',
+    'lI-VEdAo4Ao', 't6T3GPjEiS4', 'OlzLF2VVZ8U', 'GpTJ06AFvg4', '0nFGVCpQDec',
+    'k4A9-WZET_4', '-6xA5JI4irI', 'l-0IP-_meD0', 'ul-wgvNtUGY', 'ggXAxBhRvoc',
+    'UzMxroqUuI0', 'hGXPgFK8Eh8',
+  ],
+  'kirk-wolak': [
+    'x9Ahk5L2SwA', 'Q7QEvTbGlWs', 'RLeB6rP5CA8', '_Fp-llPPSrE', 'KK6PSdiy-9s',
+    'LjiU6kB6izw', '74NFSqTrD0s', '6kqpjnpl5Gc', '3Gtuc2lnnsE', 'VKuxQZlvd8E',
+    'woTqRL0Zh3A', 'EqqByzGHIBk', 'c0wKWcPZnH0', 'wLPDt7CufEU', '6cZvHjDrmlQ',
+    '5lN775a5geI', 'mVYl2RHlpoE', '3MleDtXZUlM', 'Ib3SXSFt8mE', 'D1PEdDcvZTw',
+    'Szpqbb89YSA', 'g9yl3zE9MlI', 'lI-VEdAo4Ao', 't6T3GPjEiS4', 'OlzLF2VVZ8U',
+    'GpTJ06AFvg4', 'k4A9-WZET_4', '-6xA5JI4irI', 'l-0IP-_meD0', 'ul-wgvNtUGY',
+    'ggXAxBhRvoc', 'YL31cf9Q1VM',
+  ],
   'dmitry-fomin': ['RLeB6rP5CA8', '6kqpjnpl5Gc', '3Gtuc2lnnsE', 'bfPdLjdQvwU'],
 };
 
