@@ -91,6 +91,12 @@ export const publicOutcomes = [
     summary: 'Pause and safely resume recovery instead of invalidating conflicting logical slots.',
     url: 'https://github.com/NikolayS/postgres/pull/40',
   },
+  {
+    title: 'pg_dump table-data placeholders',
+    stage: 'patch proposed',
+    summary: 'Keep loadable slots for excluded table data so replacement data follows the normal restore order.',
+    url: 'https://www.postgresql.org/message-id/flat/CACLU5mTrtt2ocj_UhVC2_4tjXRi7oMCxK17WjoeX7khwRvZjxQ%40mail.gmail.com',
+  },
 ];
 
 export const supportedProjects: SupportedProject[] = [
@@ -174,5 +180,12 @@ export const workItems: WorkItem[] = [
     blocker: 'Prototype correctness and concurrency design are not ready for CommitFest.',
     sessions: ['D1PEdDcvZTw', 'Ib3SXSFt8mE', '3MleDtXZUlM'], artifacts: [{ label: '-hackers WIP', url: 'https://www.postgresql.org/message-id/CACLU5mRude0L5psEj5WS0DVDv%3DAHN0McfZBKV5eBoW0JqwwZDA%40mail.gmail.com' }, { label: 'GSoC idea', url: 'https://wiki.postgresql.org/wiki/GSoC_2026#B-tree_Index_Bloat_Reduction_(Page_Merge)' }],
     next: ['Define invariants and locking', 'Build a minimal correctness test suite', 'Scope a reviewable first patch'],
+  },
+  {
+    slug: 'pg-dump-table-data-placeholders', title: 'pg_dump table-data placeholders', state: 'needs-review', progress: 48,
+    summary: 'Keep loadable slots for excluded table data so replacement data is restored before dependent indexes and constraints.',
+    blocker: 'The first review raised interface questions; the patch needs a revised option design and another version.',
+    sessions: [], artifacts: [{ label: '-hackers patch', url: 'https://www.postgresql.org/message-id/flat/CACLU5mTrtt2ocj_UhVC2_4tjXRi7oMCxK17WjoeX7khwRvZjxQ%40mail.gmail.com' }, { label: 'first review', url: 'https://www.postgresql.org/message-id/502B3804-007B-4B3D-B6F2-F9632EBECF7C%40yandex-team.ru' }],
+    next: ['Settle the command-line and filter-file interface', 'Post the next patch version', 'Add a CommitFest entry when ready'],
   },
 ];

@@ -71,6 +71,34 @@ SQL and storage
 	https://wiki.postgresql.org/wiki/GSoC_2026#B-tree_Index_Bloat_Reduction_(Page_Merge)
 
 
+Client tools
+============
+
+* Revise pg_dump table-data placeholders after initial review
+
+	o Settle the command-line and filter-file interface
+	o Post the next patch version
+	o Add it to CommitFest when ready
+
+	https://www.postgresql.org/message-id/flat/CACLU5mTrtt2ocj_UhVC2_4tjXRi7oMCxK17WjoeX7khwRvZjxQ%40mail.gmail.com
+
+* Explore a plugin interface for psql
+
+* Explore splitting one large table across multiple dump files
+
+	o Let pg_dump produce independently restorable chunks
+	o Let pg_restore load those chunks concurrently
+	o Define snapshot, ordering, and failure semantics first
+
+* Revisit custom queries for pg_dump table data
+
+	o Support filtering and transformation at dump time
+	o Prefer this to mutating archive data before pg_restore
+	o Address safety, referential-integrity, and interface concerns
+
+	https://www.postgresql.org/message-id/flat/CACLU5mS07WGPpq6%3Dm8aC5tUMusNpL8FhBPnYem86iSawEgcavw%40mail.gmail.com
+
+
 Sessions and site
 =================
 
