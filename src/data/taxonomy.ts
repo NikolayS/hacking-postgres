@@ -24,11 +24,11 @@ export const people: Person[] = [
     note: 'Postgres hacker and recurring session participant.',
   },
   {
-    slug: 'kirk-roybal',
-    name: 'Kirk Roybal',
+    slug: 'kirk-wolak',
+    name: 'Kirk Wolak',
     links: {
-      github: 'https://github.com/bithead2k',
-      linkedin: 'https://www.linkedin.com/in/kroybal',
+      gitlab: 'https://gitlab.com/wolakk',
+      linkedin: 'https://www.linkedin.com/in/kirk-wolak-7706737',
     },
     note: 'Postgres community hacker and recurring session participant.',
   },
@@ -45,7 +45,7 @@ export const people: Person[] = [
 
 const namedAppearances: Record<string, string[]> = {
   'andrey-borodin': ['KK6PSdiy-9s', '74NFSqTrD0s', 'EqqByzGHIBk', '0nFGVCpQDec', 'ggXAxBhRvoc', 'hGXPgFK8Eh8'],
-  'kirk-roybal': ['KK6PSdiy-9s', '74NFSqTrD0s', 'ggXAxBhRvoc'],
+  'kirk-wolak': ['KK6PSdiy-9s', '74NFSqTrD0s', 'ggXAxBhRvoc'],
   'dmitry-fomin': ['RLeB6rP5CA8', '6kqpjnpl5Gc', '3Gtuc2lnnsE', 'bfPdLjdQvwU'],
 };
 
