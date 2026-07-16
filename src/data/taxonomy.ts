@@ -4,6 +4,10 @@ export const people: Person[] = [
   {
     slug: 'nikolay-samokhvalov',
     name: 'Nikolay Samokhvalov',
+    recognition: {
+      label: 'PostgreSQL Significant Contributor',
+      url: 'https://www.postgresql.org/community/contributors/#significant-contributors',
+    },
     links: {
       github: 'https://github.com/NikolayS',
       gitlab: 'https://gitlab.com/NikolayS',
@@ -16,6 +20,10 @@ export const people: Person[] = [
   {
     slug: 'andrey-borodin',
     name: 'Andrey Borodin',
+    recognition: {
+      label: 'PostgreSQL Major Contributor',
+      url: 'https://www.postgresql.org/community/contributors/#major-contributors',
+    },
     links: {
       github: 'https://github.com/x4m',
       twitter: 'https://x.com/x4mmmmmm',
@@ -27,6 +35,7 @@ export const people: Person[] = [
     slug: 'kirk-wolak',
     name: 'Kirk Wolak',
     links: {
+      github: 'https://github.com/kirkw',
       gitlab: 'https://gitlab.com/wolakk',
       linkedin: 'https://www.linkedin.com/in/kirk-wolak-7706737',
     },

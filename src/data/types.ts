@@ -18,6 +18,10 @@ export type Session = {
 export type Person = {
   slug: string;
   name: string;
+  recognition?: {
+    label: string;
+    url: string;
+  };
   links: {
     github?: string;
     gitlab?: string;
