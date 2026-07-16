@@ -70,7 +70,7 @@ export const publicOutcomes = [
   {
     title: 'partial materialized-view refresh',
     stage: 'CommitFest patch',
-    summary: 'Add WHERE support to REFRESH MATERIALIZED VIEW.',
+    summary: 'Adam Brusselback turned the October 29 session’s idea into a REFRESH MATERIALIZED VIEW ... WHERE patch.',
     url: 'https://commitfest.postgresql.org/patch/6305/',
   },
   {
@@ -167,10 +167,10 @@ export const workItems: WorkItem[] = [
   },
   {
     slug: 'partial-matview-refresh', title: 'Partial materialized-view refresh', state: 'needs-review', progress: 67,
-    summary: 'Add WHERE support to REFRESH MATERIALIZED VIEW with explicit concurrency semantics.',
-    blocker: 'CommitFest entry currently needs review.',
-    sessions: ['6cZvHjDrmlQ'], artifacts: [{ label: '-hackers', url: 'https://www.postgresql.org/message-id/CAMjNa7eFzTQ5%3DoZMQiB2bMkez5KP4A77JC7SRjeVEkOrh7cUHw%40mail.gmail.com' }, { label: 'CF #6305', url: 'https://commitfest.postgresql.org/patch/6305/' }],
-    next: ['Review semantics and tests', 'Post review to CommitFest'],
+    summary: 'Inspired by the October 29 Hacking Postgres session, viewer Adam Brusselback implemented WHERE support for targeted REFRESH MATERIALIZED VIEW and has continued revising it through review.',
+    blocker: 'The current patch has acknowledged privilege-escalation and error-cleanup bugs; the next revision has not been posted yet.',
+    sessions: ['6cZvHjDrmlQ'], artifacts: [{ label: 'Adam’s -hackers thread', url: 'https://www.postgresql.org/message-id/flat/CAMjNa7eFzTQ5%3DoZMQiB2bMkez5KP4A77JC7SRjeVEkOrh7cUHw%40mail.gmail.com' }, { label: 'CF #6305', url: 'https://commitfest.postgresql.org/patch/6305/' }, { label: 'latest v2 patch', url: 'https://www.postgresql.org/message-id/attachment/194767/v2-0001-implement_mat_view_where.patch' }],
+    next: ['Review the security and failure-cleanup fixes in the next version', 'Test concurrency and isolation-level semantics', 'Post review to CommitFest'],
   },
   {
     slug: 'wal-compression', title: 'Whole-WAL-record compression', state: 'blocked', progress: 43,

@@ -603,7 +603,7 @@ export const sessionDetails: Record<string, SessionDetail> = {
     ]
   },
   "6cZvHjDrmlQ": {
-    "summary": "The session explored adding a WHERE clause to REFRESH MATERIALIZED VIEW so selected rows can be refreshed without rebuilding the whole result. Reading the concurrent-refresh implementation revealed that Postgres creates a temporary difference table, then applies ordinary SQL deletes and inserts through SPI. After experimentally bypassing the normal DML guard, updates to a materialized view and its indexes worked. The group concluded that partial refresh looked technically approachable, while delete semantics, grammar, safety, and consistency still needed design work.",
+    "summary": "The session explored adding a WHERE clause to REFRESH MATERIALIZED VIEW so selected rows can be refreshed without rebuilding the whole result. Reading the concurrent-refresh implementation revealed that Postgres creates a temporary difference table, then applies ordinary SQL deletes and inserts through SPI. After experimentally bypassing the normal DML guard, updates to a materialized view and its indexes worked. The group concluded that partial refresh looked technically approachable, while delete semantics, grammar, safety, and consistency still needed design work. Viewer Adam Brusselback explicitly credited this session as the inspiration for the patch he later submitted to pgsql-hackers and CommitFest.",
     "chapters": [
       {
         "at": "00:30",

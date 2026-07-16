@@ -50,6 +50,7 @@ SQL features
 
 * [WIP] Partial refresh of materialized views
 
+	https://hacking.postgres.tv/projects/partial-matview-refresh/
 	https://commitfest.postgresql.org/patch/6305/
 
 
