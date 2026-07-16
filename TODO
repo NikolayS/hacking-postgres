@@ -2,38 +2,29 @@ Postgres Hacking TODO List
 ==========================
 Last updated: 2026-07-16
 
-This file is the list.  When an item is finished, remove it.  Add links
-under the item when there is a patch, discussion, or useful background.
+This is a list of outcomes we want to achieve, not an internal task list.
+[WIP] means public work exists.  [NOT STARTED] means the idea has not yet
+become active work.  Implementation steps, review notes, and blockers belong
+on the work and project pages.  When an outcome is finished, remove it.
 
-To propose an item, edit this file on GitHub and open a pull request:
+To propose an outcome, edit this file on GitHub and open a pull request:
 https://github.com/NikolayS/hacking-postgres/edit/main/TODO
 
 
 Observability
 =============
 
-* Finish precise wait-event timing and tracing
+* [WIP] Precise, low-overhead timing and tracing for Postgres wait events
 
-	o Publish reproducible observer-effect benchmarks
-	o Close instrumentation coverage gaps
-	o Address CommitFest review
-
-	https://github.com/DmitryNFomin/postgres/pull/2
+	https://hacking.postgres.tv/projects/wait-event-tracing/
 	https://commitfest.postgresql.org/patch/6984/
-	https://nikolays.github.io/wet-timing-bench-brief/
 
-* Review and extend wait-event coverage gaps
-
-	o Review server logging destination wait events
-	o Continue auditing blocking paths currently reported as CPU
+* [WIP] Complete wait-event coverage for blocking Postgres operations
 
 	https://gaps.wait.events/
 	https://www.postgresql.org/message-id/flat/CACdN0M78U%2BGvpqA7oey-GA7fFSYM636aDp6H9FVvCztv9zXxSA%40mail.gmail.com
 
-* Follow pg_stat_statements scalability work
-
-	o Compare the student’s LWLock-contention work with the AWS-led series
-	o Review the pgstat redesign, eviction, and query-text storage trade-offs
+* [WIP] pg_stat_statements that scales without global LWLock contention
 
 	https://www.postgresql.org/message-id/flat/CAA5RZ0vZwR_dSK6fo0P2-EnskUVN0NjLHnGnJMFDPC8-kEW3sQ%40mail.gmail.com
 
@@ -41,28 +32,21 @@ Observability
 Recovery and replication
 ========================
 
-* Submit corrected recovery landmarks for destructive DDL
+* [WIP] Reliable recovery landmarks for destructive DDL
 
-	o Finish review
-	o Send a new patch version to pgsql-hackers
-	o Update the CommitFest entry
-
-	https://github.com/NikolayS/postgres/pull/55
+	https://hacking.postgres.tv/projects/log-object-drops/
 	https://commitfest.postgresql.org/patch/6272/
 
-* Complete archive-fed logical-decoding test coverage
+* [WIP] Safe logical decoding from an archive-fed standby
 
-	o Test crash and restart paths
-	o Test promotion and rewind paths
-	o Prepare the pgsql-hackers submission
-
+	https://hacking.postgres.tv/projects/logical-decoding-archives/
 	https://github.com/NikolayS/postgres/pull/40
 
 
 SQL features
 ============
 
-* Review partial materialized-view refresh
+* [WIP] Partial refresh of materialized views
 
 	https://commitfest.postgresql.org/patch/6305/
 
@@ -70,10 +54,7 @@ SQL features
 Client/server protocol
 ======================
 
-* Resolve custom command-tag protocol design
-
-	o Resolve capability-negotiation questions
-	o Decide whether to submit it to CommitFest
+* [WIP] Negotiated custom command-completion tags
 
 	https://github.com/NikolayS/postgres/pull/16
 
@@ -81,57 +62,27 @@ Client/server protocol
 Storage internals
 =================
 
-* Decide whether to continue whole-WAL-record compression
-
-	o Confirm the author's intent
-	o Rebase the series
-	o Produce current benchmarks
+* [WIP] Compression of whole WAL records
 
 	https://commitfest.postgresql.org/patch/5621/
 
-* Review the active B-tree page-merge implementation
+* [WIP] Safe online B-tree page merge to reclaim index bloat
 
-	o Review merge, tombstone cleanup, and page-deletion invariants
-	o Expand concurrency, backward-scan, VACUUM, WAL, and recovery tests
-	o Shape the branch into a reviewable patch series
-
-	https://wiki.postgresql.org/wiki/GSoC_2026#B-tree_Index_Bloat_Reduction_(Page_Merge)
+	https://hacking.postgres.tv/projects/btree-page-merge/
 	https://www.postgresql.org/message-id/flat/CANBEAPFq3YAOydjUS3xwcUG9L6e3WE5Z4nGPk_Q3RsjSFWTJNA%40mail.gmail.com
-	https://github.com/salmaaliia/postgres/tree/merge
-	https://github.com/salmaaliia/postgres/commit/3cabf7b3cec90bffb427e8fa2ca9faf1a85213bf
 
 
 Client tools
 ============
 
-* Revise pg_dump table-data placeholders after initial review
-
-	o Settle the command-line and filter-file interface
-	o Post the next patch version
-	o Add it to CommitFest when ready
+* [WIP] pg_dump placeholders for excluded table data
 
 	https://www.postgresql.org/message-id/flat/CACLU5mTrtt2ocj_UhVC2_4tjXRi7oMCxK17WjoeX7khwRvZjxQ%40mail.gmail.com
 
-* Explore a plugin interface for psql
+* [NOT STARTED] A plugin interface for psql
 
-* Explore splitting one large table across multiple dump files
+* [NOT STARTED] Parallel dump and restore of independently restorable chunks of one large table
 
-	o Let pg_dump produce independently restorable chunks
-	o Let pg_restore load those chunks concurrently
-	o Define snapshot, ordering, and failure semantics first
-
-* Revisit custom queries for pg_dump table data
-
-	o Support filtering and transformation at dump time
-	o Prefer this to mutating archive data before pg_restore
-	o Address safety, referential-integrity, and interface concerns
+* [NOT STARTED] Custom pg_dump queries for filtering and transforming table data
 
 	https://www.postgresql.org/message-id/flat/CACLU5mS07WGPpq6%3Dm8aC5tUMusNpL8FhBPnYem86iSawEgcavw%40mail.gmail.com
-
-
-Sessions and site
-=================
-
-* Recover topics and links for generic-title sessions
-* Point hacking.postgres.tv to GitHub Pages
-* Add the AI assistant when there is a concrete design worth shipping
