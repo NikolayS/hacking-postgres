@@ -27,7 +27,7 @@ export const people: Person[] = [
     links: {
       github: 'https://github.com/x4m',
       twitter: 'https://x.com/x4mmmmmm',
-      linkedin: 'https://www.linkedin.com/in/aborodin',
+      linkedin: 'https://www.linkedin.com/in/andrew-borodin-79411b47/',
     },
     note: 'Postgres hacker and recurring session participant.',
   },
