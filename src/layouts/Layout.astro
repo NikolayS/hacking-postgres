@@ -27,7 +27,7 @@ const links = [
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#0b0d10" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -39,12 +39,21 @@ const links = [
     <header class="site-header">
       <div class="shell">
         <a class="brand" href="/">hacking.postgres.tv</a>
-        <nav class="nav" aria-label="Primary navigation">
+        <nav class="nav desktop-nav" aria-label="Primary navigation">
           {links.map(([href, label]) => (
             <a href={href} aria-current={path === href || (href !== '/' && path.startsWith(`${href}/`)) ? 'page' : undefined}>{label}</a>
           ))}
           <a class="join" href="https://t.me/postgres_hacking">[join telegram]</a>
         </nav>
+        <details class="mobile-menu">
+          <summary>./menu</summary>
+          <nav class="mobile-nav" aria-label="Primary navigation">
+            {links.map(([href, label]) => (
+              <a href={href} aria-current={path === href || (href !== '/' && path.startsWith(`${href}/`)) ? 'page' : undefined}>{label}</a>
+            ))}
+            <a class="join" href="https://t.me/postgres_hacking">[join telegram]</a>
+          </nav>
+        </details>
       </div>
     </header>
     <main id="content"><slot /></main>
