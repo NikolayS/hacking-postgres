@@ -7,6 +7,7 @@ import { publicOutcomes, workItems } from '../data/work';
 
 const active = workItems.filter((item) => item.state !== 'shipped');
 const blockers = workItems.filter((item) => item.blocker);
+const upstreamOutcomes = publicOutcomes.filter((outcome) => outcome.stage === 'committed upstream');
 const latest = sessions[0];
 ---
 
@@ -20,6 +21,28 @@ const latest = sessions[0];
         <a class="button primary" href="https://t.me/postgres_hacking">[join t.me/postgres_hacking]</a>
         <a class="button" href="/work">[active work]</a>
         <a class="button" href="/sessions">[session archive]</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section upstream-section" id="upstream">
+    <div class="shell">
+      <a class="upstream-win" href="/work#upstream">
+        <strong>{upstreamOutcomes.length}</strong>
+        <span>
+          <small>COMMITTED UPSTREAM</small>
+          <b>These sessions changed PostgreSQL.</b>
+          <em>Not demos. Not forks. Code shipped in Postgres core. →</em>
+        </span>
+      </a>
+      <div class="upstream-grid">
+        {upstreamOutcomes.map((outcome) => (
+          <a href={outcome.url}>
+            <span>[merged]</span>
+            <strong>{outcome.title}</strong>
+            <small>{outcome.summary}</small>
+          </a>
+        ))}
       </div>
     </div>
   </section>
@@ -45,7 +68,7 @@ const latest = sessions[0];
         <a class="stat" href="/sessions"><strong>{sessions.length}</strong><span>sessions indexed</span></a>
         <a class="stat" href="/work#open"><strong>{active.length}</strong><span>open work lines</span></a>
         <a class="stat" href="/work#blockers"><strong>{blockers.length}</strong><span>known blockers</span></a>
-        <a class="stat" href="/work#outcomes"><strong>{publicOutcomes.length}</strong><span>public outcomes</span></a>
+        <a class="stat" href="/work#upstream"><strong>{upstreamOutcomes.length}</strong><span>committed upstream</span></a>
       </div>
     </div>
   </section>
