@@ -586,7 +586,7 @@ export const sessionDetails: Record<string, SessionDetail> = {
       },
       {
         "at": "32:30",
-        "title": "Prototyping COPY program wait events"
+        "title": "Prototyping COPY PROGRAM wait events"
       },
       {
         "at": "48:30",

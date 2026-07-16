@@ -26,7 +26,7 @@ export const publicOutcomes = [
     url: 'https://git.postgresql.org/gitweb/?p=postgresql.git;a=commit;h=789d65364cdecd81e4bf822eec468ea3d34d28af',
   },
   {
-    title: 'COPY file and program wait events',
+    title: 'COPY file and PROGRAM wait events',
     stage: 'committed upstream',
     summary: 'Expose blocking reads and writes for COPY FROM/TO files, pipes, and programs.',
     url: 'https://git.postgresql.org/gitweb/?p=postgresql.git;a=commit;h=e05a24c2d',
