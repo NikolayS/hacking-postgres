@@ -107,6 +107,7 @@ export const supportedProjects: SupportedProject[] = [
     artifacts: [
       { label: 'pg_wait_tracer', url: 'https://github.com/DmitryNFomin/pg_wait_tracer' },
       { label: 'CF #6984', url: 'https://commitfest.postgresql.org/patch/6984/' },
+      { label: 'WET timing benchmark', url: 'https://nikolays.github.io/wet-timing-bench-brief/' },
       { label: 'sessions and work', url: '/projects/wait-event-tracing/' },
     ],
   },
@@ -128,7 +129,7 @@ export const workItems: WorkItem[] = [
     summary: 'Low-overhead core timing, trace capture, coverage analysis, and independent observer-effect benchmarks.',
     blocker: 'Needs more reviewer cycles and benchmark scrutiny in CommitFest.',
     sessions: ['bfPdLjdQvwU', '3Gtuc2lnnsE', '6kqpjnpl5Gc', 'RLeB6rP5CA8', 'Q7QEvTbGlWs'],
-    artifacts: [{ label: 'patch PR', url: 'https://github.com/DmitryNFomin/postgres/pull/2' }, { label: 'CF #6984', url: 'https://commitfest.postgresql.org/patch/6984/' }, { label: 'benchmark', url: 'https://nikolays.github.io/wet-timing-bench-brief/' }],
+    artifacts: [{ label: 'patch PR', url: 'https://github.com/DmitryNFomin/postgres/pull/2' }, { label: 'CF #6984', url: 'https://commitfest.postgresql.org/patch/6984/' }, { label: 'WET timing benchmark', url: 'https://nikolays.github.io/wet-timing-bench-brief/' }],
     next: ['Run and publish reproducible benchmarks', 'Close instrumentation coverage gaps', 'Address CommitFest review'],
   },
   {
