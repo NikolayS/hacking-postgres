@@ -14,6 +14,8 @@ https://github.com/NikolayS/hacking-postgres/edit/main/TODO
 Observability
 =============
 
+* [NOT STARTED] Per-database query counts in pg_stat_database, enabling QPS alongside TPS
+
 * [WIP] Precise, low-overhead timing and tracing for Postgres wait events
 
 	https://hacking.postgres.tv/projects/wait-event-tracing/
