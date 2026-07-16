@@ -34,17 +34,56 @@ const sessionPeople = peopleForSession(session);
 </article>
 
 <script>
+  const getVideoDialog = () => {
+    const existing = document.querySelector<HTMLDialogElement>('#video-dialog');
+    if (existing) return existing;
+
+    const dialog = document.createElement('dialog');
+    dialog.id = 'video-dialog';
+    dialog.className = 'video-dialog';
+    dialog.setAttribute('aria-labelledby', 'video-dialog-title');
+    dialog.innerHTML = `
+      <div class="video-dialog-frame">
+        <header>
+          <strong id="video-dialog-title"></strong>
+          <button type="button" class="video-dialog-close" aria-label="Close video">[close]</button>
+        </header>
+        <div class="video-dialog-player"></div>
+        <footer><a class="video-dialog-youtube" href="" target="_blank" rel="noreferrer">[open on youtube ↗]</a></footer>
+      </div>`;
+    document.body.append(dialog);
+
+    const close = () => dialog.close();
+    dialog.querySelector<HTMLButtonElement>('.video-dialog-close')?.addEventListener('click', close);
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) close();
+    });
+    dialog.addEventListener('close', () => {
+      dialog.querySelector('.video-dialog-player')?.replaceChildren();
+      document.body.classList.remove('video-dialog-open');
+    });
+    return dialog;
+  };
+
   document.querySelectorAll<HTMLButtonElement>('.session-video:not([data-wired])').forEach((button) => {
     button.dataset.wired = 'true';
     button.addEventListener('click', () => {
       const video = button.dataset.video;
       if (!video) return;
+      const dialog = getVideoDialog();
+      const title = button.getAttribute('aria-label')?.replace(/^Play /, '') ?? 'YouTube video';
       const iframe = document.createElement('iframe');
       iframe.src = `https://www.youtube-nocookie.com/embed/${video}?autoplay=1`;
-      iframe.title = button.getAttribute('aria-label')?.replace(/^Play /, '') ?? 'YouTube video';
+      iframe.title = title;
       iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
       iframe.allowFullscreen = true;
-      button.replaceWith(iframe);
+      dialog.querySelector('.video-dialog-player')?.replaceChildren(iframe);
+      const heading = dialog.querySelector<HTMLElement>('#video-dialog-title');
+      if (heading) heading.textContent = title;
+      const youtube = dialog.querySelector<HTMLAnchorElement>('.video-dialog-youtube');
+      if (youtube) youtube.href = `https://www.youtube.com/watch?v=${video}`;
+      document.body.classList.add('video-dialog-open');
+      dialog.showModal();
     });
   });
 </script>
