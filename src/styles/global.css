@@ -131,6 +131,7 @@ h3 { font-size: 1rem; }
 .filter { height: 36px; padding: 0 .7rem; border: 1px solid var(--line); color: var(--muted); background: var(--panel); font-size: 10px; white-space: nowrap; cursor: pointer; }
 .filter[aria-pressed="true"], .filter:hover { border-color: var(--accent); color: var(--accent); }
 .session-list { border-top: 1px solid var(--line); }
+.session[hidden] { display: none; }
 .session { display: grid; grid-template-columns: 190px minmax(0, 1fr) auto; gap: 1.3rem; padding: 1.15rem 0; border-bottom: 1px solid var(--line); }
 .session-date { color: var(--muted); font-size: 11px; line-height: 1.4; }
 .session-date a { color: var(--muted); }
