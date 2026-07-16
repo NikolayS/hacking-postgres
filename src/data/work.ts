@@ -1,4 +1,4 @@
-import type { WorkItem } from './types';
+import type { SupportedProject, WorkItem } from './types';
 
 export const publicOutcomes = [
   {
@@ -56,7 +56,7 @@ export const publicOutcomes = [
     url: 'https://www.postgresql.org/message-id/CACJufxGx_YLLxmnZVMuUApiVYqjKrydvEQqD3qxhwM6e0_8jrQ%40mail.gmail.com',
   },
   {
-    title: 'B-tree page merge',
+    title: 'B-tree bloat removal (page merge)',
     stage: 'patch proposed',
     summary: 'Merge sparse sibling pages to reduce index bloat without a full rebuild.',
     url: 'https://www.postgresql.org/message-id/CACLU5mRude0L5psEj5WS0DVDv%3DAHN0McfZBKV5eBoW0JqwwZDA%40mail.gmail.com',
@@ -90,6 +90,29 @@ export const publicOutcomes = [
     stage: 'patch series',
     summary: 'Pause and safely resume recovery instead of invalidating conflicting logical slots.',
     url: 'https://github.com/NikolayS/postgres/pull/40',
+  },
+];
+
+export const supportedProjects: SupportedProject[] = [
+  {
+    title: 'TRACE / wait-event tracing',
+    owner: 'Dmitry Fomin',
+    summary: 'Dmitry’s pg_wait_tracer and core wait-event timing work, supported here with design sessions, reviews, coverage analysis, and independent benchmarks.',
+    artifacts: [
+      { label: 'pg_wait_tracer', url: 'https://github.com/DmitryNFomin/pg_wait_tracer' },
+      { label: 'CF #6984', url: 'https://commitfest.postgresql.org/patch/6984/' },
+      { label: 'sessions and work', url: '/projects/wait-event-tracing/' },
+    ],
+  },
+  {
+    title: 'pg_stat_statements scalability',
+    owner: 'GSoC 2026 + AWS',
+    summary: 'Kirk and Nik mentor Quan Hoang Truong’s GSoC project. A related AWS-led patch series now implements a broader pgstat-based redesign for the same contention problem.',
+    artifacts: [
+      { label: 'GSoC project', url: 'https://wiki.postgresql.org/wiki/GSoC_2026#Monitoring_Tools_Performance:_pg_stat_statements_and_LWLock_Contention' },
+      { label: 'student introduction', url: 'https://www.postgresql.org/message-id/CAGJgb9vmBZRWi-8%2B%3D62U-BoPvGrUS4uMk%3DgjGbAfp3Rro2CAJg%40mail.gmail.com' },
+      { label: 'AWS patch series', url: 'https://www.postgresql.org/message-id/flat/CAA5RZ0vZwR_dSK6fo0P2-EnskUVN0NjLHnGnJMFDPC8-kEW3sQ%40mail.gmail.com' },
+    ],
   },
 ];
 
@@ -146,7 +169,7 @@ export const workItems: WorkItem[] = [
     next: ['Resolve capability negotiation questions', 'Decide whether to pursue a CF entry'],
   },
   {
-    slug: 'btree-page-merge', title: 'B-tree page merge', state: 'exploration', progress: 31,
+    slug: 'btree-page-merge', title: 'B-tree bloat removal (page merge)', state: 'active', progress: 31,
     summary: 'Merge sparse sibling pages to reduce index bloat without rebuilding the entire index.',
     blocker: 'Prototype correctness and concurrency design are not ready for CommitFest.',
     sessions: ['D1PEdDcvZTw', 'Ib3SXSFt8mE', '3MleDtXZUlM'], artifacts: [{ label: '-hackers WIP', url: 'https://www.postgresql.org/message-id/CACLU5mRude0L5psEj5WS0DVDv%3DAHN0McfZBKV5eBoW0JqwwZDA%40mail.gmail.com' }, { label: 'GSoC idea', url: 'https://wiki.postgresql.org/wiki/GSoC_2026#B-tree_Index_Bloat_Reduction_(Page_Merge)' }],

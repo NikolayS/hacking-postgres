@@ -63,7 +63,7 @@ SQL and storage
 
 	https://github.com/NikolayS/postgres/pull/16
 
-* Scope a reviewable B-tree page-merge patch
+* Scope a reviewable B-tree bloat-removal patch
 
 	o Define invariants and locking
 	o Build a minimal correctness test suite

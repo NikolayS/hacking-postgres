@@ -95,7 +95,7 @@ h3 { font-size: 1rem; }
 .progress.needs-review span { background: var(--warn); }
 
 .artifact-list { display: flex; flex-wrap: wrap; gap: .4rem .8rem; margin-top: .8rem; }
-.artifact-list a { color: var(--muted); font-size: 11px; line-height: 1.4; }
+.artifact-list a { color: var(--muted); font-size: 11px; line-height: 1.4; white-space: nowrap; }
 .artifact-list a::before { content: "↗ "; color: var(--faint); }
 .tag-list { display: flex; flex-wrap: wrap; gap: .35rem .65rem; margin-top: .7rem; }
 .tag { color: var(--muted); font-size: 10px; line-height: 1.4; text-decoration: none; }
@@ -109,13 +109,13 @@ h3 { font-size: 1rem; }
 .person-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2rem; padding: 1.1rem 0; border-bottom: 1px solid var(--line); }
 .person-row h2 { font-size: 1rem; }
 .person-row h2 a { text-decoration: none; }
-.contributor-recognition { display: inline-block; margin-top: .45rem; padding: .18rem .4rem; border: 1px solid var(--accent-dim); color: var(--accent); font-size: 10px; line-height: 1.4; text-decoration: none; text-transform: uppercase; }
+.contributor-recognition { display: inline-block; margin-top: .45rem; padding: .18rem .4rem; border: 1px solid var(--accent-dim); color: var(--accent); font-size: 10px; line-height: 1.4; text-decoration: none; text-transform: uppercase; white-space: nowrap; }
 .contributor-recognition:hover { border-color: var(--accent); background: var(--panel-2); }
 .person-row p { margin: .35rem 0 0; color: var(--muted); }
 .person-row > :last-child { text-align: right; }
 .person-row > :last-child strong { color: var(--accent); }
 .person-links { display: flex; flex-wrap: wrap; gap: .35rem .8rem; margin-top: .65rem; }
-.person-links a { color: var(--muted); font-size: 11px; text-decoration: none; }
+.person-links a { color: var(--muted); font-size: 11px; text-decoration: none; white-space: nowrap; }
 .person-links a::before { content: "["; color: var(--faint); }
 .person-links a::after { content: "]"; color: var(--faint); }
 .person-links a:hover { color: var(--accent); }

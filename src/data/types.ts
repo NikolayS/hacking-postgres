@@ -51,3 +51,10 @@ export type WorkItem = {
   artifacts: Artifact[];
   next: string[];
 };
+
+export type SupportedProject = {
+  title: string;
+  owner: string;
+  summary: string;
+  artifacts: Artifact[];
+};

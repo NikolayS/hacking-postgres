@@ -1,7 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SupportedProjectCard from '../components/SupportedProjectCard.astro';
 import WorkCard from '../components/WorkCard.astro';
-import { publicOutcomes, workItems } from '../data/work';
+import { publicOutcomes, supportedProjects, workItems } from '../data/work';
 const open = workItems.filter((item) => item.state !== 'shipped');
 const shipped = workItems.filter((item) => item.state === 'shipped');
 const blockers = workItems.filter((item) => item.blocker);
@@ -13,6 +14,7 @@ const otherOutcomes = publicOutcomes.filter((outcome) => outcome.stage !== 'comm
   <section class="page-head"><div class="shell"><p class="eyebrow">postgres@hacking:~$ cat WORK</p><h1>Patch lines.</h1><p class="lede">What is moving, what needs review, what is blocked, and where the durable artifacts live.</p></div></section>
   <section class="section upstream-section" id="upstream"><div class="shell"><div class="upstream-win"><strong>{upstreamOutcomes.length}</strong><span><b>already committed upstream</b><em>Already in Postgres and available to everyone</em></span></div><div class="upstream-grid">{upstreamOutcomes.map((outcome) => <a href={outcome.url}><span>[merged]</span><strong>{outcome.title}</strong><small>{outcome.summary}</small></a>)}</div></div></section>
   <section class="section" id="open"><div class="shell"><div class="section-head"><h2>open</h2><span class="meta">{open.length} work lines</span></div><div class="grid">{open.map((item) => <WorkCard item={item} />)}</div></div></section>
+  <section class="section" id="supporting"><div class="shell"><div class="section-head"><h2>also supporting</h2><span class="meta">work led by others</span></div><div class="grid">{supportedProjects.map((project) => <SupportedProjectCard project={project} />)}</div></div></section>
   <section class="section" id="blockers"><div class="shell"><div class="section-head"><h2>known blockers</h2><span class="meta">{blockers.length}</span></div><div class="detail-rows">{blockers.map((item) => <a class="detail-row" href={`/projects/${item.slug}/`}><strong>{item.title}</strong><span>{item.blocker}</span></a>)}</div></div></section>
   <section class="section" id="outcomes"><div class="shell"><div class="section-head"><h2>other public outcomes</h2><span class="meta">{otherOutcomes.length} durable outputs</span></div><div class="detail-rows">{otherOutcomes.map((outcome) => <a class="detail-row" href={outcome.url}><strong>{outcome.title}</strong><span>{outcome.stage} · {outcome.summary}</span></a>)}</div></div></section>
   <section class="section" id="shipped"><div class="shell"><div class="section-head"><h2>shipped work lines</h2><span class="meta">tracked above</span></div><div class="grid">{shipped.map((item) => <WorkCard item={item} />)}</div></div></section>

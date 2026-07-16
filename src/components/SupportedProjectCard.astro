@@ -1,0 +1,15 @@
+---
+import type { SupportedProject } from '../data/types';
+const { project } = Astro.props as { project: SupportedProject };
+---
+
+<article class="card">
+  <div class="card-top">
+    <h3>{project.title}</h3>
+    <span class="state active">{project.owner}</span>
+  </div>
+  <p>{project.summary}</p>
+  <div class="artifact-list">
+    {project.artifacts.map((artifact) => <a href={artifact.url}>{artifact.label}</a>)}
+  </div>
+</article>
