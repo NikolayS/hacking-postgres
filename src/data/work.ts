@@ -26,6 +26,12 @@ export const publicOutcomes = [
     url: 'https://git.postgresql.org/gitweb/?p=postgresql.git;a=commit;h=789d65364cdecd81e4bf822eec468ea3d34d28af',
   },
   {
+    title: 'COPY file and program wait events',
+    stage: 'committed upstream',
+    summary: 'Expose blocking reads and writes for COPY FROM/TO files, pipes, and programs.',
+    url: 'https://git.postgresql.org/gitweb/?p=postgresql.git;a=commit;h=e05a24c2d',
+  },
+  {
     title: 'unqualified DML guards',
     stage: 'patch proposed',
     summary: 'Prototype server-side protection against UPDATE or DELETE without qualification.',
@@ -117,6 +123,7 @@ export const supportedProjects: SupportedProject[] = [
     summary: 'A proposed GSoC project that continued independently: systematically identify invisible waits and add coverage, starting with blocking writes to server logging destinations.',
     artifacts: [
       { label: 'coverage map', url: 'https://gaps.wait.events/' },
+      { label: 'COPY wait events commit', url: 'https://git.postgresql.org/gitweb/?p=postgresql.git;a=commit;h=e05a24c2d' },
       { label: 'logging waits patch', url: 'https://www.postgresql.org/message-id/flat/CACdN0M78U%2BGvpqA7oey-GA7fFSYM636aDp6H9FVvCztv9zXxSA%40mail.gmail.com' },
       { label: 'related WET sessions', url: '/projects/wait-event-tracing/' },
     ],
@@ -138,8 +145,8 @@ export const workItems: WorkItem[] = [
     slug: 'wait-event-tracing', title: 'Precise wait-event timing and tracing', state: 'needs-review', progress: 72,
     summary: 'Low-overhead core timing, trace capture, coverage analysis, independent observer-effect benchmarks, and related work to expose currently invisible waits.',
     blocker: 'Needs more reviewer cycles and benchmark scrutiny in CommitFest.',
-    sessions: ['bfPdLjdQvwU', '3Gtuc2lnnsE', '6kqpjnpl5Gc', 'RLeB6rP5CA8', 'Q7QEvTbGlWs'],
-    artifacts: [{ label: 'patch PR', url: 'https://github.com/DmitryNFomin/postgres/pull/2' }, { label: 'CF #6984', url: 'https://commitfest.postgresql.org/patch/6984/' }, { label: 'WET timing benchmark', url: 'https://nikolays.github.io/wet-timing-bench-brief/' }, { label: 'coverage gaps', url: 'https://gaps.wait.events/' }, { label: 'logging waits patch', url: 'https://www.postgresql.org/message-id/flat/CACdN0M78U%2BGvpqA7oey-GA7fFSYM636aDp6H9FVvCztv9zXxSA%40mail.gmail.com' }],
+    sessions: ['bfPdLjdQvwU', 'wLPDt7CufEU', '3Gtuc2lnnsE', '6kqpjnpl5Gc', 'RLeB6rP5CA8', 'Q7QEvTbGlWs'],
+    artifacts: [{ label: 'patch PR', url: 'https://github.com/DmitryNFomin/postgres/pull/2' }, { label: 'CF #6984', url: 'https://commitfest.postgresql.org/patch/6984/' }, { label: 'WET timing benchmark', url: 'https://nikolays.github.io/wet-timing-bench-brief/' }, { label: 'coverage gaps', url: 'https://gaps.wait.events/' }, { label: 'COPY waits commit', url: 'https://git.postgresql.org/gitweb/?p=postgresql.git;a=commit;h=e05a24c2d' }, { label: 'logging waits patch', url: 'https://www.postgresql.org/message-id/flat/CACdN0M78U%2BGvpqA7oey-GA7fFSYM636aDp6H9FVvCztv9zXxSA%40mail.gmail.com' }],
     next: ['Run and publish reproducible benchmarks', 'Close instrumentation coverage gaps', 'Address CommitFest review'],
   },
   {
