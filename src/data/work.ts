@@ -1,5 +1,23 @@
 import type { WorkItem } from './types';
 
+export const coreOutcomes = [
+  {
+    title: 'transaction_timeout',
+    summary: 'Stop transactions that remain open longer than the configured limit.',
+    commit: 'https://git.postgresql.org/gitweb/?p=postgresql.git;a=commit;h=51efe38cb92f4b15b68811bcce9ab878fbc71ea5',
+  },
+  {
+    title: 'bounded psql \\watch',
+    summary: 'Let psql users stop \\watch automatically after a fixed number of executions.',
+    commit: 'https://git.postgresql.org/gitweb/?p=postgresql.git;a=commit;h=00beecfe839c878abb366b68272426ed5296bc2b',
+  },
+  {
+    title: 'MultiXact standby deadlock fix',
+    summary: 'Fix MultiXact creation, deadlock, and corruption edge cases on standbys.',
+    commit: 'https://commitfest.postgresql.org/patch/6070/',
+  },
+];
+
 export const workItems: WorkItem[] = [
   {
     slug: 'wait-event-tracing', title: 'Precise wait-event timing and tracing', state: 'needs-review', progress: 72,

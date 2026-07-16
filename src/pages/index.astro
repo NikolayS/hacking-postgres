@@ -3,11 +3,10 @@ import Layout from '../layouts/Layout.astro';
 import WorkCard from '../components/WorkCard.astro';
 import SessionRow from '../components/SessionRow.astro';
 import { sessions, youtubeEmbed } from '../data/sessions';
-import { workItems } from '../data/work';
+import { coreOutcomes, workItems } from '../data/work';
 
 const active = workItems.filter((item) => item.state !== 'shipped');
 const blockers = workItems.filter((item) => item.blocker);
-const shipped = workItems.filter((item) => item.state === 'shipped').length;
 const latest = sessions[0];
 ---
 
@@ -28,10 +27,10 @@ const latest = sessions[0];
   <section class="section">
     <div class="shell">
       <div class="stats">
-        <div class="stat"><strong>{sessions.length}</strong><span>sessions indexed</span></div>
-        <div class="stat"><strong>{active.length}</strong><span>open work lines</span></div>
-        <div class="stat"><strong>{blockers.length}</strong><span>known blockers</span></div>
-        <div class="stat"><strong>{shipped + 3}</strong><span>core outcomes</span></div>
+        <a class="stat" href="/sessions"><strong>{sessions.length}</strong><span>sessions indexed</span></a>
+        <a class="stat" href="/work#open"><strong>{active.length}</strong><span>open work lines</span></a>
+        <a class="stat" href="/work#blockers"><strong>{blockers.length}</strong><span>known blockers</span></a>
+        <a class="stat" href="/work#outcomes"><strong>{coreOutcomes.length}</strong><span>core outcomes</span></a>
       </div>
     </div>
   </section>
