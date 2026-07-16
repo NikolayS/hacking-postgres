@@ -1,13 +1,15 @@
 ---
 import type { Session } from '../data/types';
-import { youtubeUrl } from '../data/sessions';
+import { sessionDetails, timestampSeconds } from '../data/session-details';
+import { youtubeUrl, youtubeUrlAt } from '../data/sessions';
 import { peopleForSession, topicsForSession } from '../data/taxonomy';
 const { session } = Astro.props as { session: Session };
+const detail = sessionDetails[session.video];
 const sessionTopics = topicsForSession(session);
 const sessionPeople = peopleForSession(session);
 ---
 
-<article class="session" data-session data-line={session.line} data-search={`${session.title} ${session.topic} ${session.line} ${sessionTopics.map(({ name }) => name).join(' ')} ${sessionPeople.map(({ name }) => name).join(' ')}`.toLowerCase()}>
+<article class="session" data-session data-line={session.line} data-search={`${session.title} ${session.topic} ${detail?.summary ?? ''} ${detail?.chapters.map(({ title }) => title).join(' ') ?? ''} ${session.line} ${sessionTopics.map(({ name }) => name).join(' ')} ${sessionPeople.map(({ name }) => name).join(' ')}`.toLowerCase()}>
   <div>
     <button class="session-video" type="button" data-video={session.video} aria-label={`Play ${session.title}`}>
       <img src={`https://i.ytimg.com/vi/${session.video}/mqdefault.jpg`} alt="" width="320" height="180" loading="lazy" />
@@ -17,7 +19,20 @@ const sessionPeople = peopleForSession(session);
   </div>
   <div>
     <h2><a href={youtubeUrl(session.video)}>{session.title}</a></h2>
-    <p>{session.topic}</p>
+    <p class="session-topic">{session.topic}</p>
+    {detail
+      ? <p class="session-summary">{detail.summary}</p>
+      : <p class="session-summary session-summary-pending">Transcript summary and timecodes pending captions.</p>}
+    {detail?.chapters.length > 0 && (
+      <details class="session-chapters">
+        <summary>[timecodes · {detail.chapters.length}]</summary>
+        <ol>
+          {detail.chapters.map((chapter) => (
+            <li><a href={youtubeUrlAt(session.video, timestampSeconds(chapter.at))}><time>{chapter.at}</time> {chapter.title}</a></li>
+          ))}
+        </ol>
+      </details>
+    )}
     <div class="tag-list" aria-label="Topics and people">
       {sessionTopics.map((topic) => <a class="tag topic-tag" href={`/topics/${topic.slug}/`}>#{topic.name}</a>)}
       {sessionPeople.map((person) => <a class="tag person-tag" href={`/people/${person.slug}/`}>@{person.name}</a>)}

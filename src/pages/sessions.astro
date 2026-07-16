@@ -6,7 +6,7 @@ const lines = [...new Set(sessions.map((session) => session.line))];
 ---
 
 <Layout title="Sessions">
-  <section class="page-head"><div class="shell"><p class="eyebrow">postgres@hacking:~$ ls sessions/ | wc -l</p><h1>{sessions.length} sessions.</h1><p class="lede">Every durable artifact we could find. “Correlated” means the chronology and topic match but public evidence does not prove direct provenance.</p></div></section>
+  <section class="page-head"><div class="shell"><p class="eyebrow">postgres@hacking:~$ ls sessions/ | wc -l</p><h1>{sessions.length} sessions.</h1><p class="lede">Transcript-backed summaries and timecodes, plus every durable artifact we could find. “Correlated” means the chronology and topic match but public evidence does not prove direct provenance.</p></div></section>
   <section class="section"><div class="shell">
     <div class="session-toolbar">
       <input class="search" id="session-search" type="search" placeholder="search sessions, topics, work lines…" aria-label="Search sessions" />

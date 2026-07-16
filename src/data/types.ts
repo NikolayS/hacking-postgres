@@ -3,6 +3,16 @@ export type Artifact = {
   url: string;
 };
 
+export type Chapter = {
+  at: string;
+  title: string;
+};
+
+export type SessionDetail = {
+  summary: string;
+  chapters: Chapter[];
+};
+
 export type Session = {
   date: string;
   title: string;

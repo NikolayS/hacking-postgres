@@ -144,6 +144,15 @@ h3 { font-size: 1rem; }
 .session h2 { font-size: 1.05rem; }
 .session h2 a { text-decoration: none; }
 .session p { margin: .4rem 0 0; color: var(--muted); }
+.session .session-topic { color: var(--text); }
+.session .session-summary { max-width: 78ch; line-height: 1.6; }
+.session .session-summary-pending { color: var(--faint); font-style: italic; }
+.session-chapters { margin-top: .65rem; }
+.session-chapters summary { width: fit-content; color: var(--accent); cursor: pointer; }
+.session-chapters ol { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .25rem 1rem; margin: .55rem 0 0; padding-left: 1.5rem; }
+.session-chapters li { color: var(--muted); }
+.session-chapters a { text-decoration: none; }
+.session-chapters time { color: var(--accent); }
 .session-side { min-width: 120px; text-align: right; }
 .confidence { color: var(--faint); font-size: 9px; line-height: 1; text-transform: uppercase; }
 .empty { padding: 3rem 0; color: var(--muted); font-family: var(--mono); }
@@ -210,6 +219,7 @@ body.video-dialog-open { overflow: hidden; }
   .grid, .split, .taxonomy-grid { grid-template-columns: 1fr; }
   .detail-row { grid-template-columns: 1fr; gap: .35rem; }
   .session { grid-template-columns: 1fr; gap: .35rem; }
+  .session-chapters ol { grid-template-columns: 1fr; }
   .session-side { text-align: left; }
   .person-row { grid-template-columns: 1fr; gap: .5rem; }
   .person-row > :last-child { text-align: left; }
