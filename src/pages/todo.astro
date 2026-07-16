@@ -11,6 +11,6 @@ const todoHtml = escaped.replace(/https:\/\/[^\s]+/g, (url) => `<a href="${url}"
 ---
 
 <Layout title="TODO">
-  <section class="page-head"><div class="shell"><p class="eyebrow">postgres@hacking:~$ cat TODO</p><h1>TODO</h1><p class="lede">One file. No tickets, statuses, assignees, ceremonies, or other project-management furniture.</p><div class="actions"><a class="button primary" href="https://github.com/NikolayS/hacking-postgres/blob/main/TODO">[view source]</a></div></div></section>
+  <section class="page-head"><div class="shell"><p class="eyebrow">postgres@hacking:~$ cat TODO</p><h1>TODO</h1><p class="lede">One file. No tickets, statuses, assignees, ceremonies, or other project-management furniture. Propose an item by editing the file on GitHub and opening a pull request.</p><div class="actions"><a class="button primary" href="https://github.com/NikolayS/hacking-postgres/edit/main/TODO">[propose an item]</a><a class="button" href="https://github.com/NikolayS/hacking-postgres/blob/main/TODO">[view source]</a></div></div></section>
   <section class="section"><div class="shell"><div class="copy-block"><CopyButton target="#todo-file" label="TODO" /><pre id="todo-file" class="todo-file" set:html={todoHtml}></pre></div></div></section>
 </Layout>

@@ -5,6 +5,9 @@ Last updated: 2026-07-16
 This file is the list.  When an item is finished, remove it.  Add links
 under the item when there is a patch, discussion, or useful background.
 
+To propose an item, edit this file on GitHub and open a pull request:
+https://github.com/NikolayS/hacking-postgres/edit/main/TODO
+
 
 Observability
 =============
