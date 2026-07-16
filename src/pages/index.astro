@@ -1,0 +1,67 @@
+---
+import Layout from '../layouts/Layout.astro';
+import WorkCard from '../components/WorkCard.astro';
+import SessionRow from '../components/SessionRow.astro';
+import { sessions, youtubeEmbed } from '../data/sessions';
+import { workItems } from '../data/work';
+
+const active = workItems.filter((item) => item.state !== 'shipped');
+const blockers = workItems.filter((item) => item.blocker);
+const shipped = workItems.filter((item) => item.state === 'shipped').length;
+const latest = sessions[0];
+---
+
+<Layout>
+  <section class="page-head">
+    <div class="shell">
+      <p class="eyebrow">community workshop · patches in public</p>
+      <h1>We hack Postgres.<br />This is the workbench.</h1>
+      <p class="lede">Sessions, patches, -hackers threads, CommitFest entries, progress, and blockers — connected in one place.</p>
+      <div class="actions">
+        <a class="button primary" href="https://t.me/postgres_hacking">join t.me/postgres_hacking</a>
+        <a class="button" href="/work">inspect active work</a>
+        <a class="button" href="/sessions">browse all sessions</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="stats">
+        <div class="stat"><strong>{sessions.length}</strong><span>sessions indexed</span></div>
+        <div class="stat"><strong>{active.length}</strong><span>open work lines</span></div>
+        <div class="stat"><strong>{blockers.length}</strong><span>known blockers</span></div>
+        <div class="stat"><strong>{shipped + 3}</strong><span>core outcomes</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="section-head"><h2>active work</h2><a href="/work">view all →</a></div>
+      <div class="grid">{active.slice(0, 6).map((item) => <WorkCard item={item} />)}</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell split">
+      <div>
+        <div class="section-head"><h2>latest session</h2><a href="/sessions">archive →</a></div>
+        <div class="video"><iframe src={youtubeEmbed(latest.video)} title={latest.title} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+      </div>
+      <div>
+        <p class="eyebrow">{latest.date} · {latest.duration}</p>
+        <h2>{latest.title}</h2>
+        <p class="lede">{latest.topic}</p>
+        <div class="artifact-list">{latest.artifacts.map((artifact) => <a href={artifact.url}>{artifact.label}</a>)}</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="section-head"><h2>recent sessions</h2><a href="/sessions">all {sessions.length} →</a></div>
+      <div class="session-list">{sessions.slice(1, 5).map((session) => <SessionRow session={session} />)}</div>
+    </div>
+  </section>
+</Layout>

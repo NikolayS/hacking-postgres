@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { workItems } from '../data/work';
+const open = workItems.filter((item) => item.next.length > 0);
+---
+
+<Layout title="TODO">
+  <section class="page-head"><div class="shell"><p class="eyebrow">/todo</p><h1>The queue.</h1><p class="lede">Concrete next actions grouped by patch line. GitHub Issues is the operational source of truth; this page is the public map.</p><div class="actions"><a class="button primary" href="https://github.com/postgres-ai/hacking-postgres/issues">open issue tracker</a><a class="button" href="https://github.com/postgres-ai/hacking-postgres/issues/new/choose">add a task</a></div></div></section>
+  <section class="section"><div class="shell">
+    {open.map((item) => <section class="todo-group"><div class="section-head"><h2><a href={`/projects/${item.slug}/`}>{item.title}</a></h2><span class={`state ${item.state}`}>{item.state.replace('-', ' ')}</span></div><ul class="todo-list">{item.next.map((task) => <li class="todo"><span>{task}</span><small>{item.slug}</small></li>)}</ul></section>)}
+  </div></section>
+</Layout>

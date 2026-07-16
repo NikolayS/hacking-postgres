@@ -1,0 +1,31 @@
+name: Task
+description: Track a concrete patch, review, test, or research action.
+title: "todo: "
+labels: ["status:todo"]
+body:
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Outcome
+      description: What durable result should exist when this is complete?
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context and artifacts
+      description: Link sessions, patches, -hackers threads, CF entries, benchmarks, or prior reviews.
+    validations:
+      required: true
+  - type: textarea
+    id: blocker
+    attributes:
+      label: Blockers
+      description: What prevents progress right now?
+  - type: textarea
+    id: verify
+    attributes:
+      label: Verification
+      description: How will we prove the work is correct?
+    validations:
+      required: true

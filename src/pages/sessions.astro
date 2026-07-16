@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SessionRow from '../components/SessionRow.astro';
+import { sessions } from '../data/sessions';
+const lines = [...new Set(sessions.map((session) => session.line))];
+---
+
+<Layout title="Sessions">
+  <section class="page-head"><div class="shell"><p class="eyebrow">/sessions</p><h1>{sessions.length} sessions. Every durable artifact we could find.</h1><p class="lede">The playlist is noisy; this archive follows the live workshop series from January 2023 onward. “Correlated” means the chronology and topic match but public evidence does not prove direct provenance.</p></div></section>
+  <section class="section"><div class="shell">
+    <div class="session-toolbar">
+      <input class="search" id="session-search" type="search" placeholder="search sessions, topics, work lines…" aria-label="Search sessions" />
+      <div class="filters" aria-label="Filter by work line"><button class="filter" data-filter="all" aria-pressed="true">all</button>{lines.map((line) => <button class="filter" data-filter={line} aria-pressed="false">{line}</button>)}</div>
+    </div>
+    <div class="session-list" id="session-list">{sessions.map((session) => <SessionRow session={session} />)}</div>
+    <p class="empty" id="session-empty" hidden>no matching sessions.</p>
+  </div></section>
+  <script>
+    const search = document.querySelector<HTMLInputElement>('#session-search');
+    const rows = [...document.querySelectorAll<HTMLElement>('[data-session]')];
+    const buttons = [...document.querySelectorAll<HTMLButtonElement>('[data-filter]')];
+    const empty = document.querySelector<HTMLElement>('#session-empty');
+    let active = 'all';
+    const apply = () => {
+      const query = search?.value.trim().toLowerCase() ?? '';
+      let visible = 0;
+      rows.forEach((row) => {
+        const matchLine = active === 'all' || row.dataset.line === active;
+        const matchText = !query || row.dataset.search?.includes(query);
+        row.hidden = !(matchLine && matchText);
+        if (!row.hidden) visible++;
+      });
+      if (empty) empty.hidden = visible !== 0;
+    };
+    search?.addEventListener('input', apply);
+    buttons.forEach((button) => button.addEventListener('click', () => {
+      active = button.dataset.filter ?? 'all';
+      buttons.forEach((candidate) => candidate.setAttribute('aria-pressed', String(candidate === button)));
+      apply();
+    }));
+  </script>
+</Layout>
