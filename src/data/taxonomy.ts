@@ -1,0 +1,40 @@
+import type { Person, Session, Topic } from './types';
+
+export const people: Person[] = [
+  { slug: 'nikolay-samokhvalov', name: 'Nikolay Samokhvalov', url: 'https://github.com/NikolayS', note: 'Host and Postgres hacker.' },
+  { slug: 'andrey-borodin', name: 'Andrey Borodin', url: 'https://github.com/x4m', note: 'Postgres hacker and recurring session participant.' },
+  { slug: 'kirk-roybal', name: 'Kirk Roybal', url: 'https://www.postgresql.org/community/contributors/', note: 'Postgres community hacker and recurring session participant.' },
+  { slug: 'dmitry-fomin', name: 'Dmitry Fomin', url: 'https://github.com/DmitryNFomin', note: 'Author of pg_wait_tracer and wait-event timing patches.' },
+];
+
+const namedAppearances: Record<string, string[]> = {
+  'andrey-borodin': ['KK6PSdiy-9s', '74NFSqTrD0s', 'EqqByzGHIBk', '0nFGVCpQDec', 'ggXAxBhRvoc', 'hGXPgFK8Eh8'],
+  'kirk-roybal': ['KK6PSdiy-9s', '74NFSqTrD0s', 'ggXAxBhRvoc'],
+  'dmitry-fomin': ['RLeB6rP5CA8', '6kqpjnpl5Gc', '3Gtuc2lnnsE', 'bfPdLjdQvwU'],
+};
+
+export const peopleForSession = (session: Session) => people.filter((person) =>
+  person.slug === 'nikolay-samokhvalov' || namedAppearances[person.slug]?.includes(session.video),
+);
+
+export const sessionsForPerson = (sessions: Session[], slug: string) =>
+  sessions.filter((session) => peopleForSession(session).some((person) => person.slug === slug));
+
+export const topics: Topic[] = [
+  { slug: 'wait-events', name: 'wait events', videos: ['Q7QEvTbGlWs', 'RLeB6rP5CA8', '6kqpjnpl5Gc', '3Gtuc2lnnsE', 'bfPdLjdQvwU', 'wLPDt7CufEU'] },
+  { slug: 'logical-decoding', name: 'logical decoding', videos: ['_Fp-llPPSrE', 'Nu6RdU3aemk', 'KK6PSdiy-9s', 'LjiU6kB6izw'] },
+  { slug: 'recovery', name: 'recovery', videos: ['x9Ahk5L2SwA', '_Fp-llPPSrE', 'Nu6RdU3aemk', 'KK6PSdiy-9s', 'LjiU6kB6izw', 'l-0IP-_meD0'] },
+  { slug: 'btree', name: 'B-tree', videos: ['3MleDtXZUlM', 'Ib3SXSFt8mE', 'D1PEdDcvZTw', 'cbgHrmOAsiU', 'EYwh18PBitM'] },
+  { slug: 'wal', name: 'WAL', videos: ['_Fp-llPPSrE', 'Nu6RdU3aemk', 'LjiU6kB6izw', 'cbgHrmOAsiU', 'EYwh18PBitM'] },
+  { slug: 'multixact', name: 'MultiXact', videos: ['Szpqbb89YSA', 'g9yl3zE9MlI', 'wLPDt7CufEU'] },
+  { slug: 'psql', name: 'psql', videos: ['VKuxQZlvd8E', 'ul-wgvNtUGY', 'UzMxroqUuI0', 'hGXPgFK8Eh8', 'vTV8XhWf3mo'] },
+  { slug: 'sql', name: 'SQL', videos: ['6cZvHjDrmlQ', 'k4A9-WZET_4', '-6xA5JI4irI', 'YPq_hiOE-N8', 'samLkrC5xQA', 'WLoMpg8A4WU'] },
+  { slug: 'monitoring', name: 'monitoring', videos: ['c0wKWcPZnH0', 'wLPDt7CufEU', 'wHMNX-fHb2A', 'RLeB6rP5CA8', '6kqpjnpl5Gc', '3Gtuc2lnnsE', 'bfPdLjdQvwU'] },
+  { slug: 'compression', name: 'compression', videos: ['woTqRL0Zh3A', 'cbgHrmOAsiU', 'EYwh18PBitM', 'YL31cf9Q1VM'] },
+  { slug: 'ai-assisted-hacking', name: 'AI-assisted hacking', videos: ['Q7QEvTbGlWs', '_Fp-llPPSrE', 'woTqRL0Zh3A', '4KVaeJfWPas', 'c0wKWcPZnH0'] },
+  { slug: 'hacking-process', name: 'hacking process', videos: ['Q7QEvTbGlWs', '74NFSqTrD0s', 'EqqByzGHIBk', '4KVaeJfWPas', '5lN775a5geI', 'mVYl2RHlpoE', 'lI-VEdAo4Ao', 't6T3GPjEiS4', 'OlzLF2VVZ8U', 'GpTJ06AFvg4', '0nFGVCpQDec', 'ggXAxBhRvoc'] },
+];
+
+export const topicsForSession = (session: Session) => topics.filter((topic) => topic.videos.includes(session.video));
+export const sessionsForTopic = (sessions: Session[], slug: string) =>
+  sessions.filter((session) => topicsForSession(session).some((topic) => topic.slug === slug));

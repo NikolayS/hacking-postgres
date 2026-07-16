@@ -1,0 +1,12 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { sessions } from '../../data/sessions';
+import { people, sessionsForPerson } from '../../data/taxonomy';
+---
+
+<Layout title="People">
+  <section class="page-head"><div class="shell"><p class="eyebrow">postgres@hacking:~$ ls people/</p><h1>people.</h1><p class="lede">People identified in the public session record, with links to every appearance.</p></div></section>
+  <section class="section"><div class="shell"><div class="people-list">
+    {people.map((person) => <article class="person-row"><div><h2><a href={`/people/${person.slug}/`}>{person.name}</a></h2><p>{person.note}</p></div><div><strong>{sessionsForPerson(sessions, person.slug).length}</strong><span class="meta"> sessions</span><br />{person.url && <a class="external-profile" href={person.url}>profile ↗</a>}</div></article>)}
+  </div></div></section>
+</Layout>

@@ -83,6 +83,22 @@ h3 { font-size: 1rem; }
 .artifact-list { display: flex; flex-wrap: wrap; gap: .4rem .8rem; margin-top: .8rem; }
 .artifact-list a { color: var(--muted); font-size: 11px; line-height: 1.4; }
 .artifact-list a::before { content: "↗ "; color: var(--faint); }
+.tag-list { display: flex; flex-wrap: wrap; gap: .35rem .65rem; margin-top: .7rem; }
+.tag { color: var(--muted); font-size: 10px; line-height: 1.4; text-decoration: none; }
+.tag:hover { color: var(--accent); }
+.person-tag { color: #91a99a; }
+.taxonomy-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.taxonomy-card { display: flex; justify-content: space-between; gap: 1rem; padding: 1rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); text-decoration: none; }
+.taxonomy-card span { color: var(--muted); font-size: 10px; text-transform: uppercase; white-space: nowrap; }
+.taxonomy-card:hover { background: var(--panel-2); }
+.people-list { border-top: 1px solid var(--line); }
+.person-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2rem; padding: 1.1rem 0; border-bottom: 1px solid var(--line); }
+.person-row h2 { font-size: 1rem; }
+.person-row h2 a { text-decoration: none; }
+.person-row p { margin: .35rem 0 0; color: var(--muted); }
+.person-row > :last-child { text-align: right; }
+.person-row > :last-child strong { color: var(--accent); }
+.external-profile { color: var(--muted); font-size: 11px; }
 .callout { padding: 1.2rem; border-left: 3px solid var(--accent); background: var(--panel); }
 .callout p { margin: 0; }
 .callout p + p { margin-top: .6rem; }
@@ -143,10 +159,12 @@ h3 { font-size: 1rem; }
   .stats { grid-template-columns: repeat(2, 1fr); }
   .stat:nth-child(2) { border-right: 0; }
   .stat:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
-  .grid, .split { grid-template-columns: 1fr; }
+  .grid, .split, .taxonomy-grid { grid-template-columns: 1fr; }
   .detail-row { grid-template-columns: 1fr; gap: .35rem; }
   .session { grid-template-columns: 1fr; gap: .35rem; }
   .session-side { text-align: left; }
+  .person-row { grid-template-columns: 1fr; gap: .5rem; }
+  .person-row > :last-child { text-align: left; }
   .site-footer .shell { flex-direction: column; }
 }
 

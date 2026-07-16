@@ -1,0 +1,12 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { sessions } from '../../data/sessions';
+import { sessionsForTopic, topics } from '../../data/taxonomy';
+---
+
+<Layout title="Topics">
+  <section class="page-head"><div class="shell"><p class="eyebrow">postgres@hacking:~$ find sessions/ -type f -printf '%topic\n' | sort -u</p><h1>topics.</h1><p class="lede">Subject tags across the session archive. Pick one to see every related session.</p></div></section>
+  <section class="section"><div class="shell"><div class="taxonomy-grid">
+    {topics.map((topic) => <a class="taxonomy-card" href={`/topics/${topic.slug}/`}><strong>#{topic.name}</strong><span>{sessionsForTopic(sessions, topic.slug).length} sessions</span></a>)}
+  </div></div></section>
+</Layout>

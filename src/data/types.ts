@@ -15,6 +15,19 @@ export type Session = {
   artifacts: Artifact[];
 };
 
+export type Person = {
+  slug: string;
+  name: string;
+  url?: string;
+  note: string;
+};
+
+export type Topic = {
+  slug: string;
+  name: string;
+  videos: string[];
+};
+
 export type WorkItem = {
   slug: string;
   title: string;

@@ -1,0 +1,18 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SessionRow from '../../components/SessionRow.astro';
+import { sessions } from '../../data/sessions';
+import { sessionsForTopic, topics } from '../../data/taxonomy';
+
+export function getStaticPaths() {
+  return topics.map((topic) => ({ params: { slug: topic.slug }, props: { topic } }));
+}
+
+const { topic } = Astro.props;
+const related = sessionsForTopic(sessions, topic.slug);
+---
+
+<Layout title={`#${topic.name}`}>
+  <section class="page-head"><div class="shell"><p class="eyebrow">postgres@hacking:~$ grep -R '#{topic.name}' sessions/</p><h1>#{topic.name}</h1><p class="lede">{related.length} related sessions.</p></div></section>
+  <section class="section"><div class="shell"><div class="session-list">{related.map((session) => <SessionRow session={session} />)}</div></div></section>
+</Layout>

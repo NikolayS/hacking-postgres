@@ -1,10 +1,13 @@
 ---
 import type { Session } from '../data/types';
 import { youtubeUrl } from '../data/sessions';
+import { peopleForSession, topicsForSession } from '../data/taxonomy';
 const { session } = Astro.props as { session: Session };
+const sessionTopics = topicsForSession(session);
+const sessionPeople = peopleForSession(session);
 ---
 
-<article class="session" data-session data-line={session.line} data-search={`${session.title} ${session.topic} ${session.line}`.toLowerCase()}>
+<article class="session" data-session data-line={session.line} data-search={`${session.title} ${session.topic} ${session.line} ${sessionTopics.map(({ name }) => name).join(' ')} ${sessionPeople.map(({ name }) => name).join(' ')}`.toLowerCase()}>
   <div>
     <button class="session-video" type="button" data-video={session.video} aria-label={`Play ${session.title}`}>
       <img src={`https://i.ytimg.com/vi/${session.video}/mqdefault.jpg`} alt="" width="320" height="180" loading="lazy" />
@@ -15,6 +18,10 @@ const { session } = Astro.props as { session: Session };
   <div>
     <h2><a href={youtubeUrl(session.video)}>{session.title}</a></h2>
     <p>{session.topic}</p>
+    <div class="tag-list" aria-label="Topics and people">
+      {sessionTopics.map((topic) => <a class="tag topic-tag" href={`/topics/${topic.slug}/`}>#{topic.name}</a>)}
+      {sessionPeople.map((person) => <a class="tag person-tag" href={`/people/${person.slug}/`}>@{person.name}</a>)}
+    </div>
     <div class="artifact-list">
       {session.artifacts.map((artifact) => <a href={artifact.url}>{artifact.label}</a>)}
       {session.artifacts.length === 0 && <span class="meta">no public artifact mapped</span>}
