@@ -2,6 +2,51 @@ import type { SessionDetail } from './types';
 
 // Generated from timestamped YouTube captions and manually reviewed.
 export const sessionDetails: Record<string, SessionDetail> = {
+  "x9Ahk5L2SwA": {
+    "summary": "The group returned to commit-LSN logging for DROP TABLE and related destructive DDL, using several AI agents to review and repair the revived patch. They rejected an extension split, found that the hook exposed the end rather than the start of the commit record, and revised the code to log the precise recovery boundary without a concurrency race. After considering restore points and event triggers as alternatives, they audited documentation and an end-to-end restore test, then prepared a PostgreSQL-style commit message, a new pgsql-hackers revision, and CI for the fork.",
+    "chapters": [
+      {
+        "at": "00:00",
+        "title": "Reviving commit-LSN logging for destructive DDL"
+      },
+      {
+        "at": "04:00",
+        "title": "Asking AI for a broader architectural review"
+      },
+      {
+        "at": "08:15",
+        "title": "Concrete bugs, missing tests, and CommitFest plans"
+      },
+      {
+        "at": "13:00",
+        "title": "Core feature versus extension design"
+      },
+      {
+        "at": "18:55",
+        "title": "B-tree page-merge and wait-coverage updates"
+      },
+      {
+        "at": "20:55",
+        "title": "Finding the wrong commit-record LSN boundary"
+      },
+      {
+        "at": "32:35",
+        "title": "Reviewing the repaired patch and documentation"
+      },
+      {
+        "at": "37:40",
+        "title": "Restore points and event triggers as alternatives"
+      },
+      {
+        "at": "41:45",
+        "title": "End-to-end recovery test and patch readiness"
+      },
+      {
+        "at": "44:00",
+        "title": "Commit message, pgsql-hackers email, and CI"
+      }
+    ]
+  },
   "Q7QEvTbGlWs": {
     "summary": "The group reviewed Kirk Wolak's pg_dump patch for keeping loadable placeholders when table data is excluded, grounding the discussion in his large-table restore workflow. They debated a positive interface, filter-file actions, arbitrary dump queries, PII transformation, and referential-integrity risks, then posted supportive review feedback to pgsql-hackers. The final segment examined Salma El-Sayed's B-tree leaf-page merge design, including merged-page markers, scan correctness, vacuum cleanup, and review plans.",
     "chapters": [
