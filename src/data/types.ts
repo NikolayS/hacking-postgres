@@ -54,7 +54,6 @@ export type WorkItem = {
   slug: string;
   title: string;
   state: 'active' | 'needs-review' | 'blocked' | 'shipped' | 'exploration';
-  progress: number;
   summary: string;
   blocker?: string;
   sessions: string[];

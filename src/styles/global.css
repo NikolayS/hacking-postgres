@@ -89,10 +89,6 @@ h3 { font-size: 1rem; }
 .state.active::before, .state.shipped::before { background: var(--accent); }
 .state.needs-review::before { background: var(--warn); }
 .state.blocked::before { background: var(--danger); }
-.progress { height: 3px; margin-top: 1rem; background: var(--line); }
-.progress span { display: block; height: 100%; background: var(--accent); }
-.progress.blocked span { background: var(--danger); }
-.progress.needs-review span { background: var(--warn); }
 
 .artifact-list { display: flex; flex-wrap: wrap; gap: .4rem .8rem; margin-top: .8rem; }
 .artifact-list a { color: var(--muted); font-size: 11px; line-height: 1.4; white-space: nowrap; }

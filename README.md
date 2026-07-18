@@ -20,7 +20,7 @@ npm run build
 ## Data
 
 - `src/data/sessions.ts` — session and artifact index
-- `src/data/work.ts` — active work lines, progress, blockers, and next steps
+- `src/data/work.ts` — active work lines, lifecycle states, blockers, and next steps
 - `TODO` — the entire TODO list, deliberately kept as plain text
 
 ## Deployment
