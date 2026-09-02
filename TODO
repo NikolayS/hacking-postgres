@@ -21,7 +21,7 @@ Observability
 	https://hacking.postgres.tv/projects/wait-event-tracing/
 	https://commitfest.postgresql.org/patch/6984/
 
-* [WIP] SQL-queryable cumulative server-message counters by SQLSTATE
+* [WIP] pg_stat_log — SQL-queryable cumulative server-message counters by SQLSTATE (Fabrízio Mello)
 
 	https://hacking.postgres.tv/projects/pg-stat-log/
 	https://commitfest.postgresql.org/patch/7162/
