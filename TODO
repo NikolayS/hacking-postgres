@@ -1,6 +1,6 @@
 Postgres Hacking TODO List
 ==========================
-Last updated: 2026-07-16
+Last updated: 2026-09-02
 
 This is a list of outcomes we want to achieve, not an internal task list.
 [WIP] means public work exists.  [NOT STARTED] means the idea has not yet
@@ -20,6 +20,11 @@ Observability
 
 	https://hacking.postgres.tv/projects/wait-event-tracing/
 	https://commitfest.postgresql.org/patch/6984/
+
+* [WIP] SQL-queryable cumulative server-message counters by SQLSTATE
+
+	https://hacking.postgres.tv/projects/pg-stat-log/
+	https://commitfest.postgresql.org/patch/7162/
 
 * [WIP] Complete wait-event coverage for blocking Postgres operations
 
@@ -43,6 +48,15 @@ Recovery and replication
 
 	https://hacking.postgres.tv/projects/logical-decoding-archives/
 	https://github.com/NikolayS/postgres/pull/40
+
+
+Operations
+==========
+
+* [WIP] Faster, safer minor upgrades with bounded pre-shutdown checkpointing and explicit release-note remediation
+
+	https://hacking.postgres.tv/projects/minor-upgrade-operations/
+	https://www.youtube.com/watch?v=Et6WSCdR3Yw
 
 
 SQL features

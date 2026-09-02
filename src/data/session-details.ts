@@ -2,6 +2,59 @@ import type { SessionDetail } from './types';
 
 // Generated from timestamped YouTube captions and manually reviewed.
 export const sessionDetails: Record<string, SessionDetail> = {
+  "Et6WSCdR3Yw": {
+    "summary": "The group turned a tour of the PG20-2 CommitFest into concrete review homework. They reconciled Andrey Borodin's prolific August as 25 currently authored entries, explored bounded pre-shutdown checkpoints and safe cache handoff for minor upgrades, and examined why global temporary tables require deep catalog, relcache, planner, statistics, and lifecycle work. They then compared Ilmar Yunusov's EXPLAIN wait-event patch with Dmitry Fomin's broader timing/tracing series, insisting on honest attribution and workload benchmarks. The most actionable outcome was pg_stat_log: Nikolay will independently benchmark and review its SQL-queryable error counters, Kirk will support the thread, Andrey will revisit Dmitry's series, and Kirk will revise his pg_dump placeholder interface.",
+    "chapters": [
+      {
+        "at": "00:00",
+        "title": "AI-assisted hacking and the PG20-2 review backlog"
+      },
+      {
+        "at": "02:00",
+        "title": "Andrey's 25 authored patches and a September of reviews"
+      },
+      {
+        "at": "04:00",
+        "title": "Making minor upgrades operationally safer"
+      },
+      {
+        "at": "08:30",
+        "title": "Adaptive checkpoints before shutdown"
+      },
+      {
+        "at": "14:35",
+        "title": "Can a restart preserve shared-buffer page data?"
+      },
+      {
+        "at": "23:05",
+        "title": "Global temporary tables and their real use cases"
+      },
+      {
+        "at": "31:45",
+        "title": "Why the GTT patch is more than ten thousand lines"
+      },
+      {
+        "at": "37:10",
+        "title": "Revisiting the pg_dump table-data placeholder patch"
+      },
+      {
+        "at": "38:00",
+        "title": "EXPLAIN waits versus general wait timing and tracing"
+      },
+      {
+        "at": "50:00",
+        "title": "Assembly evidence, observer effect, and benchmark design"
+      },
+      {
+        "at": "59:35",
+        "title": "pg_stat_log: SQL-queryable counters instead of log parsing"
+      },
+      {
+        "at": "01:13:20",
+        "title": "Assigning reviews and concrete homework"
+      }
+    ]
+  },
   "x9Ahk5L2SwA": {
     "summary": "The group returned to commit-LSN logging for DROP TABLE and related destructive DDL, using several AI agents to review and repair the revived patch. They rejected an extension split, found that the hook exposed the end rather than the start of the commit record, and revised the code to log the precise recovery boundary without a concurrency race. After considering restore points and event triggers as alternatives, they audited documentation and an end-to-end restore test, then prepared a PostgreSQL-style commit message, a new pgsql-hackers revision, and CI for the fork.",
     "chapters": [

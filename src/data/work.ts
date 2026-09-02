@@ -80,6 +80,12 @@ export const publicOutcomes = [
     url: 'https://commitfest.postgresql.org/patch/6984/',
   },
   {
+    title: 'SQL-queryable server-message counters',
+    stage: 'CommitFest patch',
+    summary: 'Track cumulative log-message counts by workload dimensions and SQLSTATE without parsing log files.',
+    url: 'https://commitfest.postgresql.org/patch/7162/',
+  },
+  {
     title: 'custom protocol command tags',
     stage: 'patch proposed',
     summary: 'Negotiate command-completion formats through the _pq_ protocol capability.',
@@ -143,11 +149,27 @@ export const supportedProjects: SupportedProject[] = [
 export const workItems: WorkItem[] = [
   {
     slug: 'wait-event-tracing', title: 'Precise wait-event timing and tracing', state: 'needs-review',
-    summary: 'Low-overhead core timing, trace capture, coverage analysis, independent observer-effect benchmarks, and related work to expose currently invisible waits.',
-    blocker: 'Needs more reviewer cycles and benchmark scrutiny in CommitFest.',
-    sessions: ['bfPdLjdQvwU', 'wLPDt7CufEU', '3Gtuc2lnnsE', '6kqpjnpl5Gc', 'RLeB6rP5CA8', 'Q7QEvTbGlWs'],
-    artifacts: [{ label: 'patch PR', url: 'https://github.com/DmitryNFomin/postgres/pull/2' }, { label: 'CF #6984', url: 'https://commitfest.postgresql.org/patch/6984/' }, { label: 'WET timing benchmark', url: 'https://nikolays.github.io/wet-timing-bench-brief/' }, { label: 'coverage gaps', url: 'https://gaps.wait.events/' }, { label: 'COPY waits commit', url: 'https://git.postgresql.org/gitweb/?p=postgresql.git;a=commit;h=e05a24c2d' }, { label: 'logging waits patch', url: 'https://www.postgresql.org/message-id/flat/CACdN0M78U%2BGvpqA7oey-GA7fFSYM636aDp6H9FVvCztv9zXxSA%40mail.gmail.com' }],
-    next: ['Run and publish reproducible benchmarks', 'Close instrumentation coverage gaps', 'Address CommitFest review'],
+    summary: 'Low-overhead core timing, trace capture, coverage analysis, independent observer-effect benchmarks, and honest query/plan-node attribution.',
+    blocker: 'Needs more reviewer cycles, benchmark scrutiny, and a clear relationship with the separate EXPLAIN wait-event series.',
+    sessions: ['bfPdLjdQvwU', 'wLPDt7CufEU', '3Gtuc2lnnsE', '6kqpjnpl5Gc', 'RLeB6rP5CA8', 'Q7QEvTbGlWs', 'Et6WSCdR3Yw'],
+    artifacts: [{ label: 'patch PR', url: 'https://github.com/DmitryNFomin/postgres/pull/2' }, { label: 'CF #6984', url: 'https://commitfest.postgresql.org/patch/6984/' }, { label: 'EXPLAIN waits #6753', url: 'https://commitfest.postgresql.org/patch/6753/' }, { label: 'WET timing benchmark', url: 'https://nikolays.github.io/wet-timing-bench-brief/' }, { label: 'coverage gaps', url: 'https://gaps.wait.events/' }, { label: 'COPY waits commit', url: 'https://git.postgresql.org/gitweb/?p=postgresql.git;a=commit;h=e05a24c2d' }, { label: 'logging waits patch', url: 'https://www.postgresql.org/message-id/flat/CACdN0M78U%2BGvpqA7oey-GA7fFSYM636aDp6H9FVvCztv9zXxSA%40mail.gmail.com' }],
+    next: ['Get Andrey’s review of the current series', 'Publish repeated A/B workload and perf benchmarks', 'Specify pre-executor and nested-node wait attribution', 'Reconcile shared infrastructure with EXPLAIN wait reporting'],
+  },
+  {
+    slug: 'pg-stat-log', title: 'SQL-queryable server-message counters', state: 'needs-review',
+    summary: 'Expose cumulative server-message counts by backend, database, user, severity, and SQLSTATE without parsing log files.',
+    blocker: 'The new contrib patch needs independent overhead, contention, and cardinality review plus agreement on contrib versus core placement.',
+    sessions: ['Et6WSCdR3Yw'],
+    artifacts: [{ label: 'CF #7162', url: 'https://commitfest.postgresql.org/patch/7162/' }, { label: '-hackers proposal', url: 'https://www.postgresql.org/message-id/CABo-N96sjT0KwtCFVBkuMQEAfe-834Sd2zjbv9qKJORXkf%3DBiA%40mail.gmail.com' }, { label: 'extension source', url: 'https://github.com/fabriziomello/pg_stat_log' }],
+    next: ['Benchmark quiet enabled/disabled paths independently', 'Stress log storms, contention, and full-cardinality behavior', 'Post a substantive review and deployment-position recommendation'],
+  },
+  {
+    slug: 'minor-upgrade-operations', title: 'Faster, safer minor upgrades', state: 'exploration',
+    summary: 'Reduce shutdown latency and turn binary replacement, release-note remediation, and extension compatibility into a repeatable fleet workflow.',
+    blocker: 'Adaptive checkpointing and cache handoff are design ideas without bounded benchmarks or a fail-closed compatibility protocol yet.',
+    sessions: ['Et6WSCdR3Yw'],
+    artifacts: [{ label: 'session', url: 'https://www.youtube.com/watch?v=Et6WSCdR3Yw' }],
+    next: ['Benchmark explicit checkpoints before shutdown', 'Define a bounded adaptive stopping rule', 'Inventory automatable release-note remediation', 'Evaluate clean-page cache handoff separately from shared-memory state'],
   },
   {
     slug: 'log-object-drops', title: 'Recovery landmarks for destructive DDL', state: 'active',
@@ -202,8 +224,8 @@ export const workItems: WorkItem[] = [
   {
     slug: 'pg-dump-table-data-placeholders', title: 'pg_dump table-data placeholders', state: 'needs-review',
     summary: 'Keep loadable slots for excluded table data so replacement data is restored before dependent indexes and constraints.',
-    blocker: 'The first review raised interface questions; the patch needs a revised option design and another version.',
-    sessions: ['Q7QEvTbGlWs'], artifacts: [{ label: '-hackers patch', url: 'https://www.postgresql.org/message-id/flat/CACLU5mTrtt2ocj_UhVC2_4tjXRi7oMCxK17WjoeX7khwRvZjxQ%40mail.gmail.com' }, { label: 'first review', url: 'https://www.postgresql.org/message-id/502B3804-007B-4B3D-B6F2-F9632EBECF7C%40yandex-team.ru' }],
-    next: ['Settle the command-line and filter-file interface', 'Post the next patch version', 'Add a CommitFest entry when ready'],
+    blocker: 'The patch needs a filter-file-oriented interface revision and another version.',
+    sessions: ['Q7QEvTbGlWs', 'Et6WSCdR3Yw'], artifacts: [{ label: '-hackers patch', url: 'https://www.postgresql.org/message-id/flat/CACLU5mTrtt2ocj_UhVC2_4tjXRi7oMCxK17WjoeX7khwRvZjxQ%40mail.gmail.com' }, { label: 'first review', url: 'https://www.postgresql.org/message-id/502B3804-007B-4B3D-B6F2-F9632EBECF7C%40yandex-team.ru' }],
+    next: ['Rewrite the interface around exclude-filter actions', 'Post the next patch version', 'Add a CommitFest entry when ready'],
   },
 ];

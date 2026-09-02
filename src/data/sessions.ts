@@ -2,6 +2,18 @@ import type { Session } from './types';
 
 export const sessions: Session[] = [
   {
+    date: '2026-09-02', title: 'Agentic Hacking Postgres with Andrey, Kirk, and Nik', video: 'Et6WSCdR3Yw', duration: '78:44',
+    topic: 'Review the PG20-2 backlog: minor upgrades, global temporary tables, wait instrumentation, and pg_stat_log.', line: 'Hacking process', confidence: 'direct', outcome: 'active',
+    artifacts: [
+      { label: 'PG20-2', url: 'https://commitfest.postgresql.org/61/' },
+      { label: 'GTT #6918', url: 'https://commitfest.postgresql.org/patch/6918/' },
+      { label: 'EXPLAIN waits #6753', url: 'https://commitfest.postgresql.org/patch/6753/' },
+      { label: 'wait timing #6984', url: 'https://commitfest.postgresql.org/patch/6984/' },
+      { label: 'pg_stat_log #7162', url: 'https://commitfest.postgresql.org/patch/7162/' },
+      { label: 'pg_dump patch', url: 'https://www.postgresql.org/message-id/flat/CACLU5mTrtt2ocj_UhVC2_4tjXRi7oMCxK17WjoeX7khwRvZjxQ%40mail.gmail.com' },
+    ],
+  },
+  {
     date: '2026-07-15', title: 'Back to “log LSN on DROP TABLE”', video: 'x9Ahk5L2SwA', duration: '50:53',
     topic: 'Fix correctness and coverage of recovery landmarks for destructive DDL.', line: 'Safety & recovery', confidence: 'direct', outcome: 'active',
     artifacts: [
