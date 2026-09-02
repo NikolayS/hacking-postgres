@@ -1,0 +1,93 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { sessionDetails, timestampSeconds } from '../../data/session-details';
+import { sessionUrlAt, sessions, youtubeEmbed, youtubeUrl } from '../../data/sessions';
+import { peopleForSession, topicsForSession } from '../../data/taxonomy';
+import type { Session } from '../../data/types';
+
+export function getStaticPaths() {
+  return sessions.map((session) => ({ params: { video: session.video }, props: { session } }));
+}
+
+const { session } = Astro.props as { session: Session };
+const detail = sessionDetails[session.video];
+const sessionTopics = topicsForSession(session);
+const sessionPeople = peopleForSession(session);
+---
+
+<Layout title={session.title} description={detail?.summary ?? session.topic}>
+  <section class="page-head">
+    <div class="shell">
+      <p class="eyebrow">postgres=# select * from sessions where video_id = '{session.video}';</p>
+      <h1>{session.title}</h1>
+      <p class="meta"><time datetime={session.date}>{session.date}</time> · {session.duration} · {session.line}</p>
+      <p class="lede">{session.topic}</p>
+      <div class="actions">
+        <a class="button primary" id="session-youtube" href={youtubeUrl(session.video)} data-video={session.video}>[youtube ↗]</a>
+        <a class="button" href="/sessions">[all sessions]</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="video">
+        <iframe
+          id="session-player"
+          src={youtubeEmbed(session.video)}
+          data-video={session.video}
+          title={session.title}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell split">
+      <div>
+        <h2>session summary</h2>
+        <p class="lede">{detail?.summary ?? 'Transcript summary pending.'}</p>
+        <div class="tag-list" aria-label="Topics and people">
+          {sessionTopics.map((topic) => <a class="tag topic-tag" href={`/topics/${topic.slug}/`}>#{topic.name}</a>)}
+          {sessionPeople.map((person) => <a class="tag person-tag" href={`/people/${person.slug}/`}>@{person.name}</a>)}
+        </div>
+        <div class="artifact-list">
+          {session.artifacts.map((artifact) => <a href={artifact.url}>{artifact.label}</a>)}
+        </div>
+      </div>
+      <div>
+        <h2>timecodes</h2>
+        {detail?.chapters.length
+          ? <ol class="detail-list session-detail-chapters">
+              {detail.chapters.map((chapter) => {
+                const seconds = timestampSeconds(chapter.at);
+                return (
+                  <li id={`t-${seconds}`}>
+                    <a class="session-detail-chapter" href={sessionUrlAt(session.video, seconds)} data-start={seconds}>
+                      <time>{chapter.at}</time> {chapter.title}
+                    </a>
+                  </li>
+                );
+              })}
+            </ol>
+          : <p class="meta">Timecodes pending.</p>}
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const player = document.querySelector<HTMLIFrameElement>('#session-player');
+    const rawStart = new URLSearchParams(window.location.search).get('t');
+    const start = Number.parseInt(rawStart ?? '0', 10);
+    if (player && rawStart !== null && Number.isFinite(start) && start >= 0) {
+      const video = player.dataset.video;
+      if (video && start > 0) player.src = `https://www.youtube-nocookie.com/embed/${video}?start=${start}&autoplay=1`;
+      const current = document.querySelector<HTMLAnchorElement>(`.session-detail-chapter[data-start="${start}"]`);
+      current?.setAttribute('aria-current', 'true');
+      const youtube = document.querySelector<HTMLAnchorElement>('#session-youtube');
+      if (youtube && video) youtube.href = `https://www.youtube.com/watch?v=${video}&t=${start}s`;
+    }
+  </script>
+</Layout>

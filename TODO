@@ -14,9 +14,9 @@ https://github.com/NikolayS/hacking-postgres/edit/main/TODO
 Observability
 =============
 
-* [NOT STARTED] Per-database query counts in pg_stat_database, enabling QPS alongside TPS
+* [NOT STARTED] pg_stat_database query counters — per-database QPS alongside TPS (proposed by Nikolay Samokhvalov)
 
-* [WIP] Precise, low-overhead timing and tracing for Postgres wait events
+* [WIP] Wait event timing and tracing instrumentation — precise, low-overhead wait timing and tracing (Dmitry Fomin)
 
 	https://hacking.postgres.tv/projects/wait-event-tracing/
 	https://commitfest.postgresql.org/patch/6984/
@@ -26,12 +26,12 @@ Observability
 	https://hacking.postgres.tv/projects/pg-stat-log/
 	https://commitfest.postgresql.org/patch/7162/
 
-* [WIP] Complete wait-event coverage for blocking Postgres operations
+* [WIP] Add wait events for server logging destination writes — expand coverage of blocking PostgreSQL operations (Seongjun Shin)
 
 	https://gaps.wait.events/
 	https://www.postgresql.org/message-id/flat/CACdN0M78U%2BGvpqA7oey-GA7fFSYM636aDp6H9FVvCztv9zXxSA%40mail.gmail.com
 
-* [WIP] pg_stat_statements that scales without global LWLock contention
+* [WIP] Improve pg_stat_statements scalability — remove global LWLock bottlenecks (Sami Imseih; related GSoC work by Quan Hoang Truong)
 
 	https://www.postgresql.org/message-id/flat/CAA5RZ0vZwR_dSK6fo0P2-EnskUVN0NjLHnGnJMFDPC8-kEW3sQ%40mail.gmail.com
 
@@ -39,12 +39,12 @@ Observability
 Recovery and replication
 ========================
 
-* [WIP] Reliable recovery landmarks for destructive DDL
+* [WIP] Simplify recovery after dropping a table by logging the restore LSN (Kirk Wolak)
 
 	https://hacking.postgres.tv/projects/log-object-drops/
 	https://commitfest.postgresql.org/patch/6272/
 
-* [WIP] Safe logical decoding from an archive-fed standby
+* [WIP] recovery_pause_on_logical_slot_conflict — pause instead of invalidating logical slots on archive-fed standbys (Nikolay Samokhvalov)
 
 	https://hacking.postgres.tv/projects/logical-decoding-archives/
 	https://github.com/NikolayS/postgres/pull/40
@@ -53,7 +53,7 @@ Recovery and replication
 Operations
 ==========
 
-* [WIP] Faster, safer minor upgrades with bounded pre-shutdown checkpointing and explicit release-note remediation
+* [WIP] Minor-upgrade operations — bounded pre-shutdown checkpointing and explicit release-note remediation (Nikolay Samokhvalov, Andrey Borodin, Kirk Wolak)
 
 	https://hacking.postgres.tv/projects/minor-upgrade-operations/
 	https://www.youtube.com/watch?v=Et6WSCdR3Yw
@@ -62,7 +62,7 @@ Operations
 SQL features
 ============
 
-* [WIP] Partial refresh of materialized views
+* [WIP] REFRESH MATERIALIZED VIEW ... WHERE — partial materialized-view refresh (Adam Brusselback)
 
 	https://hacking.postgres.tv/projects/partial-matview-refresh/
 	https://commitfest.postgresql.org/patch/6305/
@@ -71,7 +71,7 @@ SQL features
 Client/server protocol
 ======================
 
-* [WIP] Negotiated custom command-completion tags
+* [WIP] command_tag_format — protocol-level command-tag negotiation via _pq_ (Nikolay Samokhvalov)
 
 	https://github.com/NikolayS/postgres/pull/16
 
@@ -79,11 +79,11 @@ Client/server protocol
 Storage internals
 =================
 
-* [WIP] Compression of whole WAL records
+* [WIP] Compress big WAL records (Andrey Borodin)
 
 	https://commitfest.postgresql.org/patch/5621/
 
-* [WIP] Safe online B-tree page merge to reclaim index bloat
+* [WIP] B-tree Index Bloat Reduction — safe online page merge (Salma El-Sayed; mentored by Kirk Wolak)
 
 	https://hacking.postgres.tv/projects/btree-page-merge/
 	https://www.postgresql.org/message-id/flat/CANBEAPFq3YAOydjUS3xwcUG9L6e3WE5Z4nGPk_Q3RsjSFWTJNA%40mail.gmail.com
@@ -92,14 +92,14 @@ Storage internals
 Client tools
 ============
 
-* [WIP] pg_dump placeholders for excluded table data
+* [WIP] Allow excluded tables to remain in the pg_restore data-loading path for directory-format dumps (Kirk Wolak)
 
 	https://www.postgresql.org/message-id/flat/CACLU5mTrtt2ocj_UhVC2_4tjXRi7oMCxK17WjoeX7khwRvZjxQ%40mail.gmail.com
 
-* [NOT STARTED] A plugin interface for psql
+* [NOT STARTED] psql plugin interface (proposed by Kirk Wolak)
 
-* [NOT STARTED] Parallel dump and restore of independently restorable chunks of one large table
+* [NOT STARTED] Parallel dump and restore of independently restorable chunks of one large table (proposed by Kirk Wolak)
 
-* [NOT STARTED] Custom pg_dump queries for filtering and transforming table data
+* [NOT STARTED] Custom pg_dump queries for filtering and transforming table data (proposed by Kirk Wolak)
 
 	https://www.postgresql.org/message-id/flat/CACLU5mS07WGPpq6%3Dm8aC5tUMusNpL8FhBPnYem86iSawEgcavw%40mail.gmail.com
