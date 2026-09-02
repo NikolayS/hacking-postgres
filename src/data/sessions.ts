@@ -76,4 +76,4 @@ export const youtubeUrl = (video: string) => `https://www.youtube.com/watch?v=${
 export const youtubeUrlAt = (video: string, seconds: number) => `${youtubeUrl(video)}&t=${seconds}s`;
 export const youtubeEmbed = (video: string) => `https://www.youtube-nocookie.com/embed/${video}`;
 export const sessionUrl = (video: string) => `/sessions/${encodeURIComponent(video)}/`;
-export const sessionUrlAt = (video: string, seconds: number) => `${sessionUrl(video)}?t=${seconds}#t-${seconds}`;
+export const sessionUrlAt = (video: string, seconds: number) => `${sessionUrl(video)}?t=${seconds}`;
