@@ -228,3 +228,11 @@ body.video-dialog-open { overflow: hidden; }
 }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Source provenance and session follow-up stay readable on narrow screens. */
+.source-note { color: var(--muted); font-size: 12px; }
+.session-actions li { padding-block: .5rem; }
+.action-target { display: block; color: var(--muted); font-size: 12px; }
+.bug-fix { padding-block: 1.5rem; border-bottom: 1px solid var(--line); }
+.bug-fix h2 { max-width: 850px; }
+.bug-fix .detail-list { overflow-wrap: anywhere; }

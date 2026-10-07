@@ -6,12 +6,14 @@ const lines = [...new Set(sessions.map((session) => session.line))];
 ---
 
 <Layout title="Sessions">
-  <section class="page-head"><div class="shell"><p class="eyebrow">postgres=# select count(*) from sessions;</p><h1>{sessions.length} sessions.</h1><p class="lede">Transcript-backed summaries and timecodes, plus every durable artifact we could find. Open a session for a focused page; chapter links preserve the exact moment in a shareable hacking.postgres.tv URL. “Correlated” means the chronology and topic match but public evidence does not prove direct provenance.</p></div></section>
+  <section class="page-head"><div class="shell"><p class="eyebrow">postgres=# select count(*) from sessions;</p><h1>{sessions.length} sessions.</h1><p class="lede">Source-linked summaries, caption-backed timecodes where available, and durable artifacts. Open a session for a focused page; chapter links preserve the exact moment in a shareable hacking.postgres.tv URL. “Correlated” means the chronology and topic match but public evidence does not prove direct provenance.</p></div></section>
   <section class="section"><div class="shell">
     <div class="session-toolbar">
       <input class="search" id="session-search" type="search" placeholder="search sessions, topics, work lines…" aria-label="Search sessions" />
       <div class="filters" aria-label="Filter by work line"><button class="filter" data-filter="all" aria-pressed="true">all</button>{lines.map((line) => <button class="filter" data-filter={line} aria-pressed="false">{line}</button>)}</div>
     </div>
+    <p class="meta" id="session-count" role="status" aria-live="polite">{sessions.length} sessions</p>
+    <button class="filter" id="session-reset" type="button" hidden>[clear filters]</button>
     <div class="session-list" id="session-list">{sessions.map((session) => <SessionRow session={session} />)}</div>
     <p class="empty" id="session-empty" hidden>no matching sessions.</p>
   </div></section>
@@ -20,8 +22,17 @@ const lines = [...new Set(sessions.map((session) => session.line))];
     const rows = [...document.querySelectorAll<HTMLElement>('[data-session]')];
     const buttons = [...document.querySelectorAll<HTMLButtonElement>('[data-filter]')];
     const empty = document.querySelector<HTMLElement>('#session-empty');
+    const count = document.querySelector<HTMLElement>('#session-count');
+    const reset = document.querySelector<HTMLButtonElement>('#session-reset');
+    const restore = () => {
+      const params = new URLSearchParams(location.search);
+      if (search) search.value = params.get('q') ?? '';
+      const requestedLine = params.get('line');
+      active = buttons.some((button) => button.dataset.filter === requestedLine) ? requestedLine! : 'all';
+      apply(false);
+    };
     let active = 'all';
-    const apply = () => {
+    const apply = (updateUrl = true) => {
       const query = search?.value.trim().toLowerCase() ?? '';
       let visible = 0;
       rows.forEach((row) => {
@@ -31,12 +42,31 @@ const lines = [...new Set(sessions.map((session) => session.line))];
         if (!row.hidden) visible++;
       });
       if (empty) empty.hidden = visible !== 0;
+      if (count) count.textContent = `${visible} of ${rows.length} sessions`;
+      if (reset) reset.hidden = !query && active === 'all';
+      buttons.forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.filter === active)));
+      if (updateUrl) {
+        const url = new URL(location.href);
+        if (query) url.searchParams.set('q', search?.value.trim() ?? '');
+        else url.searchParams.delete('q');
+        if (active !== 'all') url.searchParams.set('line', active);
+        else url.searchParams.delete('line');
+        history.replaceState(null, '', url);
+      }
     };
-    search?.addEventListener('input', apply);
+    search?.addEventListener('input', () => apply());
     buttons.forEach((button) => button.addEventListener('click', () => {
       active = button.dataset.filter ?? 'all';
       buttons.forEach((candidate) => candidate.setAttribute('aria-pressed', String(candidate === button)));
       apply();
     }));
+    reset?.addEventListener('click', () => {
+      if (search) search.value = '';
+      active = 'all';
+      apply();
+      search?.focus();
+    });
+    window.addEventListener('popstate', restore);
+    restore();
   </script>
 </Layout>

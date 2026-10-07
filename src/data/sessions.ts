@@ -2,6 +2,17 @@ import type { Session } from './types';
 
 export const sessions: Session[] = [
   {
+    date: '2026-10-07', title: 'Agentic Hacking Postgres: Committer in Training', video: '-UaAXJSTj6c',
+    topic: 'Standby snapshot corruption, seven upstream bug fixes, and a plan for adversarial CommitFest review.',
+    line: 'Hacking process', confidence: 'direct', outcome: 'active',
+    artifacts: [
+      { label: 'session notes #98', url: 'https://github.com/NikolayS/postgres/issues/98' },
+      { label: 'bug-fixing activity', url: '/bugs/' },
+      { label: 'Committer in Training', url: '/projects/committer-in-training/' },
+      { label: 'snapshot fix', url: 'https://git.postgresql.org/gitweb/?p=postgresql.git;a=commitdiff;h=79b101486c1d792600b79f90579b788385e85878' },
+    ],
+  },
+  {
     date: '2026-09-02', title: 'Agentic Hacking Postgres with Andrey, Kirk, and Nik', video: 'Et6WSCdR3Yw', duration: '78:44',
     topic: 'Review the PG20-2 backlog: minor upgrades, global temporary tables, wait instrumentation, and pg_stat_log.', line: 'Hacking process', confidence: 'direct', outcome: 'active',
     artifacts: [

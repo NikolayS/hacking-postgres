@@ -4,10 +4,12 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
 }
 
 const {
   title,
+  image,
   description = 'A public workbench for Postgres hacking sessions, patches, reviews, blockers, and follow-up work.',
 } = Astro.props;
 const pageTitle = title ? `${title} — Postgres Hacking` : 'Postgres Hacking';
@@ -15,6 +17,7 @@ const path = Astro.url.pathname;
 const links = [
   ['/', './home'],
   ['/work', './work'],
+  ['/bugs', './bugs'],
   ['/todo', './TODO'],
   ['/sessions', './sessions'],
   ['/topics', './topics'],
@@ -33,6 +36,13 @@ const links = [
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="canonical" href={new URL(path, Astro.site)} />
     <title>{pageTitle}</title>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={new URL(path, Astro.site)} />
+    <meta property="og:site_name" content="Postgres Hacking" />
+    <meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} />
+    {image && <meta property="og:image" content={image} />}
   </head>
   <body>
     <a class="skip-link" href="#content">skip to content</a>

@@ -1,7 +1,107 @@
 import type { SessionDetail } from './types';
 
-// Generated from timestamped YouTube captions and manually reviewed.
+// Caption-backed summaries unless an explicit source is provided; timecodes are never inferred.
 export const sessionDetails: Record<string, SessionDetail> = {
+  "-UaAXJSTj6c": {
+  "summary": "Nik Samokhvalov, Andrey Borodin, and Kirk Wolak discussed standby snapshot corruption and how to review AI-assisted patches without losing human judgment. Nik reported about 30 bug reports with proposed fixes, seven committed fixes, and two false positives. The main proposal was Committer in Training: a small, low-risk CommitFest queue reviewed by adversarial agents, with red-green tests and public evidence. The group agreed to start a static bug-fixing record and work toward a patch-addressable CommitFest overlay.",
+  "chapters": [],
+  "source": {
+    "label": "Session notes and action items by Nik (#98)",
+    "url": "https://github.com/NikolayS/postgres/issues/98"
+  },
+  "keyPoints": [
+    {
+      "title": "Standby snapshot corruption",
+      "text": "The session discussed an exported recovery snapshot that loses in-progress XIDs when the subtransaction array has overflowed. Imported snapshots can then set incorrect hint bits. The upstream fix preserves subxip[] during recovery. Andrey is working on separate corruption detection; it is not a shipped feature.",
+      "links": [
+        {
+          "label": "upstream snapshot fix",
+          "url": "https://git.postgresql.org/gitweb/?p=postgresql.git;a=commitdiff;h=79b101486c1d792600b79f90579b788385e85878"
+        },
+        {
+          "label": "related snapshot import lock fix",
+          "url": "https://git.postgresql.org/gitweb/?p=postgresql.git;a=commitdiff;h=0ebeec35fc3c3bf617ac447b36f1b158b076f6e7"
+        }
+      ]
+    },
+    {
+      "title": "AI-assisted bug fixing: evidence over counts",
+      "text": "Seven upstream commits are linked in the bug-fixing record. The approximate report count and two false positives are session-reported figures, not a complete independently audited ledger. A merged commit does not mean a fix is in a released minor version.",
+      "links": [
+        {
+          "label": "seven committed fixes",
+          "url": "/bugs/"
+        }
+      ]
+    },
+    {
+      "title": "Committer in Training",
+      "text": "Build and test patches, then use adversarial reviewers for correctness, security, coverage, and test quality. Publish a short summary with the full evidence and PR links. Start with 5–10 low-risk entries active in the last 30–90 days; the overlay and harness release are planned, not live.",
+      "links": [
+        {
+          "label": "proposal and next steps",
+          "url": "/projects/committer-in-training/"
+        }
+      ]
+    },
+    {
+      "title": "Keep the human learning loop",
+      "text": "Try to prove the AI wrong, use independent criticism, and reflect after each session. The group discussed clear writing, red-green TDD, short-context workers, and learning from past patches with known later bugs."
+    }
+  ],
+  "actions": [
+    {
+      "owner": "Nik",
+      "task": "Release PG BS detector.",
+      "target": "October 2026"
+    },
+    {
+      "owner": "Nik",
+      "task": "Release the Committer in Training harness built on the existing bug-fixing harness (PI, GPT models by default).",
+      "target": "November 2026"
+    },
+    {
+      "owner": "Website",
+      "task": "Publish a static bug-fixing activity page with source-linked findings.",
+      "target": "Published with this session"
+    },
+    {
+      "owner": "Website",
+      "task": "Build a CommitFest overlay with summaries, full evidence, and routes by patch ID.",
+      "target": "Planned v1"
+    },
+    {
+      "owner": "Nik / Kirk",
+      "task": "Select 5–10 recently active, low-risk CommitFest entries and publish pipeline results.",
+      "target": "Planned v1"
+    },
+    {
+      "owner": "Kirk / Nik",
+      "task": "Offer the tool to committers and ask which patches need review.",
+      "target": "After v1"
+    },
+    {
+      "owner": "Nik",
+      "task": "Report the result of the harness run discussed during the session in Telegram.",
+      "target": "Follow-up"
+    },
+    {
+      "owner": "Nik",
+      "task": "Edit and publish the “Did AI kill Postgres 19?” video.",
+      "target": "Soon"
+    },
+    {
+      "owner": "Andrey",
+      "task": "Continue the standby corruption-detection patch.",
+      "target": "Ongoing"
+    },
+    {
+      "owner": "All",
+      "task": "Look for token sponsors or credits and meet again sooner.",
+      "target": "Ongoing"
+    }
+  ]
+},
   "Et6WSCdR3Yw": {
     "summary": "The group turned a tour of the PG20-2 CommitFest into concrete review homework. They reconciled Andrey Borodin's prolific August as 25 currently authored entries, explored bounded pre-shutdown checkpoints and safe cache handoff for minor upgrades, and examined why global temporary tables require deep catalog, relcache, planner, statistics, and lifecycle work. They then compared Ilmar Yunusov's EXPLAIN wait-event patch with Dmitry Fomin's broader timing/tracing series, insisting on honest attribution and workload benchmarks. The most actionable outcome was pg_stat_log: Nikolay will independently benchmark and review its SQL-queryable error counters, Kirk will support the thread, Andrey will revisit Dmitry's series, and Kirk will revise his pg_dump placeholder interface.",
     "chapters": [

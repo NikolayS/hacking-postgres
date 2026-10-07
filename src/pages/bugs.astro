@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { bugFixes } from '../data/bug-fixes';
+---
+
+<Layout title="Bug-fixing activity" description="Source-linked upstream fixes discussed in Postgres Hacking sessions, with attribution and review evidence.">
+  <section class="page-head"><div class="shell">
+    <p class="eyebrow">postgres=# select * from bug_fixes order by committed_at desc;</p>
+    <h1>Bug-fixing activity.</h1>
+    <p class="lede">Reproducible findings, public discussion, upstream fixes. This first record covers the seven commits Nik linked in the October 7 session. It is not a complete inventory of every report or pending patch.</p>
+    <div class="actions"><a class="button primary" href="/sessions/-UaAXJSTj6c/">[October 7 session]</a><a class="button" href="/projects/committer-in-training/">[Committer in Training]</a><a class="button" href="https://github.com/NikolayS/postgres/issues/98">[source notes #98 ↗]</a></div>
+  </div></section>
+  <section class="section"><div class="shell">
+    <div class="callout"><p><strong>{bugFixes.length} committed upstream.</strong> Commit existence and metadata were checked on October 7, 2026. “Committed” does not mean included in a released version. Read the upstream commit for affected branches, authors, and tests.</p><p>Nik reported about 30 AI-assisted reports and two false positives during the session. Those approximate counts are session-reported, not independently audited totals. The snapshot bug discussed by Andrey is separate from these seven fixes.</p></div>
+    <div class="bug-list">
+      {[...bugFixes].reverse().map((fix) => <article class="bug-fix" id={fix.sha.slice(0, 10)}>
+        <p class="meta"><time datetime={fix.date}>{fix.date}</time> · committed upstream</p>
+        <h2><a href={fix.url}>{fix.title}</a></h2>
+        <p><a href={fix.url}><code>{fix.sha.slice(0, 10)}</code> · upstream commit ↗</a></p>
+        <details><summary>[attribution and discussion]</summary>
+          <ul class="detail-list">{fix.credits.map((credit) => <li>{credit}</li>)}</ul>
+          <div class="artifact-list">{fix.threads.map((url, i) => <a href={url}>discussion {i + 1} ↗</a>)}</div>
+        </details>
+      </article>)}
+    </div>
+  </div></section>
+  <section class="section"><div class="shell"><h2>next: public review evidence</h2><p class="lede">The proposed Committer in Training pipeline will add patch-level review summaries, failing-then-passing tests, and links to the underlying PRs. No completed pipeline results or live CommitFest overlay are claimed here.</p><div class="actions"><a class="button" href="/projects/committer-in-training/">[proposal and next steps →]</a></div></div></section>
+</Layout>

@@ -1,6 +1,6 @@
 Postgres Hacking TODO List
 ==========================
-Last updated: 2026-09-02
+Last updated: 2026-10-07
 
 This is a list of outcomes we want to achieve, not an internal task list.
 [WIP] means public work exists.  [NOT STARTED] means the idea has not yet
@@ -103,3 +103,20 @@ Client tools
 * [NOT STARTED] Custom pg_dump queries for filtering and transforming table data (proposed by Kirk Wolak)
 
 	https://www.postgresql.org/message-id/flat/CACLU5mS07WGPpq6%3Dm8aC5tUMusNpL8FhBPnYem86iSawEgcavw%40mail.gmail.com
+
+
+Review and bug fixing
+=====================
+
+* [NOT STARTED] Committer in Training — reproducible, adversarial AI-assisted review of a small, low-risk CommitFest queue; human reviewers retain judgment (Nikolay Samokhvalov, Kirk Wolak)
+
+	https://hacking.postgres.tv/projects/committer-in-training/
+	https://github.com/NikolayS/postgres/issues/98
+
+* [NOT STARTED] CommitFest review overlay — source-linked summaries, full review evidence, and PR links addressable by CF patch ID
+
+	https://hacking.postgres.tv/projects/committer-in-training/
+
+* [WIP] Detect standby snapshot corruption (Andrey Borodin)
+
+	https://github.com/NikolayS/postgres/issues/98

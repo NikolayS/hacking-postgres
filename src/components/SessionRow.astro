@@ -9,13 +9,13 @@ const sessionTopics = topicsForSession(session);
 const sessionPeople = peopleForSession(session);
 ---
 
-<article class="session" data-session data-line={session.line} data-search={`${session.title} ${session.topic} ${detail?.summary ?? ''} ${detail?.chapters.map(({ title }) => title).join(' ') ?? ''} ${session.line} ${sessionTopics.map(({ name }) => name).join(' ')} ${sessionPeople.map(({ name }) => name).join(' ')}`.toLowerCase()}>
+<article class="session" data-session data-line={session.line} data-search={`${session.date} ${session.title} ${session.topic} ${detail?.summary ?? ''} ${detail?.chapters.map(({ title }) => title).join(' ') ?? ''} ${session.line} ${sessionTopics.map(({ name }) => name).join(' ')} ${sessionPeople.map(({ name }) => name).join(' ')}`.toLowerCase()}>
   <div>
     <button class="session-video" type="button" data-video={session.video} aria-label={`Play ${session.title}`}>
       <img src={`https://i.ytimg.com/vi/${session.video}/mqdefault.jpg`} alt="" width="320" height="180" loading="lazy" />
       <span>[play]</span>
     </button>
-    <div class="session-date"><time datetime={session.date}>{session.date}</time> · {session.duration} · <a href={sessionUrl(session.video)}>details</a> · <a href={youtubeUrl(session.video)}>youtube ↗</a></div>
+    <div class="session-date"><time datetime={session.date}>{session.date}</time>{session.duration && <> · {session.duration}</>} · <a href={sessionUrl(session.video)}>details</a> · <a href={youtubeUrl(session.video)}>youtube ↗</a></div>
   </div>
   <div>
     <h2><a href={sessionUrl(session.video)}>{session.title}</a></h2>
@@ -23,6 +23,7 @@ const sessionPeople = peopleForSession(session);
     {detail
       ? <p class="session-summary">{detail.summary}</p>
       : <p class="session-summary session-summary-pending">Transcript summary and timecodes pending captions.</p>}
+    {detail?.source && <p class="source-note">Summary from <a href={detail.source.url}>session notes</a>; timecodes pending captions.</p>}
     {detail?.chapters.length > 0 && (
       <details class="session-chapters">
         <summary>[timecodes · {detail.chapters.length}]</summary>

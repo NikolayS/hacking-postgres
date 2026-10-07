@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import SupportedProjectCard from '../components/SupportedProjectCard.astro';
 import WorkCard from '../components/WorkCard.astro';
 import SessionRow from '../components/SessionRow.astro';
-import { sessions, youtubeEmbed } from '../data/sessions';
+import { sessions, sessionUrl, youtubeEmbed } from '../data/sessions';
 import { publicOutcomes, supportedProjects, workItems } from '../data/work';
 
 const active = workItems.filter((item) => item.state !== 'shipped');
@@ -54,9 +54,10 @@ const latest = sessions[0];
         <div class="video"><iframe src={youtubeEmbed(latest.video)} title={latest.title} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
       </div>
       <div>
-        <p class="eyebrow">{latest.date} · {latest.duration}</p>
-        <h2>{latest.title}</h2>
+        <p class="eyebrow">{latest.date}{latest.duration && <> · {latest.duration}</>}</p>
+        <h2><a href={sessionUrl(latest.video)}>{latest.title}</a></h2>
         <p class="lede">{latest.topic}</p>
+        <div class="actions"><a class="button primary" href={sessionUrl(latest.video)}>[summary and follow-up →]</a></div>
         <div class="artifact-list">{latest.artifacts.map((artifact) => <a href={artifact.url}>{artifact.label}</a>)}</div>
       </div>
     </div>

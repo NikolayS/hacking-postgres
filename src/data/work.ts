@@ -148,6 +148,23 @@ export const supportedProjects: SupportedProject[] = [
 
 export const workItems: WorkItem[] = [
   {
+    slug: 'committer-in-training', title: 'Committer in Training', state: 'exploration',
+    summary: 'A proposed AI-assisted review pipeline for a small CommitFest queue: reproducible builds, red-green tests, adversarial reviews, and public summaries linked to the evidence. Designed to help human reviewers, not replace committer judgment.',
+    sessions: ['-UaAXJSTj6c'],
+    artifacts: [
+      { label: 'session proposal #98', url: 'https://github.com/NikolayS/postgres/issues/98' },
+      { label: 'bug-fixing activity', url: '/bugs/' },
+      { label: 'CommitFest', url: 'https://commitfest.postgresql.org/' },
+    ],
+    next: [
+      'Nik / Kirk: select 5–10 low-risk entries active in the last 30–90 days.',
+      'Run builds, red-green tests, and independent correctness, security, coverage, and test-quality reviews.',
+      'Publish per-patch summaries and evidence; build a CommitFest overlay addressable by patch ID.',
+      'Nik: target November 2026 for the PI-based harness release. No public release is linked yet.',
+      'After v1, ask committers which patches need review and collect feedback.',
+    ],
+  },
+  {
     slug: 'wait-event-tracing', title: 'Precise wait-event timing and tracing', state: 'needs-review',
     summary: 'Low-overhead core timing, trace capture, coverage analysis, independent observer-effect benchmarks, and honest query/plan-node attribution.',
     blocker: 'Needs more reviewer cycles, benchmark scrutiny, and a clear relationship with the separate EXPLAIN wait-event series.',

@@ -15,12 +15,12 @@ const sessionTopics = topicsForSession(session);
 const sessionPeople = peopleForSession(session);
 ---
 
-<Layout title={session.title} description={detail?.summary ?? session.topic}>
+<Layout title={session.title} description={detail?.summary ?? session.topic} image={`https://i.ytimg.com/vi/${session.video}/hqdefault.jpg`}>
   <section class="page-head">
     <div class="shell">
       <p class="eyebrow">postgres=# select * from sessions where video_id = '{session.video}';</p>
       <h1>{session.title}</h1>
-      <p class="meta"><time datetime={session.date}>{session.date}</time> · {session.duration} · {session.line}</p>
+      <p class="meta"><time datetime={session.date}>{session.date}</time>{session.duration && <> · {session.duration}</>} · {session.line}</p>
       <p class="lede">{session.topic}</p>
       <div class="actions">
         <a class="button primary" id="session-youtube" href={youtubeUrl(session.video)} data-video={session.video}>[youtube ↗]</a>
@@ -49,6 +49,7 @@ const sessionPeople = peopleForSession(session);
       <div>
         <h2>session summary</h2>
         <p class="lede">{detail?.summary ?? 'Transcript summary pending.'}</p>
+        {detail?.source && <p class="source-note">Based on <a href={detail.source.url}>{detail.source.label}</a>. Caption-backed timecodes are not available yet.</p>}
         <div class="tag-list" aria-label="Topics and people">
           {sessionTopics.map((topic) => <a class="tag topic-tag" href={`/topics/${topic.slug}/`}>#{topic.name}</a>)}
           {sessionPeople.map((person) => <a class="tag person-tag" href={`/people/${person.slug}/`}>@{person.name}</a>)}
@@ -76,6 +77,13 @@ const sessionPeople = peopleForSession(session);
       </div>
     </div>
   </section>
+
+  {detail?.keyPoints && <section class="section"><div class="shell"><h2>discussion and decisions</h2><div class="grid">
+    {detail.keyPoints.map((point) => <article class="card"><h3>{point.title}</h3><p>{point.text}</p>{point.links && <div class="artifact-list">{point.links.map((link) => <a href={link.url}>{link.label}</a>)}</div>}</article>)}
+  </div></div></section>}
+  {detail?.actions && <section class="section"><div class="shell"><h2>follow-up from this session</h2><p class="lede">Owners and targets from the session notes. Targets are plans, not completed releases.</p><ul class="detail-list session-actions">
+    {detail.actions.map((action) => <li><strong>{action.owner}</strong> — {action.task}<span class="action-target">{action.target}</span></li>)}
+  </ul></div></section>}
 
   <script>
     const player = document.querySelector<HTMLIFrameElement>('#session-player');

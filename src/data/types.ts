@@ -11,13 +11,16 @@ export type Chapter = {
 export type SessionDetail = {
   summary: string;
   chapters: Chapter[];
+  source?: Artifact;
+  keyPoints?: { title: string; text: string; links?: Artifact[] }[];
+  actions?: { owner: string; task: string; target: string }[];
 };
 
 export type Session = {
   date: string;
   title: string;
   video: string;
-  duration: string;
+  duration?: string;
   topic: string;
   line: string;
   confidence: 'direct' | 'correlated' | 'none';
