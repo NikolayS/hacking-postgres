@@ -25,6 +25,11 @@ export const sessions: Session[] = [
     ],
   },
   {
+    date: '2026-07-29', title: 'Agentic Postgres hacking with Andrey, Kirk, and Nik', video: '4pi0QPinPlE',
+    topic: 'Agentic Postgres hacking with Andrey Borodin, Kirk Wolak, and Nik Samokhvalov. Detailed notes pending captions.',
+    line: 'Hacking process', confidence: 'none', outcome: 'exploration', artifacts: [],
+  },
+  {
     date: '2026-07-15', title: 'Back to “log LSN on DROP TABLE”', video: 'x9Ahk5L2SwA', duration: '50:53',
     topic: 'Fix correctness and coverage of recovery landmarks for destructive DDL.', line: 'Safety & recovery', confidence: 'direct', outcome: 'active',
     artifacts: [
