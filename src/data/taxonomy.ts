@@ -95,7 +95,7 @@ export const topics: Topic[] = [
   { slug: 'btree', name: 'B-tree', videos: ['Q7QEvTbGlWs', 'c0wKWcPZnH0', '5lN775a5geI', 'mVYl2RHlpoE', '3MleDtXZUlM', 'Ib3SXSFt8mE', 'D1PEdDcvZTw', 'cbgHrmOAsiU', 'EYwh18PBitM'] },
   { slug: 'wal', name: 'WAL', videos: ['_Fp-llPPSrE', 'Nu6RdU3aemk', 'LjiU6kB6izw', '74NFSqTrD0s', 'cbgHrmOAsiU', 'EYwh18PBitM'] },
   { slug: 'multixact', name: 'MultiXact', videos: ['Szpqbb89YSA', 'g9yl3zE9MlI', 'wLPDt7CufEU'] },
-  { slug: 'psql', name: 'psql', videos: ['VKuxQZlvd8E', 'ul-wgvNtUGY', 'UzMxroqUuI0', 'hGXPgFK8Eh8', 'vTV8XhWf3mo'] },
+  { slug: 'psql', name: 'psql', videos: ['MamLJlF7nQQ', 'VKuxQZlvd8E', 'ul-wgvNtUGY', 'UzMxroqUuI0', 'hGXPgFK8Eh8', 'vTV8XhWf3mo'] },
   { slug: 'sql', name: 'SQL', videos: ['Et6WSCdR3Yw', '6cZvHjDrmlQ', 'k4A9-WZET_4', '-6xA5JI4irI', 'YPq_hiOE-N8', 'samLkrC5xQA', 'WLoMpg8A4WU'] },
   { slug: 'monitoring', name: 'monitoring', videos: ['Et6WSCdR3Yw', 'wLPDt7CufEU', 'wHMNX-fHb2A', 'RLeB6rP5CA8', '6kqpjnpl5Gc', '3Gtuc2lnnsE', 'bfPdLjdQvwU'] },
   { slug: 'compression', name: 'compression', videos: ['woTqRL0Zh3A', 'cbgHrmOAsiU', 'EYwh18PBitM', 'YL31cf9Q1VM'] },

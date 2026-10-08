@@ -2,6 +2,11 @@ import type { SessionDetail } from './types';
 
 // Caption-backed summaries unless an explicit source is provided; timecodes are never inferred.
 export const sessionDetails: Record<string, SessionDetail> = {
+  "MamLJlF7nQQ": {
+    summary: "The session introduces work on showing the current time in psql's prompt. The video description links the proposal to its pgsql-hackers discussion. A detailed transcript review and chapter timecodes are still pending.",
+    chapters: [],
+    source: { label: 'YouTube description', url: 'https://www.youtube.com/watch?v=MamLJlF7nQQ' },
+  },
   "-UaAXJSTj6c": {
   "summary": "Nik Samokhvalov, Andrey Borodin, and Kirk Wolak discussed standby snapshot corruption and how to review AI-assisted patches without losing human judgment. Nik reported about 30 bug reports with proposed fixes, seven committed fixes, and two false positives. The main proposal was Committer in Training: a small, low-risk CommitFest queue reviewed by adversarial agents, with red-green tests and public evidence. The group agreed to start a static bug-fixing record and work toward a patch-addressable CommitFest overlay.",
   "chapters": [],
