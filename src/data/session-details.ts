@@ -2,6 +2,164 @@ import type { SessionDetail } from './types';
 
 // Caption-backed summaries unless an explicit source is provided; timecodes are never inferred.
 export const sessionDetails: Record<string, SessionDetail> = {
+  "pVFH6VwjgwM": {
+  "summary": "Nik Samokhvalov, Kirk Wolak, and Salma El-Sayed tested the B-tree leaf-page merge prototype and agreed to prioritize correctness before benchmarks. The discussion covered boundary pivots, merge-group metadata, concurrent readers, and deferred VACUUM cleanup. Nik reported standby and parallel-scan failures; the group examined index-only-scan snapshot safety and the lifetime of pinned pages. The next step is focused reproduction, small fixes, and retesting against exact revisions, not a claim that the prototype is ready to ship.",
+  "chapters": [],
+  "source": {
+    "label": "October 14 session summary and action items",
+    "url": "https://github.com/NikolayS/postgres/issues/116"
+  },
+  "keyPoints": [
+    {
+      "title": "Current design, not a settled SQL interface",
+      "text": "Salma described a boundary pivot and merge-group metadata replacing the earlier fix-up approach. The current prototype merges left into right under the same parent. Merges are explicitly invoked; VACUUM performs later cleanup. Automatic initiation and final SQL syntax remain design questions."
+    },
+    {
+      "title": "Logical states and cleanup ordering",
+      "text": "Merge, half-dead, deleted, and reusable describe logical states, not a requirement for separate VACUUM runs. The group emphasized retaining merge-group relationships until cleanup is safe, including interrupted cleanup and intermediate states."
+    },
+    {
+      "title": "Correct results, not just clean amcheck",
+      "text": "Long-lived snapshots, index-only and parallel scans, direction changes, rescans, and concurrent VACUUM need independent result comparisons. A successful amcheck run or absence of a crash is not sufficient evidence of correctness."
+    },
+    {
+      "title": "Reported during the call",
+      "text": "Nik reported a standby PANIC and parallel-scan wrong results. Salma suggested missing first-page merge-state publication as one possible explanation, not a verified fix. The group located Oleg’s index-only-scan reproducer and discussed the reverted cleanup-lock change.",
+      "links": [
+        {
+          "label": "standby PANIC #102",
+          "url": "https://github.com/NikolayS/postgres/issues/102"
+        },
+        {
+          "label": "parallel scan #103",
+          "url": "https://github.com/NikolayS/postgres/issues/103"
+        },
+        {
+          "label": "index-only scan #107",
+          "url": "https://github.com/NikolayS/postgres/issues/107"
+        }
+      ]
+    },
+    {
+      "title": "Campaign follow-ups: scan correctness",
+      "text": "The session notes also link follow-up reports recorded after the live discussion. These cover parallel merge-skip state, cursor direction changes, and merge-join mark/restore. This is not a claim that every report was discussed on air; each issue has its own revision, evidence, and validation status.",
+      "links": [
+        {
+          "label": "parallel race #115",
+          "url": "https://github.com/NikolayS/postgres/issues/115"
+        },
+        {
+          "label": "cursor direction #104",
+          "url": "https://github.com/NikolayS/postgres/issues/104"
+        },
+        {
+          "label": "mark/restore #105",
+          "url": "https://github.com/NikolayS/postgres/issues/105"
+        }
+      ]
+    },
+    {
+      "title": "Campaign follow-ups: cleanup and validation",
+      "text": "Follow-up reports address VACUUM rechecks after lock waits, merges into already-vacuumed pages, interrupted cleanup, adjacent tombstones, merge-group validation, and parent-check locking. Use the campaign as the evolving inventory rather than a fixed defect count.",
+      "links": [
+        {
+          "label": "VACUUM recheck #106",
+          "url": "https://github.com/NikolayS/postgres/issues/106"
+        },
+        {
+          "label": "heap-slot reuse #108",
+          "url": "https://github.com/NikolayS/postgres/issues/108"
+        },
+        {
+          "label": "interrupted cleanup #109",
+          "url": "https://github.com/NikolayS/postgres/issues/109"
+        },
+        {
+          "label": "adjacent tombstones #114",
+          "url": "https://github.com/NikolayS/postgres/issues/114"
+        },
+        {
+          "label": "amcheck #110",
+          "url": "https://github.com/NikolayS/postgres/issues/110"
+        },
+        {
+          "label": "locking #111",
+          "url": "https://github.com/NikolayS/postgres/issues/111"
+        }
+      ]
+    },
+    {
+      "title": "WAL, standby, and packaging follow-ups",
+      "text": "The campaign also tracks WAL-format compatibility and pageinspect extension versioning. The WAL report distinguishes source observations from behavior not independently reproduced. These are review reports, not claims of released Postgres defects.",
+      "links": [
+        {
+          "label": "WAL compatibility #112",
+          "url": "https://github.com/NikolayS/postgres/issues/112"
+        },
+        {
+          "label": "extension versioning #113",
+          "url": "https://github.com/NikolayS/postgres/issues/113"
+        },
+        {
+          "label": "full testing campaign #101",
+          "url": "https://github.com/NikolayS/postgres/issues/101"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "owner": "Nik / testing",
+      "task": "Continue campaign #101 with exact revisions and small reproducible cases in linked issues.",
+      "target": "Correctness first"
+    },
+    {
+      "owner": "Nik / testing",
+      "task": "Run the original repro_ios_merge_vacuum.py; compare index-only and ordinary scans on primary and standby, including the cleanup-lock change.",
+      "target": "See #107"
+    },
+    {
+      "owner": "Testing",
+      "task": "Run existing merge tests, including 008_btree_merge; fix missing Meson registration and separate test-side failures from server defects.",
+      "target": "See #101"
+    },
+    {
+      "owner": "Testing",
+      "task": "Check ordinary and parallel scans, forward/backward movement, rescans, long transactions, isolation levels, and pg_dump against an independent oracle.",
+      "target": "Reproduce and compare results"
+    },
+    {
+      "owner": "Testing",
+      "task": "Cover interrupted cleanup, page reuse, merge-group invariants, WAL replay, and standby behavior. Add tests that invalid structures are detected.",
+      "target": "Exact code and intermediate states"
+    },
+    {
+      "owner": "Salma / development",
+      "task": "Investigate linked reports, prepare focused fixes, and notify Nik when revisions are available.",
+      "target": "For retesting"
+    },
+    {
+      "owner": "Nik / testing",
+      "task": "Rerun original reproducers against each fix and explore related failure modes; do not close findings on source inspection alone.",
+      "target": "After each revision"
+    },
+    {
+      "owner": "Documentation",
+      "task": "Update the stale visualization and introduce merge behavior, readers, cleanup, and WAL/standby concepts gradually.",
+      "target": "Follow-up"
+    },
+    {
+      "owner": "Nik",
+      "task": "Explore a notification bridge to the broader Salma hacking Telegram group. No bridge was deployed during this session.",
+      "target": "Idea to evaluate"
+    },
+    {
+      "owner": "All",
+      "task": "Benchmark comparable builds and workloads after correctness work.",
+      "target": "After correctness validation"
+    }
+  ]
+},
   "MamLJlF7nQQ": {
     summary: "The session introduces work on showing the current time in psql's prompt. The video description links the proposal to its pgsql-hackers discussion. A detailed transcript review and chapter timecodes are still pending.",
     chapters: [],

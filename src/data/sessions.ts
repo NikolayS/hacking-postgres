@@ -2,6 +2,17 @@ import type { Session } from './types';
 
 export const sessions: Session[] = [
   {
+    date: '2026-10-14', title: 'B-tree merge: correctness first', video: 'pVFH6VwjgwM', duration: '50:19',
+    topic: 'Test Salma El-Sayed’s B-tree leaf-page merge prototype: snapshots, parallel scans, VACUUM, and standby safety.',
+    line: 'Storage internals', confidence: 'direct', outcome: 'active',
+    artifacts: [
+      { label: 'session notes #116', url: 'https://github.com/NikolayS/postgres/issues/116' },
+      { label: 'testing campaign #101', url: 'https://github.com/NikolayS/postgres/issues/101' },
+      { label: 'working branch', url: 'https://github.com/salmaaliia/postgres/tree/merge' },
+      { label: 'B-tree merge project', url: '/projects/btree-page-merge/' },
+    ],
+  },
+  {
     date: '2026-10-07', title: 'Agentic Hacking Postgres: Committer in Training', video: '-UaAXJSTj6c',
     topic: 'Standby snapshot corruption, seven upstream bug fixes, and a plan for adversarial CommitFest review.',
     line: 'Hacking process', confidence: 'direct', outcome: 'active',

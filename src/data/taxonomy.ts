@@ -2,6 +2,11 @@ import type { Person, Session, Topic } from './types';
 
 export const people: Person[] = [
   {
+    slug: 'salma-el-sayed', name: 'Salma El-Sayed',
+    links: { github: 'https://github.com/salmaaliia' },
+    note: 'Developer of the B-tree leaf-page merge prototype, mentored by Kirk Wolak.',
+  },
+  {
     slug: 'nikolay-samokhvalov',
     name: 'Nikolay Samokhvalov',
     recognition: {
@@ -55,6 +60,7 @@ export const people: Person[] = [
 ];
 
 const namedAppearances: Record<string, string[]> = {
+  'salma-el-sayed': ['pVFH6VwjgwM'],
   'andrey-borodin': [
     '4pi0QPinPlE',
     '-UaAXJSTj6c',
@@ -67,6 +73,7 @@ const namedAppearances: Record<string, string[]> = {
     'UzMxroqUuI0', 'hGXPgFK8Eh8',
   ],
   'kirk-wolak': [
+    'pVFH6VwjgwM',
     '4pi0QPinPlE',
     '-UaAXJSTj6c',
     'Et6WSCdR3Yw', 'x9Ahk5L2SwA', 'Q7QEvTbGlWs', 'RLeB6rP5CA8', '_Fp-llPPSrE', 'KK6PSdiy-9s',
@@ -88,19 +95,19 @@ export const sessionsForPerson = (sessions: Session[], slug: string) =>
   sessions.filter((session) => peopleForSession(session).some((person) => person.slug === slug));
 
 export const topics: Topic[] = [
-  { slug: 'bug-fixing', name: 'bug fixing', videos: ['-UaAXJSTj6c'] },
+  { slug: 'bug-fixing', name: 'bug fixing', videos: ['pVFH6VwjgwM', '-UaAXJSTj6c'] },
   { slug: 'wait-events', name: 'wait events', videos: ['Et6WSCdR3Yw', 'Q7QEvTbGlWs', 'RLeB6rP5CA8', '6kqpjnpl5Gc', '3Gtuc2lnnsE', 'bfPdLjdQvwU', 'wLPDt7CufEU'] },
   { slug: 'logical-decoding', name: 'logical decoding', videos: ['_Fp-llPPSrE', 'Nu6RdU3aemk', 'KK6PSdiy-9s', 'LjiU6kB6izw', '74NFSqTrD0s'] },
-  { slug: 'recovery', name: 'recovery', videos: ['-UaAXJSTj6c', 'x9Ahk5L2SwA', '_Fp-llPPSrE', 'Nu6RdU3aemk', 'KK6PSdiy-9s', 'LjiU6kB6izw', '74NFSqTrD0s', '5lN775a5geI', 't6T3GPjEiS4', 'OlzLF2VVZ8U', 'GpTJ06AFvg4', '0nFGVCpQDec', 'l-0IP-_meD0', 'ggXAxBhRvoc'] },
-  { slug: 'btree', name: 'B-tree', videos: ['Q7QEvTbGlWs', 'c0wKWcPZnH0', '5lN775a5geI', 'mVYl2RHlpoE', '3MleDtXZUlM', 'Ib3SXSFt8mE', 'D1PEdDcvZTw', 'cbgHrmOAsiU', 'EYwh18PBitM'] },
-  { slug: 'wal', name: 'WAL', videos: ['_Fp-llPPSrE', 'Nu6RdU3aemk', 'LjiU6kB6izw', '74NFSqTrD0s', 'cbgHrmOAsiU', 'EYwh18PBitM'] },
+  { slug: 'recovery', name: 'recovery', videos: ['pVFH6VwjgwM', '-UaAXJSTj6c', 'x9Ahk5L2SwA', '_Fp-llPPSrE', 'Nu6RdU3aemk', 'KK6PSdiy-9s', 'LjiU6kB6izw', '74NFSqTrD0s', '5lN775a5geI', 't6T3GPjEiS4', 'OlzLF2VVZ8U', 'GpTJ06AFvg4', '0nFGVCpQDec', 'l-0IP-_meD0', 'ggXAxBhRvoc'] },
+  { slug: 'btree', name: 'B-tree', videos: ['pVFH6VwjgwM', 'Q7QEvTbGlWs', 'c0wKWcPZnH0', '5lN775a5geI', 'mVYl2RHlpoE', '3MleDtXZUlM', 'Ib3SXSFt8mE', 'D1PEdDcvZTw', 'cbgHrmOAsiU', 'EYwh18PBitM'] },
+  { slug: 'wal', name: 'WAL', videos: ['pVFH6VwjgwM', '_Fp-llPPSrE', 'Nu6RdU3aemk', 'LjiU6kB6izw', '74NFSqTrD0s', 'cbgHrmOAsiU', 'EYwh18PBitM'] },
   { slug: 'multixact', name: 'MultiXact', videos: ['Szpqbb89YSA', 'g9yl3zE9MlI', 'wLPDt7CufEU'] },
   { slug: 'psql', name: 'psql', videos: ['MamLJlF7nQQ', 'VKuxQZlvd8E', 'ul-wgvNtUGY', 'UzMxroqUuI0', 'hGXPgFK8Eh8', 'vTV8XhWf3mo'] },
   { slug: 'sql', name: 'SQL', videos: ['Et6WSCdR3Yw', '6cZvHjDrmlQ', 'k4A9-WZET_4', '-6xA5JI4irI', 'YPq_hiOE-N8', 'samLkrC5xQA', 'WLoMpg8A4WU'] },
   { slug: 'monitoring', name: 'monitoring', videos: ['Et6WSCdR3Yw', 'wLPDt7CufEU', 'wHMNX-fHb2A', 'RLeB6rP5CA8', '6kqpjnpl5Gc', '3Gtuc2lnnsE', 'bfPdLjdQvwU'] },
   { slug: 'compression', name: 'compression', videos: ['woTqRL0Zh3A', 'cbgHrmOAsiU', 'EYwh18PBitM', 'YL31cf9Q1VM'] },
-  { slug: 'ai-assisted-hacking', name: 'AI-assisted hacking', videos: ['4pi0QPinPlE', '-UaAXJSTj6c', 'Et6WSCdR3Yw', 'Q7QEvTbGlWs', '_Fp-llPPSrE', 'woTqRL0Zh3A', '4KVaeJfWPas', 'c0wKWcPZnH0'] },
-  { slug: 'hacking-process', name: 'hacking process', videos: ['4pi0QPinPlE', '-UaAXJSTj6c', 'Et6WSCdR3Yw', 'Q7QEvTbGlWs', '74NFSqTrD0s', 'EqqByzGHIBk', '4KVaeJfWPas', '5lN775a5geI', 'mVYl2RHlpoE', 'lI-VEdAo4Ao', 't6T3GPjEiS4', 'OlzLF2VVZ8U', 'GpTJ06AFvg4', '0nFGVCpQDec', 'ggXAxBhRvoc'] },
+  { slug: 'ai-assisted-hacking', name: 'AI-assisted hacking', videos: ['pVFH6VwjgwM', '4pi0QPinPlE', '-UaAXJSTj6c', 'Et6WSCdR3Yw', 'Q7QEvTbGlWs', '_Fp-llPPSrE', 'woTqRL0Zh3A', '4KVaeJfWPas', 'c0wKWcPZnH0'] },
+  { slug: 'hacking-process', name: 'hacking process', videos: ['pVFH6VwjgwM', '4pi0QPinPlE', '-UaAXJSTj6c', 'Et6WSCdR3Yw', 'Q7QEvTbGlWs', '74NFSqTrD0s', 'EqqByzGHIBk', '4KVaeJfWPas', '5lN775a5geI', 'mVYl2RHlpoE', 'lI-VEdAo4Ao', 't6T3GPjEiS4', 'OlzLF2VVZ8U', 'GpTJ06AFvg4', '0nFGVCpQDec', 'ggXAxBhRvoc'] },
   { slug: 'minor-upgrades', name: 'minor upgrades', videos: ['Et6WSCdR3Yw'] },
   { slug: 'temporary-tables', name: 'temporary tables', videos: ['Et6WSCdR3Yw'] },
   { slug: 'commitfest', name: 'CommitFest', videos: ['-UaAXJSTj6c', 'Et6WSCdR3Yw', 'Q7QEvTbGlWs', 'RLeB6rP5CA8'] },
