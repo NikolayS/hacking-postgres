@@ -162,7 +162,8 @@ export const workItems: WorkItem[] = [
       'Run builds, red-green tests, and independent correctness, security, coverage, and test-quality reviews.',
       'Publish per-patch summaries and evidence; build a CommitFest overlay addressable by patch ID.',
       'Nik: target November 2026 for the PI-based harness release. No public release is linked yet.',
-      'Collect committer feedback on useful automated review output; this remains proposed in the October 28 notes.',
+      'After v1, ask committers which patches need review and collect feedback.',
+      'The October 28 notes also propose feedback on useful automated review output; no revised schedule is agreed.',
       'Try the proposed 30-message communication experiment: short personally checked cover messages, detailed evidence, and clear AI-support provenance.',
       'Keep cited evidence available at its original revision; resolve hosting, retention, and storage ownership.',
       'Explore archive rendering and labeled supporting material only after identifying maintainers; no implementation or deadline is agreed.',
@@ -240,7 +241,7 @@ export const workItems: WorkItem[] = [
     summary: 'Salma El-Sayed’s implementation, mentored by Kirk Wolak, merges sparse siblings and reclaims merged-away tombstone pages without rebuilding the entire index.',
     blocker: 'The October 14 testing campaign reports wrong results, cleanup and validation problems, and standby safety failures in the prototype. Reproduce against exact revisions, land focused fixes, and retest before benchmarking or readiness claims.',
     sessions: ['PEFhdtACVeM', 'pVFH6VwjgwM', 'D1PEdDcvZTw', 'Ib3SXSFt8mE', '3MleDtXZUlM', 'mVYl2RHlpoE', '5lN775a5geI', 'c0wKWcPZnH0', 'Q7QEvTbGlWs'], artifacts: [{ label: 'October 28 follow-up notes', url: 'https://github.com/NikolayS/postgres/issues/124' }, { label: 'October 14 session notes', url: 'https://github.com/NikolayS/postgres/issues/116' }, { label: 'testing campaign #101', url: 'https://github.com/NikolayS/postgres/issues/101' }, { label: 'current -hackers thread', url: 'https://www.postgresql.org/message-id/flat/CANBEAPFq3YAOydjUS3xwcUG9L6e3WE5Z4nGPk_Q3RsjSFWTJNA%40mail.gmail.com' }, { label: 'working branch', url: 'https://github.com/salmaaliia/postgres/tree/merge' }, { label: 'tombstone cleanup commit', url: 'https://github.com/salmaaliia/postgres/commit/3cabf7b3cec90bffb427e8fa2ca9faf1a85213bf' }, { label: 'GSoC idea', url: 'https://wiki.postgresql.org/wiki/GSoC_2026#B-tree_Index_Bloat_Reduction_(Page_Merge)' }],
-    next: ['Report checked findings in concise cover messages with durable supporting evidence, as proposed on October 28', 'Reproduce campaign findings with exact revisions and independent result oracles', 'Retest original cases against each focused fix on primary and standby', 'Cover interrupted cleanup, page reuse, locking, and WAL replay', 'Update the visualization for the current design; benchmark only after correctness work'],
+    next: ['Reproduce campaign findings with exact revisions and independent result oracles', 'Retest original cases against each focused fix on primary and standby', 'Cover interrupted cleanup, page reuse, locking, and WAL replay', 'Update the visualization for the current design; benchmark only after correctness work', 'Report checked findings in concise cover messages with durable supporting evidence, as proposed on October 28'],
   },
   {
     slug: 'pg-dump-table-data-placeholders', title: 'pg_dump table-data placeholders', state: 'needs-review',

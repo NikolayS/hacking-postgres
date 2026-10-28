@@ -4,6 +4,7 @@ export const sessions: Session[] = [
   {
     date: '2026-10-28', title: 'AI-assisted reviews: concise messages, verifiable evidence', video: 'PEFhdtACVeM',
     topic: 'Review workload, personal responsibility for claims, durable supporting evidence, and proposed communication experiments.',
+    // Direct session-to-issue mapping supplied by Nik; not transcript verification.
     line: 'Hacking process', confidence: 'direct', outcome: 'exploration',
     artifacts: [
       { label: 'AI-prepared session notes #124', url: 'https://github.com/NikolayS/postgres/issues/124' },

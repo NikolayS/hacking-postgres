@@ -120,6 +120,8 @@ Review and bug fixing
 * [NOT STARTED] Collect committer feedback on useful automated review output
 
 	https://github.com/NikolayS/postgres/issues/124
+	https://hacking.postgres.tv/projects/committer-in-training/
+	https://github.com/NikolayS/postgres/issues/98
 
 * [NOT STARTED] Explore archive support for Markdown attachments and labeled supporting material; maintainers, hosting, and retention remain unresolved
 
