@@ -1,6 +1,6 @@
 Postgres Hacking TODO List
 ==========================
-Last updated: 2026-10-07
+Last updated: 2026-10-28
 
 This is a list of outcomes we want to achieve, not an internal task list.
 [WIP] means public work exists.  [NOT STARTED] means the idea has not yet
@@ -108,10 +108,19 @@ Client tools
 Review and bug fixing
 =====================
 
-* [NOT STARTED] Committer in Training — reproducible, adversarial AI-assisted review of a small, low-risk CommitFest queue; human reviewers retain judgment (Nikolay Samokhvalov, Kirk Wolak)
+* [NOT STARTED] Committer in Training — reproducible, adversarial AI-assisted review of a small, low-risk CommitFest queue; human reviewers retain judgment; seek committer feedback on useful output (Nikolay Samokhvalov, Kirk Wolak)
 
 	https://hacking.postgres.tv/projects/committer-in-training/
 	https://github.com/NikolayS/postgres/issues/98
+	https://github.com/NikolayS/postgres/issues/124
+
+* [NOT STARTED] Review communication experiment — concise, personally checked cover messages with detailed, durable evidence; proposed trial of 30 review messages
+
+	https://github.com/NikolayS/postgres/issues/124
+
+* [NOT STARTED] Explore archive support for Markdown attachments and labeled supporting material; maintainers, hosting, and retention remain unresolved
+
+	https://github.com/NikolayS/postgres/issues/124
 
 * [NOT STARTED] CommitFest review overlay — source-linked summaries, full review evidence, and PR links addressable by CF patch ID
 

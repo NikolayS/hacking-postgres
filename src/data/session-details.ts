@@ -2,6 +2,72 @@ import type { SessionDetail } from './types';
 
 // Caption-backed summaries unless an explicit source is provided; timecodes are never inferred.
 export const sessionDetails: Record<string, SessionDetail> = {
+  "PEFhdtACVeM": {
+  "summary": "The published notes discuss review workload, AI-assisted review quality, and concise messages backed by evidence. They propose a trial of short, personally reviewed cover messages with detailed supporting material. They also revisit Committer in Training, B-tree merge follow-up, and possible archive improvements. This account uses the AI-prepared notes in issue #124; it has not been independently checked against the recording. No new technical finding, archive implementation, or project release is established by these notes.",
+  "chapters": [],
+  "source": {
+    "label": "AI-prepared October 28 session notes #124",
+    "url": "https://github.com/NikolayS/postgres/issues/124"
+  },
+  "keyPoints": [
+    {
+      "title": "Review quality is more than a polished first patch",
+      "text": "The notes emphasize sound judgment, appropriate testing, and responses to feedback. Useful contributions include early design guidance and reviews of completed code; little revision need not mean a perfect first submission."
+    },
+    {
+      "title": "Short cover message, verifiable evidence",
+      "text": "Keep the main message concise and actionable without hiding material evidence. The notes propose a trial covering the next 30 review messages, with extended testing details attached or linked."
+    },
+    {
+      "title": "Personal review and responsibility",
+      "text": "Distinguish claims personally checked by the sender from AI-produced supporting material. The cover message should contain claims the sender understands and takes responsibility for. The technical example discussed was not independently validated in this session summary."
+    },
+    {
+      "title": "Durable references remain an open question",
+      "text": "Keep supporting analysis available at the revision originally cited. Commit hashes and immutable uploads were discussed; hosting, retention, and storage ownership remain unresolved."
+    },
+    {
+      "title": "Archive changes are proposals",
+      "text": "Rendering Markdown attachments and separating supporting material in a labeled, collapsible section were proposed. No implementation or deadline was agreed. Identify maintainers before pursuing a change."
+    },
+    {
+      "title": "Existing work continues",
+      "text": "Seek committer feedback on useful automated review output and continue checking updated B-tree merge patches. Issue #101 remains the testing record; these notes do not confirm fixes or change the prototype’s readiness.",
+      "links": [
+        {
+          "label": "Committer in Training proposal #98",
+          "url": "https://github.com/NikolayS/postgres/issues/98"
+        },
+        {
+          "label": "B-tree testing campaign #101",
+          "url": "https://github.com/NikolayS/postgres/issues/101"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "owner": "Unassigned",
+      "task": "Try short, personally reviewed cover messages with extended evidence attached or linked. Distinguish checked claims from AI-produced support.",
+      "target": "Proposed trial: next 30 review messages"
+    },
+    {
+      "owner": "Unassigned",
+      "task": "Continue checking updated patches and report findings on the mailing list using the discussed format. Keep testing evidence in issue #101.",
+      "target": "Follow-up; no new test results claimed"
+    },
+    {
+      "owner": "Unassigned",
+      "task": "Collect committer feedback on what makes automated review output useful.",
+      "target": "Proposed; continues issue #98"
+    },
+    {
+      "owner": "Unassigned",
+      "task": "Identify maintainers and explore the smallest useful way to render and separate supporting material. Resolve hosting and retention questions.",
+      "target": "Proposed; no implementation or deadline agreed"
+    }
+  ]
+},
   "pVFH6VwjgwM": {
   "summary": "Nik Samokhvalov, Kirk Wolak, and Salma El-Sayed tested the B-tree leaf-page merge prototype and agreed to prioritize correctness before benchmarks. The discussion covered boundary pivots, merge-group metadata, concurrent readers, and deferred VACUUM cleanup. Nik reported standby and parallel-scan failures; the group examined index-only-scan snapshot safety and the lifetime of pinned pages. The next step is focused reproduction, small fixes, and retesting against exact revisions, not a claim that the prototype is ready to ship.",
   "chapters": [],
