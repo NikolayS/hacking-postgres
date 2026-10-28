@@ -108,20 +108,15 @@ Client tools
 Review and bug fixing
 =====================
 
-* [NOT STARTED] Committer in Training — reproducible, adversarial AI-assisted review of a small, low-risk CommitFest queue; human reviewers retain judgment (Nikolay Samokhvalov, Kirk Wolak)
+* [NOT STARTED] Committer in Training — reproducible, adversarial AI-assisted review of a small, low-risk CommitFest queue; human reviewers retain judgment; seek committer feedback on useful output (Nikolay Samokhvalov, Kirk Wolak)
 
 	https://hacking.postgres.tv/projects/committer-in-training/
 	https://github.com/NikolayS/postgres/issues/98
+	https://github.com/NikolayS/postgres/issues/124
 
 * [NOT STARTED] Review communication experiment — concise, personally checked cover messages with detailed, durable evidence; proposed trial of 30 review messages
 
 	https://github.com/NikolayS/postgres/issues/124
-
-* [NOT STARTED] Collect committer feedback on useful automated review output
-
-	https://github.com/NikolayS/postgres/issues/124
-	https://hacking.postgres.tv/projects/committer-in-training/
-	https://github.com/NikolayS/postgres/issues/98
 
 * [NOT STARTED] Explore archive support for Markdown attachments and labeled supporting material; maintainers, hosting, and retention remain unresolved
 
