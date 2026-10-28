@@ -164,9 +164,6 @@ export const workItems: WorkItem[] = [
       'Nik: target November 2026 for the PI-based harness release. No public release is linked yet.',
       'After v1, ask committers which patches need review and collect feedback.',
       'The October 28 notes also propose feedback on useful automated review output; no revised schedule is agreed.',
-      'Try the proposed 30-message communication experiment: short personally checked cover messages, detailed evidence, and clear AI-support provenance.',
-      'Keep cited evidence available at its original revision; resolve hosting, retention, and storage ownership.',
-      'Explore archive rendering and labeled supporting material only after identifying maintainers; no implementation or deadline is agreed.',
     ],
   },
   {
