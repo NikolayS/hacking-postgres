@@ -2,6 +2,17 @@ import type { Session } from './types';
 
 export const sessions: Session[] = [
   {
+    date: '2026-10-28', title: 'AI-assisted reviews: concise messages, verifiable evidence', video: 'PEFhdtACVeM',
+    topic: 'Review workload, personal responsibility for claims, durable supporting evidence, and proposed communication experiments.',
+    line: 'Hacking process', confidence: 'direct', outcome: 'exploration',
+    artifacts: [
+      { label: 'AI-prepared session notes #124', url: 'https://github.com/NikolayS/postgres/issues/124' },
+      { label: 'Committer in Training', url: '/projects/committer-in-training/' },
+      { label: 'B-tree testing campaign #101', url: 'https://github.com/NikolayS/postgres/issues/101' },
+      { label: 'previous session notes #116', url: 'https://github.com/NikolayS/postgres/issues/116' },
+    ],
+  },
+  {
     date: '2026-10-14', title: 'B-tree merge: correctness first', video: 'pVFH6VwjgwM', duration: '50:19',
     topic: 'Test Salma El-Sayed’s B-tree leaf-page merge prototype: snapshots, parallel scans, VACUUM, and standby safety.',
     line: 'Storage internals', confidence: 'direct', outcome: 'active',
