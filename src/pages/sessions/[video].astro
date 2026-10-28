@@ -1,4 +1,5 @@
 ---
+import CoverPlayer from '../../components/CoverPlayer.astro';
 import Layout from '../../layouts/Layout.astro';
 import { sessionDetails, timestampSeconds } from '../../data/session-details';
 import { sessionUrlAt, sessions, youtubeEmbed, youtubeUrl } from '../../data/sessions';
@@ -15,7 +16,7 @@ const sessionTopics = topicsForSession(session);
 const sessionPeople = peopleForSession(session);
 ---
 
-<Layout title={session.title} description={detail?.summary ?? session.topic} image={`https://i.ytimg.com/vi/${session.video}/hqdefault.jpg`}>
+<Layout title={session.title} description={detail?.summary ?? session.topic} image={session.cover ? new URL(session.cover, Astro.site).href : `https://i.ytimg.com/vi/${session.video}/hqdefault.jpg`}>
   <section class="page-head">
     <div class="shell">
       <p class="eyebrow">postgres=# select * from sessions where video_id = '{session.video}';</p>
@@ -31,7 +32,7 @@ const sessionPeople = peopleForSession(session);
 
   <section class="section">
     <div class="shell">
-      <div class="video">
+      {session.cover ? <CoverPlayer session={session} playerId="session-player" seekFromUrl /> : <div class="video">
         <iframe
           id="session-player"
           src={youtubeEmbed(session.video)}
@@ -40,7 +41,7 @@ const sessionPeople = peopleForSession(session);
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
         ></iframe>
-      </div>
+      </div>}
     </div>
   </section>
 
@@ -89,7 +90,7 @@ const sessionPeople = peopleForSession(session);
     const player = document.querySelector<HTMLIFrameElement>('#session-player');
     const rawStart = new URLSearchParams(window.location.search).get('t');
     const start = Number.parseInt(rawStart ?? '0', 10);
-    if (player && rawStart !== null && Number.isFinite(start) && start >= 0) {
+    if (player && !player.closest('.cover-player') && rawStart !== null && Number.isFinite(start) && start >= 0) {
       const video = player.dataset.video;
       if (video && start > 0) player.src = `https://www.youtube-nocookie.com/embed/${video}?start=${start}&autoplay=1`;
       const current = document.querySelector<HTMLAnchorElement>(`.session-detail-chapter[data-start="${start}"]`);

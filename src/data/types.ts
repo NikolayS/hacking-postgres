@@ -20,6 +20,7 @@ export type Session = {
   date: string;
   title: string;
   video: string;
+  cover?: string;
   duration?: string;
   topic: string;
   line: string;

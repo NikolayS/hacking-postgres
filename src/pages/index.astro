@@ -1,4 +1,5 @@
 ---
+import CoverPlayer from '../components/CoverPlayer.astro';
 import Layout from '../layouts/Layout.astro';
 import SupportedProjectCard from '../components/SupportedProjectCard.astro';
 import WorkCard from '../components/WorkCard.astro';
@@ -12,7 +13,7 @@ const upstreamOutcomes = publicOutcomes.filter((outcome) => outcome.stage === 'c
 const latest = sessions[0];
 ---
 
-<Layout>
+<Layout image={latest.cover ? new URL(latest.cover, Astro.site).href : undefined}>
   <section class="page-head">
     <div class="shell">
       <p class="eyebrow">postgres=# select * from postgres_hacking where visibility = 'public';</p>
@@ -51,7 +52,7 @@ const latest = sessions[0];
     <div class="shell split">
       <div>
         <div class="section-head"><h2>latest session</h2><a href="/sessions">archive →</a></div>
-        <div class="video"><iframe src={youtubeEmbed(latest.video)} title={latest.title} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        {latest.cover ? <CoverPlayer session={latest} /> : <div class="video"><iframe src={youtubeEmbed(latest.video)} title={latest.title} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>}
       </div>
       <div>
         <p class="eyebrow">{latest.date}{latest.duration && <> · {latest.duration}</>}</p>

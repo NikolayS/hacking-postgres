@@ -236,3 +236,5 @@ body.video-dialog-open { overflow: hidden; }
 .bug-fix { padding-block: 1.5rem; border-bottom: 1px solid var(--line); }
 .bug-fix h2 { max-width: 850px; }
 .bug-fix .detail-list { overflow-wrap: anywhere; }
+
+.session-video img.custom-cover { opacity: 1; filter: none; }
