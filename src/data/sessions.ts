@@ -3,7 +3,7 @@ import type { Session } from './types';
 export const sessions: Session[] = [
   {
     date: '2026-10-28', title: 'AI-assisted reviews: concise messages, verifiable evidence', video: 'PEFhdtACVeM',
-    cover: '/covers/2026-10-28-ai-reviews.png',
+    cover: '/covers/2026-10-28-ai-reviews-v4.png',
     topic: 'Review workload, personal responsibility for claims, durable supporting evidence, and proposed communication experiments.',
     // Direct session-to-issue mapping supplied by Nik; not transcript verification.
     line: 'Hacking process', confidence: 'direct', outcome: 'exploration',
