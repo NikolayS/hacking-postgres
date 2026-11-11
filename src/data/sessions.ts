@@ -3,7 +3,7 @@ import type { Session } from './types';
 export const sessions: Session[] = [
   {
     date: '2026-11-11', title: 'PG Roast: challenge the idea before reviewing the code', video: 'F9-oFC0H9Fg',
-    cover: '/covers/2026-11-11-pg-roast-real-v2.png',
+    cover: '/covers/2026-11-11-pg-roast-final.png',
     topic: 'Designing an adversarial proposal reviewer, a CommitFest Shortlist, and evidence-first feedback that saves committer time.',
     // Issue #189 contains explicitly dated call notes; this is not transcript verification.
     line: 'Hacking process', confidence: 'direct', outcome: 'exploration',
