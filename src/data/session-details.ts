@@ -2,6 +2,108 @@ import type { SessionDetail } from './types';
 
 // Caption-backed summaries unless an explicit source is provided; timecodes are never inferred.
 export const sessionDetails: Record<string, SessionDetail> = {
+  "F9-oFC0H9Fg": {
+  "summary": "Nik Samokhvalov, Kirk Wolak, and Andrey Borodin explored PG Roast: an adversarial reviewer that asks whether a Postgres proposal is worth accepting before examining its implementation. The call connected precedent-backed objections and practical testing with a curated CommitFest Shortlist, expert routing, and shorter human-owned mailing-list replies. The agreed pilot starts privately on Andrey’s own CommitFest patches. These are discussion notes and proposed work, not evidence that the complete system has shipped.",
+  "chapters": [],
+  "source": {
+    "label": "November 11 proposal, call notes, and closing decisions (not a verbatim transcript)",
+    "url": "https://github.com/NikolayS/postgres/issues/189"
+  },
+  "keyPoints": [
+    {
+      "title": "Challenge the idea before the implementation",
+      "text": "Start with the problem, user demand, and whether the idea belongs in Postgres; then examine design and implementation. Andrey pointed to Robert Haas’s “Committer Paranoia” as a review rubric. Prior rejection threads should supply evidence, not an excuse to manufacture objections.",
+      "links": [
+        {
+          "label": "call notes",
+          "url": "https://github.com/NikolayS/postgres/issues/189#issuecomment-6803599984"
+        }
+      ]
+    },
+    {
+      "title": "Seven perspectives, then a critic",
+      "text": "The proposed first version covers demand, standards and compatibility, prior attempts, replication and on-disk changes, security, maintenance and fit, and existing alternatives. A critic attempts to refute the objections. High-risk subsystem changes call for expert review, not automatic rejection.",
+      "links": [
+        {
+          "label": "call notes",
+          "url": "https://github.com/NikolayS/postgres/issues/189#issuecomment-6804558590"
+        }
+      ]
+    },
+    {
+      "title": "A shortlist, not mass rejection",
+      "text": "The group proposed selecting roughly 10–20 patches worth committer attention. Correctness and fit are separate from priority: useful but neglected work may need a champion, bundling, or a design rethink. Age alone is not grounds for closing an entry. “CommitFest Shortlist” was the preferred working name.",
+      "links": [
+        {
+          "label": "call notes",
+          "url": "https://github.com/NikolayS/postgres/issues/189#issuecomment-6804476269"
+        }
+      ]
+    },
+    {
+      "title": "Find the actual blocker and the right reviewer",
+      "text": "Each entry should explain the real unresolved pushback with message links. Personalized or subsystem-based lists and visible claiming can avoid duplicated effort. Git history, trailers, and discussion participation can suggest relevant experts; contact stays human-mediated.",
+      "links": [
+        {
+          "label": "call notes",
+          "url": "https://github.com/NikolayS/postgres/issues/189#issuecomment-6804504178"
+        }
+      ]
+    },
+    {
+      "title": "Preflight, field tests, and deeper follow-ups",
+      "text": "The discussed pipeline starts with mechanical checks, reusing cfbot evidence where available, then design critique and scenarios that exercise a patch as if committed. Supervisor rounds ask what was missed. The B-tree merge discussion motivated explicit subsystem invariants instead of assuming an agent will infer them.",
+      "links": [
+        {
+          "label": "call notes",
+          "url": "https://github.com/NikolayS/postgres/issues/189#issuecomment-6804296601"
+        }
+      ]
+    },
+    {
+      "title": "Short human-owned mail, optional detail",
+      "text": "Keep the message body short and take responsibility for its claims. Clearly labelled AI detail can live in attachments or an opt-in report. The discussion favored calm, evidence-first language rather than publishing the “roaster” persona to the list.",
+      "links": [
+        {
+          "label": "call notes",
+          "url": "https://github.com/NikolayS/postgres/issues/189#issuecomment-6804348050"
+        }
+      ]
+    },
+    {
+      "title": "Start privately and measure the results",
+      "text": "The closing pilot starts with CommitFest entries and Andrey’s own patches, with the author involved. Historical proposals and reverted commits were suggested for evaluation. A post-commit testing watcher and a reduction in the active backlog are proposed goals, not measured results.",
+      "links": [
+        {
+          "label": "call notes",
+          "url": "https://github.com/NikolayS/postgres/issues/189#issuecomment-6804394574"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "owner": "Nik",
+      "task": "Finish the first PG Roast prototype and share results with the group.",
+      "target": "Prototype and human-reviewed findings; completion not verified here."
+    },
+    {
+      "owner": "Kirk",
+      "task": "Develop the post-commit testing agent and the short-body / AI-attachments email proposal.",
+      "target": "Follow-ups recorded in the call wrap-up."
+    },
+    {
+      "owner": "Andrey",
+      "task": "Share existing CommitFest summary/state tooling and pilot reviews on his own patches.",
+      "target": "Avoid duplicate tooling and get author feedback."
+    },
+    {
+      "owner": "All",
+      "task": "Choose historical proposals and reverted commits for blind evaluation.",
+      "target": "Measure useful objections and false alarms before expanding the pilot."
+    }
+  ]
+},
   "PEFhdtACVeM": {
   "summary": "The published notes discuss review workload, AI-assisted review quality, and concise messages backed by evidence. They propose a trial of short, personally reviewed cover messages with detailed supporting material. They also revisit Committer in Training, B-tree merge follow-up, and possible archive improvements. This account uses the AI-prepared notes in issue #124; it has not been independently checked against the recording. No new technical finding, archive implementation, or project release is established by these notes.",
   "chapters": [],

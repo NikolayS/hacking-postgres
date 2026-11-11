@@ -2,11 +2,16 @@ import type { Session } from './types';
 
 export const sessions: Session[] = [
   {
-    date: '2026-11-11', title: 'Agentic Hacking Postgres with Andrey, Kirk, Nik', video: 'F9-oFC0H9Fg',
-    topic: 'Agentic Postgres hacking with Andrey Borodin, Kirk Wolak, and Nik Samokhvalov. Detailed session notes pending.',
-    // Recording date and title verified against the PostgresTV YouTube feed.
-    // No project mapping or technical outcomes inferred without notes or captions.
-    line: 'Hacking process', confidence: 'none', outcome: 'exploration', artifacts: [],
+    date: '2026-11-11', title: 'PG Roast: challenge the idea before reviewing the code', video: 'F9-oFC0H9Fg',
+    cover: '/covers/2026-11-11-pg-roast.png',
+    topic: 'Designing an adversarial proposal reviewer, a CommitFest Shortlist, and evidence-first feedback that saves committer time.',
+    // Issue #189 contains explicitly dated call notes; this is not transcript verification.
+    line: 'Hacking process', confidence: 'direct', outcome: 'exploration',
+    artifacts: [
+      { label: 'PG Roast proposal and call notes #189', url: 'https://github.com/NikolayS/postgres/issues/189' },
+      { label: 'session wrap-up and actions', url: 'https://github.com/NikolayS/postgres/issues/189#issuecomment-6804293709' },
+      { label: 'Committer in Training', url: '/projects/committer-in-training/' },
+    ],
   },
   {
     date: '2026-10-28', title: 'AI-assisted reviews: concise messages, verifiable evidence', video: 'PEFhdtACVeM',

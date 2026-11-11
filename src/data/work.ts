@@ -150,7 +150,7 @@ export const workItems: WorkItem[] = [
   {
     slug: 'committer-in-training', title: 'Committer in Training', state: 'exploration',
     summary: 'A proposed AI-assisted review pipeline for a small CommitFest queue: reproducible builds, red-green tests, adversarial reviews, and public summaries linked to the evidence. Designed to help human reviewers, not replace committer judgment.',
-    sessions: ['PEFhdtACVeM', '-UaAXJSTj6c'],
+    sessions: ['F9-oFC0H9Fg', 'PEFhdtACVeM', '-UaAXJSTj6c'],
     artifacts: [
       { label: 'October 28 review communication notes', url: 'https://github.com/NikolayS/postgres/issues/124' },
       { label: 'session proposal #98', url: 'https://github.com/NikolayS/postgres/issues/98' },

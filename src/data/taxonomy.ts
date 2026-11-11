@@ -114,7 +114,7 @@ export const topics: Topic[] = [
   { slug: 'hacking-process', name: 'hacking process', videos: ['F9-oFC0H9Fg', 'PEFhdtACVeM', 'pVFH6VwjgwM', '4pi0QPinPlE', '-UaAXJSTj6c', 'Et6WSCdR3Yw', 'Q7QEvTbGlWs', '74NFSqTrD0s', 'EqqByzGHIBk', '4KVaeJfWPas', '5lN775a5geI', 'mVYl2RHlpoE', 'lI-VEdAo4Ao', 't6T3GPjEiS4', 'OlzLF2VVZ8U', 'GpTJ06AFvg4', '0nFGVCpQDec', 'ggXAxBhRvoc'] },
   { slug: 'minor-upgrades', name: 'minor upgrades', videos: ['Et6WSCdR3Yw'] },
   { slug: 'temporary-tables', name: 'temporary tables', videos: ['Et6WSCdR3Yw'] },
-  { slug: 'commitfest', name: 'CommitFest', videos: ['-UaAXJSTj6c', 'Et6WSCdR3Yw', 'Q7QEvTbGlWs', 'RLeB6rP5CA8'] },
+  { slug: 'commitfest', name: 'CommitFest', videos: ['F9-oFC0H9Fg', '-UaAXJSTj6c', 'Et6WSCdR3Yw', 'Q7QEvTbGlWs', 'RLeB6rP5CA8'] },
 ];
 
 export const topicsForSession = (session: Session) => topics.filter((topic) => topic.videos.includes(session.video));
