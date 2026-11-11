@@ -62,6 +62,7 @@ export const people: Person[] = [
 const namedAppearances: Record<string, string[]> = {
   'salma-el-sayed': ['pVFH6VwjgwM'],
   'andrey-borodin': [
+    'F9-oFC0H9Fg',
     'PEFhdtACVeM',
     '4pi0QPinPlE',
     '-UaAXJSTj6c',
@@ -74,6 +75,7 @@ const namedAppearances: Record<string, string[]> = {
     'UzMxroqUuI0', 'hGXPgFK8Eh8',
   ],
   'kirk-wolak': [
+    'F9-oFC0H9Fg',
     'PEFhdtACVeM',
     'pVFH6VwjgwM',
     '4pi0QPinPlE',
@@ -108,8 +110,8 @@ export const topics: Topic[] = [
   { slug: 'sql', name: 'SQL', videos: ['Et6WSCdR3Yw', '6cZvHjDrmlQ', 'k4A9-WZET_4', '-6xA5JI4irI', 'YPq_hiOE-N8', 'samLkrC5xQA', 'WLoMpg8A4WU'] },
   { slug: 'monitoring', name: 'monitoring', videos: ['Et6WSCdR3Yw', 'wLPDt7CufEU', 'wHMNX-fHb2A', 'RLeB6rP5CA8', '6kqpjnpl5Gc', '3Gtuc2lnnsE', 'bfPdLjdQvwU'] },
   { slug: 'compression', name: 'compression', videos: ['woTqRL0Zh3A', 'cbgHrmOAsiU', 'EYwh18PBitM', 'YL31cf9Q1VM'] },
-  { slug: 'ai-assisted-hacking', name: 'AI-assisted hacking', videos: ['PEFhdtACVeM', 'pVFH6VwjgwM', '4pi0QPinPlE', '-UaAXJSTj6c', 'Et6WSCdR3Yw', 'Q7QEvTbGlWs', '_Fp-llPPSrE', 'woTqRL0Zh3A', '4KVaeJfWPas', 'c0wKWcPZnH0'] },
-  { slug: 'hacking-process', name: 'hacking process', videos: ['PEFhdtACVeM', 'pVFH6VwjgwM', '4pi0QPinPlE', '-UaAXJSTj6c', 'Et6WSCdR3Yw', 'Q7QEvTbGlWs', '74NFSqTrD0s', 'EqqByzGHIBk', '4KVaeJfWPas', '5lN775a5geI', 'mVYl2RHlpoE', 'lI-VEdAo4Ao', 't6T3GPjEiS4', 'OlzLF2VVZ8U', 'GpTJ06AFvg4', '0nFGVCpQDec', 'ggXAxBhRvoc'] },
+  { slug: 'ai-assisted-hacking', name: 'AI-assisted hacking', videos: ['F9-oFC0H9Fg', 'PEFhdtACVeM', 'pVFH6VwjgwM', '4pi0QPinPlE', '-UaAXJSTj6c', 'Et6WSCdR3Yw', 'Q7QEvTbGlWs', '_Fp-llPPSrE', 'woTqRL0Zh3A', '4KVaeJfWPas', 'c0wKWcPZnH0'] },
+  { slug: 'hacking-process', name: 'hacking process', videos: ['F9-oFC0H9Fg', 'PEFhdtACVeM', 'pVFH6VwjgwM', '4pi0QPinPlE', '-UaAXJSTj6c', 'Et6WSCdR3Yw', 'Q7QEvTbGlWs', '74NFSqTrD0s', 'EqqByzGHIBk', '4KVaeJfWPas', '5lN775a5geI', 'mVYl2RHlpoE', 'lI-VEdAo4Ao', 't6T3GPjEiS4', 'OlzLF2VVZ8U', 'GpTJ06AFvg4', '0nFGVCpQDec', 'ggXAxBhRvoc'] },
   { slug: 'minor-upgrades', name: 'minor upgrades', videos: ['Et6WSCdR3Yw'] },
   { slug: 'temporary-tables', name: 'temporary tables', videos: ['Et6WSCdR3Yw'] },
   { slug: 'commitfest', name: 'CommitFest', videos: ['-UaAXJSTj6c', 'Et6WSCdR3Yw', 'Q7QEvTbGlWs', 'RLeB6rP5CA8'] },

@@ -2,6 +2,13 @@ import type { Session } from './types';
 
 export const sessions: Session[] = [
   {
+    date: '2026-11-11', title: 'Agentic Hacking Postgres with Andrey, Kirk, Nik', video: 'F9-oFC0H9Fg',
+    topic: 'Agentic Postgres hacking with Andrey Borodin, Kirk Wolak, and Nik Samokhvalov. Detailed session notes pending.',
+    // Recording date and title verified against the PostgresTV YouTube feed.
+    // No project mapping or technical outcomes inferred without notes or captions.
+    line: 'Hacking process', confidence: 'none', outcome: 'exploration', artifacts: [],
+  },
+  {
     date: '2026-10-28', title: 'AI-assisted reviews: concise messages, verifiable evidence', video: 'PEFhdtACVeM',
     cover: '/covers/2026-10-28-ai-reviews-v4.png',
     topic: 'Review workload, personal responsibility for claims, durable supporting evidence, and proposed communication experiments.',
