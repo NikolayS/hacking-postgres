@@ -3,11 +3,12 @@ import type { Session } from './types';
 export const sessions: Session[] = [
   {
     date: '2026-11-11', title: 'PG Roast: challenge the idea before reviewing the code', video: 'F9-oFC0H9Fg',
-    cover: '/covers/2026-11-11-pg-roast.png',
+    cover: '/covers/2026-11-11-pg-roast-real.png',
     topic: 'Designing an adversarial proposal reviewer, a CommitFest Shortlist, and evidence-first feedback that saves committer time.',
     // Issue #189 contains explicitly dated call notes; this is not transcript verification.
     line: 'Hacking process', confidence: 'direct', outcome: 'exploration',
     artifacts: [
+      { label: 'PG Roast prototype', url: 'https://github.com/NikolayS/pgroast' },
       { label: 'PG Roast proposal and call notes #189', url: 'https://github.com/NikolayS/postgres/issues/189' },
       { label: 'session wrap-up and actions', url: 'https://github.com/NikolayS/postgres/issues/189#issuecomment-6804293709' },
       { label: 'Committer in Training', url: '/projects/committer-in-training/' },
