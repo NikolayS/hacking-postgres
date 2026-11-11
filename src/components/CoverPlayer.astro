@@ -12,9 +12,10 @@ const { session, playerId, seekFromUrl = false } = Astro.props as {
   </a>
 </div>
 <style>
-  .cover-poster { display: block; position: absolute; inset: 0; }
-  .cover-poster img { display: block; width: 100%; height: 100%; object-fit: contain; }
-  .cover-poster span { position: absolute; bottom: .75rem; right: .75rem; padding: .3rem .6rem; background: #000; color: var(--accent); border: 1px solid var(--accent); font-family: var(--mono); }
+  .cover-player:has(> .cover-poster) { aspect-ratio: auto; }
+  .cover-poster { display: block; }
+  .cover-poster img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; }
+  .cover-poster span { display: block; text-align: right; padding: .6rem .75rem; background: #000; color: var(--accent); border-top: 1px solid var(--line); font-family: var(--mono); }
   .cover-poster:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 </style>
 <script>
